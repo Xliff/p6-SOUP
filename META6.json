@@ -1,0 +1,19 @@
+{
+    "depends": [
+        "p6-GLib",
+        "p6-GIO",
+    ],
+    "description": "Perl6 library bindings for GNOME's libsoup library",
+    "version": "r0.1",
+    "meta-version": "0",
+    "license": "GPL-3.0",
+    "source-url": "https://github.com/Xliff/p6-SOUP.git",
+    "provides": {
+    },
+    "name": "p6-SOUP",
+    "perl": "6.c",
+    "test-depends": ["Test::META"],
+    "build-depends": [ ],
+    "support": {"source": null},
+    "authors": ["clifton.wood@gmail.com"]
+}

@@ -1,0 +1,3 @@
+prefix=SOUP::
+modules=SOUP::Raw::Types
+backups=backup,bitbucket
