@@ -122,7 +122,7 @@ class SOUP::URI {
 
   method valid_for_http {
     [&&](
-      $!su.scheme-check(%URI-SCHEME<http https>.any).so,
+      $!su.scheme-check(%SOUP-URI-SCHEME<http https>.any).so,
       $!su.host,
       $!su.path
     );
