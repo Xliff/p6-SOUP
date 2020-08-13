@@ -7,5 +7,6 @@ our @soup-exports is export;
 BEGIN {
   @soup-exports = <
     SOUP::Raw::Definitions
+    SOUP::Raw::Enums
   >;
 }
