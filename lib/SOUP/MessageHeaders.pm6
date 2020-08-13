@@ -1,6 +1,7 @@
 use v6.c;
 
 use Method::Also;
+use NativeCall;
 
 use SOUP::Raw::Types;
 use SOUP::Raw::MessageHeaders;
@@ -20,8 +21,9 @@ class SOUP::MessageHeaders {
   multi method new (SoupMessageHeaders $headers) {
     $headers ?? self.bless( :$headers ) !! Nil;
   }
-  multi method new {
-    my $headers = soup_message_headers_new();
+  multi method new (Int() $type) {
+    my SoupMessageHeadersType $t = $type;
+    my $headers = soup_message_headers_new($t);
 
     $headers ?? self.bless( :$headers ) !! Nil;
   }
@@ -68,7 +70,7 @@ class SOUP::MessageHeaders {
       is also<get-content-range>
   { * }
 
-  multi method get_content_range (
+  multi method get_content_range {
     my $rv = samewith($, $, $, :all);
 
     $rv[0] ?? $rv.skip(1) !! Nil;
@@ -77,9 +79,9 @@ class SOUP::MessageHeaders {
     $start        is rw,
     $end          is rw,
     $total_length is rw,
-  ) {
     :$all = False
-    my goffset ($s, $e, $l) = ;
+  ) {
+    my goffset ($s, $e, $l) = ($start, $end, $total_length);
 
     my $rv = so soup_message_headers_get_content_range($!smh, $s, $e, $l);
     ($start, $end, $total_length) = ($s, $e, $l);
@@ -100,7 +102,7 @@ class SOUP::MessageHeaders {
   }
 
   method get_headers_type is also<get-headers-type> {
-    SoupHeadersType( soup_message_headers_get_headers_type($!smh) );
+    SoupMessageHeadersType( soup_message_headers_get_headers_type($!smh) );
   }
 
   method get_list (Str() $name) is also<get-list> {
@@ -216,7 +218,7 @@ class SOUP::MessageHeaders {
       @ranges.elems
     );
   }
-  multi method set_ranges (Pointer[SoupBuffer] $ranges, Int() $length) {
+  multi method set_ranges (Pointer $ranges, Int() $length) {
     my gint $l = $length;
 
     soup_message_headers_set_ranges($!smh, $ranges, $l);
@@ -232,7 +234,7 @@ class SOUP::MessageHeader::Iter {
   }
   multi method new (SoupMessageHeaders() $hdrs) {
     my $iter = SoupMessageHeadersIter.new;
-    init($iter, $hdrs);
+    self.init($iter, $hdrs);
 
     $iter ?? self.bless( :$iter ) !! Nil;
   }
@@ -258,9 +260,9 @@ class SOUP::MessageHeader::Iter {
     my $v = CArray[Str].new;
     ($n, $v)».[0] = Str xx 2;
 
-    my $rv = so soup_message_headers_iter_next($!smh, $name, $value);
+    my $rv = so soup_message_headers_iter_next($!smhi, $name, $value);
 
     ($name, $value) = ppr($n, $v);
-    $all.not ?? $rv ?? ($rv, $name, $value);
+    $all.not ?? $rv !! ($rv, $name, $value);
   }
 }

@@ -4,6 +4,7 @@ use NativeCall;
 
 use GLib::Raw::Definitions;
 use SOUP::Raw::Definitions;
+use SOUP::Raw::Enums;
 
 unit package SOUP::Raw::MessageHeaders;
 
@@ -260,7 +261,7 @@ sub soup_message_headers_set_range (
 
 sub soup_message_headers_set_ranges (
   SoupMessageHeaders $hdrs,
-  SoupRange $ranges,
+  Pointer $ranges,  # Array of SoupRange
   gint $length
 )
   is native(soup)
