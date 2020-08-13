@@ -3,10 +3,12 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GIO::Raw::Definitions;
+use GIO::Raw::Enums;
 use SOUP::Raw::Definitions;
+use SOUP::Raw::Enums;
 
 unit package SOUP::Raw::Message;
-
 
 ### /usr/include/libsoup-2.4/libsoup/soup-message.h
 
@@ -168,7 +170,7 @@ sub soup_message_restarted (SoupMessage $msg)
 
 sub soup_message_set_chunk_allocator (
   SoupMessage $msg,
-  SoupChunkAllocator $allocator,
+  &allocator (SoupMessage, gsize, gpointer --> SoupBuffer),
   gpointer $user_data,
   GDestroyNotify $destroy_notify
 )
