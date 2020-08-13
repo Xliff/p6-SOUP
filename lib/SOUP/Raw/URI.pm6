@@ -105,7 +105,7 @@ sub soup_uri_host_equal (SoupURI $v1, SoupURI $v2)
   is export
 { * }
 
-sub soup_uri_host_hash (gconstpointer $key)
+sub soup_uri_host_hash (SoupURI $key)
   returns guint
   is native(soup)
   is export

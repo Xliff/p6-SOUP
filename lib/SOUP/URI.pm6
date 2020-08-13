@@ -26,8 +26,8 @@ class SOUP::URI {
     $uri ?? self.bless( :$uri ) !! Nil;
   }
 
-  multi method new (SoupURI() $base, Str() $uri_string, :$base is required) {
-    SOUP::URI.new_with_base($base, $uri_string);
+  multi method new (SoupURI() $b, Str() $uri_string, :$base is required) {
+    SOUP::URI.new_with_base($b, $uri_string);
   }
   method new_with_base (SoupURI() $base, Str() $uri_string)
     is also<new-with-base>
@@ -120,13 +120,13 @@ class SOUP::URI {
     $!su.scheme && $!su.port;
   }
 
-  # method valid_for_http {
-  #   [&&](
-  #     $!su.scheme == (SOUP_URI_SCHEME_HTTP, SOUP_URI_SCHEME_HTTPS).any,
-  #     $!su.host,
-  #     $!su.path
-  #   );
-  # }
+  method valid_for_http {
+    [&&](
+      $!su.scheme-check(%URI-SCHEME<http https>.any).so,
+      $!su.host,
+      $!su.path
+    );
+  }
 
   method normalize (
     SOUP::URI:U:
