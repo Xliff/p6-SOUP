@@ -5,6 +5,8 @@ use Method::Also;
 use SOUP::Raw::Types;
 use SOUP::Raw::AuthDomain;
 
+use GLib::Roles::Pointers;
+
 our subset SoupAuthDomainAncestry is export of Mu
   where SoupAuthDomain | GObject;
 
@@ -62,14 +64,14 @@ class SOUP::AuthDomain {
         my $original-type = $val.^name;
         # cw: This should employ the same strategy used to set function pointers
         #     in structs. For now. this is a placeholder.
-        $val = do if $val ~~ GLib::Roles::Pointers {
+        my $v := do if $val ~~ GLib::Roles::Pointers {
           $val.p;
         } elsif $val ~~ Callable {
-          set_func_pointer($val, sprintf-auth-domain-filter)
+          set_func_pointer( &($val), &sprintf-auth-domain-filter )
         }
 
         die "Cannot accept $original-type as RHS for .filter"
-          unless $val ~~ Pointer;
+          unless $val ~~ gpointer;
 
         $gv.pointer = $val;
         self.prop_set('filter', $gv);
@@ -79,7 +81,7 @@ class SOUP::AuthDomain {
 
   # Type: gpointer
   method filter-data is rw  is also<filter_data> {
-    my $gv = GLib::Value.new( G_TYPE_POINTER- );
+    my $gv = GLib::Value.new( G_TYPE_POINTER );
     Proxy.new(
       FETCH => sub ($) {
         $gv = GLib::Value.new(
@@ -88,10 +90,12 @@ class SOUP::AuthDomain {
         $gv.pointer;
       },
       STORE => -> $, $val is copy {
+        my $original-type = $val.^name;
+
         $val .= p if $val ~~ GLib::Roles::Pointer;
 
         die "Cannot accept $original-type as RHS for .generic-auth-data"
-          unless $val ~~ Pointer;
+          unless $val ~~ gpointer;
 
         self.prop_set('filter-data', $gv);
       }
@@ -111,10 +115,10 @@ class SOUP::AuthDomain {
       STORE => -> $, $val is copy {
         # cw: This should employ the same strategy used to set function pointers
         #     in structs. For now. this is a placeholder.
-        $val = do if $val ~~ GLib::Roles::Pointers {
+        my $v := do if $val ~~ GLib::Roles::Pointers {
           $val.p;
         } elsif $val ~~ Callable {
-          set_func_pointer($val, sprintf-auth-domain-generic-auth-callback)
+          set_func_pointer( &($val), &sprintf-auth-domain-generic-auth-callback )
         }
 
         $gv.pointer = $val;
@@ -139,7 +143,7 @@ class SOUP::AuthDomain {
         $val .= p if $val ~~ GLib::Roles::Pointer;
 
         die "Cannot accept $original-type as RHS for .generic-auth-data"
-          unless $val ~~ Pointer;
+          unless $val ~~ gpointer;
 
         $gv.pointer = $val;
         self.prop_set('generic-auth-data', $gv);
@@ -198,7 +202,9 @@ class SOUP::AuthDomain {
     soup_auth_domain_accepts($!sad, $msg);
   }
 
-  method add_path (Str() $path) is also<add-path> {
+  # Conflicts with signal<add-path> so  hence the extra "_to". This shall be
+  # rectified in the next version.
+  method add_path_to (Str() $path) is also<add-path-to> {
     soup_auth_domain_add_path($!sad, $path);
   }
 
@@ -227,21 +233,22 @@ class SOUP::AuthDomain {
   method get_type is also<get-type> {
     state ($n, $t);
 
-    unstable_get_tyepe( self.&name, soup_auth_domain_get_type, $n, $t );
+    unstable_get_type( self.^name, soup_auth_domain_get_type, $n, $t );
   }
 
-  method remove_path (Str() $path) is also<remove-path> {
+  method remove_path_from (Str() $path) is also<remove-path-from>
+  {
     soup_auth_domain_remove_path($!sad, $path);
   }
 
   method set_filter (
-    SoupAuthDomainFilter $filter,
+    &filter,
     gpointer $filter_data   = gpointer,
     GDestroyNotify $dnotify = GDestroyNotify
   )
     is also<set-filter>
   {
-    soup_auth_domain_set_filter($!sad, $filter, $filter_data, $dnotify);
+    soup_auth_domain_set_filter($!sad, &filter, $filter_data, $dnotify);
   }
 
   method set_generic_auth_callback (

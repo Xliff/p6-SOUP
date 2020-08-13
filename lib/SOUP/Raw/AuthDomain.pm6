@@ -12,7 +12,7 @@ unit package SOUP::Raw::AuthDomain;
 sub sprintf-auth-domain-filter (
   Blob,
   Str,
-  & (SoupAuthDomain, SoupMessage, gpointer --> boolean)
+  & (SoupAuthDomain, SoupMessage, gpointer --> gboolean)
 )
   returns int64
   is export
@@ -23,7 +23,7 @@ sub sprintf-auth-domain-filter (
 sub sprintf-auth-domain-generic-auth-callback (
   Blob,
   Str,
-  & (SoupAuthDomain, SoupMessage, Str, gpointer --> boolean)
+  & (SoupAuthDomain, SoupMessage, Str, gpointer --> gboolean)
 )
   returns int64
   is export
@@ -83,7 +83,7 @@ sub soup_auth_domain_remove_path (SoupAuthDomain $domain, Str $path)
 
 sub soup_auth_domain_set_filter (
   SoupAuthDomain $domain,
-  &filter (SoupAuthDomain, SoupMessage, pointer --> gboolean),
+  &filter (SoupAuthDomain, SoupMessage, gpointer --> gboolean),
   gpointer $filter_data,
   GDestroyNotify $dnotify
 )
@@ -93,7 +93,7 @@ sub soup_auth_domain_set_filter (
 
 sub soup_auth_domain_set_generic_auth_callback (
   SoupAuthDomain $domain,
-  &auth_callback (SoupAuthDomain, SoupMessage, Str, gpointer --> boolean),
+  &auth_callback (SoupAuthDomain, SoupMessage, Str, gpointer --> gboolean),
   gpointer $auth_data,
   GDestroyNotify $dnotify
 )
