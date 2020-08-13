@@ -20,6 +20,7 @@ need GIO::Raw::Subs;
 need GIO::Raw::Exports;
 need GIO::DBus::Raw::Types;
 need SOUP::Raw::Definitions;
+need SOUP::Raw::Enums;
 
 BEGIN {
   glib-re-export($_) for |@glib-exports,
