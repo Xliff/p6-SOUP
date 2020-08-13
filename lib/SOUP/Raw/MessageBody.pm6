@@ -4,6 +4,7 @@ use NativeCall;
 
 use GLib::Raw::Definitions;
 use SOUP::Raw::Definitions;
+use SOUP::Raw::Enums;
 
 unit package SOUP::Raw::MessageBody;
 
@@ -29,7 +30,7 @@ sub soup_message_body_append_buffer (
 
 sub soup_message_body_append_take (
   SoupMessageBody $body,
-  Str $data,
+  Pointer $data,
   gsize $length
 )
   is native(soup)
@@ -102,7 +103,7 @@ sub soup_buffer_get_as_bytes (SoupBuffer $buffer)
 
 sub soup_buffer_get_data (
   SoupBuffer $buffer,
-  CArray[CArray[uint8] $data,
+  CArray[CArray[uint8]] $data,
   gsize $length is rw
 )
   is native(soup)
@@ -137,7 +138,7 @@ sub soup_buffer_new_subbuffer (
   is export
 { * }
 
-sub soup_buffer_new_take (Str $data, gsize $length)
+sub soup_buffer_new_take (Pointer $data, gsize $length)
   returns SoupBuffer
   is native(soup)
   is export

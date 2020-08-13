@@ -1,9 +1,12 @@
 use v6.c;
 
 use Method::Also;
+use NativeCall;
 
 use SOUP::Raw::Types;
 use SOUP::Raw::MessageBody;
+
+use GLib::Roles::TypedBuffer;
 
 class SOUP::MessageBody {
   has SoupMessageBody $!smb;
@@ -73,7 +76,7 @@ class SOUP::MessageBody {
 
     samewith( cast(Pointer, $data), $l );
   }
-  method append_take (gpointer $data, Int() $length) {
+  multi method append_take (gpointer $data, Int() $length) {
     my gsize $l = $length;
 
     soup_message_body_append_take($!smb, $data, $l);
@@ -83,7 +86,7 @@ class SOUP::MessageBody {
     soup_message_body_complete($!smb);
   }
 
-  method flatten (:$rawm = False) {
+  method flatten (:$raw = False) {
     my $b = soup_message_body_flatten($!smb);
 
     $b ??
