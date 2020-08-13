@@ -28,8 +28,13 @@ constant SOUP_ADDRESS_PROTOCOL                   is export = 'protocol';
 constant SOUP_ADDRESS_PHYSICAL                   is export = 'physical';
 constant SOUP_ADDRESS_SOCKADDR                   is export = 'sockaddr';
 
+constant SOUP_AUTH_SCHEME_NAME                   is export = 'scheme-name';
+constant SOUP_AUTH_REALM                         is export = 'realm';
+constant SOUP_AUTH_HOST                          is export = 'host';
+constant SOUP_AUTH_IS_FOR_PROXY                  is export = 'is-for-proxy';
+constant SOUP_AUTH_IS_AUTHENTICATED              is export = 'is-authenticated';
 
-class SoupMessageHeaders is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupMessageHeaders     is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 
 # ↓↓↓↓ Possibly to Structs ↓↓↓↓
@@ -41,6 +46,18 @@ class SoupRange              is repr<CStruct> is export does GLib::Roles::Pointe
 
 class SoupAddress            is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
+}
+
+class SoupAuth               is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+  has Str     $!realm;
+
+  method realm is rw {
+    Proxy.new:
+      FETCH => -> $         { $!realm      },
+      STORE => -> $, Str \r { $!realm := r };
+  }
+
 }
 
 class SoupAuthDomain         is repr<CStruct> is export does GLib::Roles::Pointers {
