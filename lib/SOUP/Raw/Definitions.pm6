@@ -183,11 +183,21 @@ class SoupMessage is repr<CStruct> is export does GLib::Roles::Pointers {
 
 }
 
-our %URI-SCHEME is export;
+our %SOUP-URI-SCHEME  is export;
+our %SOUP-METHOD      is export;
+our @SOUP-METHODS     is export = <
+  options get head post put delete trace connect
+  propfind proppatch mkcol copy move lock unlock
+>;
+our @SOUP-URI-SCHEMES is export = <http https ftp file data resource ws wss>;
 
 INIT {
-  for <http https ftp file data resource ws wss> {
-    %URI-SCHEME{ $_ } :=
-    %URI-SCHEME{.uc } := cglobal(soup, '_SOUP_URI_SCHEME_' ~ .uc, Pointer);
+  for @SOUP-URI-SCHEMES {
+    %SOUP-URI-SCHEME{ $_ } :=
+    %SOUP-URI-SCHEME{.uc } := cglobal(soup, '_SOUP_URI_SCHEME_' ~ .uc, Pointer);
+  }
+  for @SOUP-METHODS {
+    %SOUP-METHOD{ $_ } :=
+    %SOUP-METHOD{.uc } := cglobal(soup, '_SOUP_METHOD_' ~ .uc, Pointer);
   }
 }
