@@ -42,6 +42,18 @@ our enum SoupCookieJarAcceptPolicyEnum is export <
   SOUP_COOKIE_JAR_ACCEPT_NO_THIRD_PARTY
 >;
 
+constant SoupDateFormat is export := guint32;
+our enum SoupDateFormatEnum is export (
+  SOUP_DATE_HTTP => 1,
+  'SOUP_DATE_COOKIE',
+  'SOUP_DATE_RFC2822',
+  'SOUP_DATE_ISO8601_COMPACT',
+  'SOUP_DATE_ISO8601_FULL',
+  SOUP_DATE_ISO8601 => 5, # SOUP_DATE_ISO8601_FULL
+  'SOUP_DATE_ISO8601_XMLRPC'
+);
+
+
 constant SoupEncoding is export := guint32;
 our enum SoupEncodingEnum is export <
   SOUP_ENCODING_UNRECOGNIZED

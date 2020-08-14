@@ -14,6 +14,7 @@
       "SOUP::Raw::AuthDomain"     :  "lib/SOUP/Raw/AuthDomain.pm6"     ,
       "SOUP::Raw::Enums"          :  "lib/SOUP/Raw/Enums.pm6"          ,
       "SOUP::Raw::Cookie"         :  "lib/SOUP/Raw/Cookie.pm6"         ,
+      "SOUP::Raw::Date"           :  "lib/SOUP/Raw/Date.pm6"           ,
       "SOUP::Raw::Message"        :  "lib/SOUP/Raw/Message.pm6"        ,
       "SOUP::Raw::MessageBody"    :  "lib/SOUP/Raw/MessageBody.pm6"    ,
       "SOUP::Raw::MessageHeaders" :  "lib/SOUP/Raw/MessageHeaders.pm6" ,
@@ -25,6 +26,7 @@
       "SOUP::AuthDomain"          :  "lib/SOUP/AuthDomain.pm6"         ,
       "SOUP::Buffer"              :  "lib/SOUP/Buffer.pm6"             ,
       "SOUP::Cookie"              :  "lib/SOUP/Cookie.pm6"             ,
+      "SOUP::Date"                :  "lib/SOUP/Date.pm6"               ,
       "SOUP::MessageBody"         :  "lib/SOUP/MessageBody.pm6"        ,
       "SOUP::MessageHeaders"      :  "lib/SOUP/MessageHeaders.pm6"     ,
       "SOUP::Message"             :  "lib/SOUP/Message.pm6"            
