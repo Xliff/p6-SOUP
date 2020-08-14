@@ -183,6 +183,54 @@ class SoupMessage is repr<CStruct> is export does GLib::Roles::Pointers {
 
 }
 
+class SoupDate is repr<CStruct> is export does GLib::Roles::Pointers {
+  has int32    $.year   is rw;
+  has int32    $.month  is rw;
+  has int32    $.day    is rw;
+  has int32    $.hour   is rw;
+  has int32    $.minute is rw;
+  has int32    $.second is rw;
+  has gboolean $.utc    is rw;
+  has int32    $.offset is rw;
+}
+
+class SoupCookie is repr<CStruct> is export does GLib::Roles::Pointers {
+  has Str      $!name           ;
+  has Str      $!value          ;
+  has Str      $!domain         ;
+  has Str      $!path           ;
+  has SoupDate $!expires        ;
+  has gboolean $.secure    is rw;
+  has gboolean $.http_only is rw;
+
+  method name is rw {
+    Proxy.new:
+      FETCH => -> $         { $!name },
+      STORE => -> $, Str \s { $!name := s};
+  }
+  method value is rw {
+    Proxy.new:
+      FETCH => -> $         { $!value },
+      STORE => -> $, Str \s { $!value := s };
+  }
+  method domain is rw {
+    Proxy.new:
+      FETCH => -> $         { $!domain },
+      STORE => -> $, Str \s { $!domain := s };
+  }
+  method path is rw {
+    Proxy.new:
+      FETCH => -> $         { $!path },
+      STORE => -> $, Str \s { $!path := s };
+  }
+  method expires is rw {
+    Proxy.new:
+      FETCH => -> $                { $!expires      },
+      # cw: XXX - Will NC bind work with CStruct? This should be tested!
+      STORE => -> $, SoupDate() \d { $!expires := d };
+  }
+}
+
 our %SOUP-URI-SCHEME  is export;
 our %SOUP-METHOD      is export;
 our @SOUP-METHODS     is export = <
