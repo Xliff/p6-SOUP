@@ -3,7 +3,9 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Structs;
 use SOUP::Raw::Definitions;
+use SOUP::Raw::Enums;
 
 unit package SOUP::Raw::Cookie;
 
