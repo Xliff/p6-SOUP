@@ -26,6 +26,7 @@
       "SOUP::URI"                 :  "lib/SOUP/URI.pm6"                ,
       "SOUP::Auth"                :  "lib/SOUP/Auth.pm6"               ,
       "SOUP::AuthDomain"          :  "lib/SOUP/AuthDomain.pm6"         ,
+      "SOUP::AuthDomain::Basic"   :  "lib/SOUP/AuthDomain/Basic.pm6"   ,
       "SOUP::Buffer"              :  "lib/SOUP/Buffer.pm6"             ,
       "SOUP::Date"                :  "lib/SOUP/Date.pm6"               ,
       "SOUP::MessageBody"         :  "lib/SOUP/MessageBody.pm6"        ,
