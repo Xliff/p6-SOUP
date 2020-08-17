@@ -34,6 +34,10 @@ constant SOUP_AUTH_HOST                          is export = 'host';
 constant SOUP_AUTH_IS_FOR_PROXY                  is export = 'is-for-proxy';
 constant SOUP_AUTH_IS_AUTHENTICATED              is export = 'is-authenticated';
 
+constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK   is export = 'auth-callback';
+constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_DATA       is export = 'auth-data';
+
+
 class SoupMessageHeaders     is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 
@@ -67,6 +71,11 @@ class SoupAuthDomain         is repr<CStruct> is export does GLib::Roles::Pointe
 class SoupAuthDomainBasic    is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupAuthDomain $.parent;
 }
+
+class SoupAuthDomainDigest   is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupAuthDomain $.parent;
+}
+
 
 class SoupRequest            is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
