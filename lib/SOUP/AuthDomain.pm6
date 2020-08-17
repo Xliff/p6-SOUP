@@ -6,11 +6,14 @@ use SOUP::Raw::Types;
 use SOUP::Raw::AuthDomain;
 
 use GLib::Roles::Pointers;
+use GLib::Roles::Object;
 
 our subset SoupAuthDomainAncestry is export of Mu
   where SoupAuthDomain | GObject;
 
 class SOUP::AuthDomain {
+  also does GLib::Roles::Object;
+  
   has SoupAuthDomain $!sad is implementor;
 
   submethod BUILD (:$authdomain) {
