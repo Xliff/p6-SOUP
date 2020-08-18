@@ -27,6 +27,7 @@ constant SOUP_ADDRESS_PORT                       is export = 'port';
 constant SOUP_ADDRESS_PROTOCOL                   is export = 'protocol';
 constant SOUP_ADDRESS_PHYSICAL                   is export = 'physical';
 constant SOUP_ADDRESS_SOCKADDR                   is export = 'sockaddr';
+constant SOUP_ADDRESS_ANY_PORT                   is export = 0;
 
 constant SOUP_AUTH_SCHEME_NAME                   is export = 'scheme-name';
 constant SOUP_AUTH_REALM                         is export = 'realm';
@@ -37,9 +38,8 @@ constant SOUP_AUTH_IS_AUTHENTICATED              is export = 'is-authenticated';
 constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK   is export = 'auth-callback';
 constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_DATA       is export = 'auth-data';
 
-
 class SoupMessageHeaders     is repr<CPointer> is export does GLib::Roles::Pointers { }
-
+class SoupSessionFeature     is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 # ↓↓↓↓ Possibly to Structs ↓↓↓↓
 
@@ -244,15 +244,35 @@ class SoupCookie is repr<CStruct> is export does GLib::Roles::Pointers {
   }
 }
 
-class SoupSession is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupSession             is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject     $.parent;
+}
+
+class SoupRequestHTTP         is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupRequest $.parent;
+  has Pointer     $!priv;
+}
+
+class SoupRequestDigest       is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupRequest $.parent;
+  has Pointer     $!priv;
+}
+
+class SoupRequestFile         is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupRequest $.parent;
+  has Pointer     $!priv;
+}
+
+class SoupWebsocketConnection is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
+  has Pointer $!priv;
 }
 
 our %SOUP-URI-SCHEME  is export;
 our %SOUP-METHOD      is export;
 our @SOUP-METHODS     is export = <
-  options get head post put delete trace connect
-  propfind proppatch mkcol copy move lock unlock
+  options  get       head  post put  delete trace connect
+  propfind proppatch mkcol copy move lock   unlock
 >;
 our @SOUP-URI-SCHEMES is export = <http https ftp file data resource ws wss>;
 

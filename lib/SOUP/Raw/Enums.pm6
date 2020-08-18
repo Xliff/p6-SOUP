@@ -1,8 +1,17 @@
 use v6.c;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Enums;
+use GIO::Raw::Enums;
 
 unit package SOUP::Raw::Enums;
+
+constant SoupAddressFamily is export := gint32;
+our enum SoupAddressFamilyEnum is export (
+  SOUP_ADDRESS_FAMILY_INVALID => -1,
+  SOUP_ADDRESS_FAMILY_IPV4    =>  (G_SOCKET_FAMILY_IPV4.Int + 0),
+  SOUP_ADDRESS_FAMILY_IPV6    =>  (G_SOCKET_FAMILY_IPV6.Int + 0)
+);
 
 constant SoupCacheResponse is export := guint32;
 our enum SoupCacheResponseEnum is export <
