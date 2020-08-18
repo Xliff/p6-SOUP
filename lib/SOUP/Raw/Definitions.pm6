@@ -253,7 +253,7 @@ class SoupRequestHTTP         is repr<CStruct> is export does GLib::Roles::Point
   has Pointer     $!priv;
 }
 
-class SoupRequestDigest       is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupRequestData         is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupRequest $.parent;
   has Pointer     $!priv;
 }
