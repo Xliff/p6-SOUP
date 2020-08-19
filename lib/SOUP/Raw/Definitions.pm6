@@ -21,6 +21,9 @@ constant SOUP_AUTH_DOMAIN_FILTER_DATA            is export = 'filter-data';
 constant SOUP_AUTH_DOMAIN_GENERIC_AUTH_CALLBACK  is export = 'generic-auth-callback';
 constant SOUP_AUTH_DOMAIN_GENERIC_AUTH_DATA      is export = 'generic-auth-data';
 
+constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK   is export = 'auth-callback';
+constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_DATA       is export = 'auth-data';
+
 constant SOUP_ADDRESS_NAME                       is export = 'name';
 constant SOUP_ADDRESS_FAMILY                     is export = 'family';
 constant SOUP_ADDRESS_PORT                       is export = 'port';
@@ -35,8 +38,19 @@ constant SOUP_AUTH_HOST                          is export = 'host';
 constant SOUP_AUTH_IS_FOR_PROXY                  is export = 'is-for-proxy';
 constant SOUP_AUTH_IS_AUTHENTICATED              is export = 'is-authenticated';
 
-constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK   is export = 'auth-callback';
-constant SOUP_AUTH_DOMAIN_DIGEST_AUTH_DATA       is export = 'auth-data';
+constant SOUP_SOCKET_LOCAL_ADDRESS               is export = 'local-address';
+constant SOUP_SOCKET_REMOTE_ADDRESS              is export = 'remote-address';
+constant SOUP_SOCKET_FLAG_NONBLOCKING            is export = 'non-blocking';
+constant SOUP_SOCKET_IS_SERVER                   is export = 'is-server';
+constant SOUP_SOCKET_SSL_CREDENTIALS             is export = 'ssl-creds';
+constant SOUP_SOCKET_SSL_STRICT                  is export = 'ssl-strict';
+constant SOUP_SOCKET_SSL_FALLBACK                is export = 'ssl-fallback';
+constant SOUP_SOCKET_TRUSTED_CERTIFICATE         is export = 'trusted-certificate';
+constant SOUP_SOCKET_ASYNC_CONTEXT               is export = 'async-context';
+constant SOUP_SOCKET_USE_THREAD_CONTEXT          is export = 'use-thread-context';
+constant SOUP_SOCKET_TIMEOUT                     is export = 'timeout';
+constant SOUP_SOCKET_TLS_CERTIFICATE             is export = 'tls-certificate';
+constant SOUP_SOCKET_TLS_ERRORS                  is export = 'tls-errors';
 
 class SoupMessageHeaders     is repr<CPointer> is export does GLib::Roles::Pointers { }
 class SoupSessionFeature     is repr<CPointer> is export does GLib::Roles::Pointers { }
