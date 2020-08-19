@@ -282,6 +282,11 @@ class SoupWebsocketConnection is repr<CStruct> is export does GLib::Roles::Point
   has Pointer $!priv;
 }
 
+class SoupCache               is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+  has Pointer $!priv;
+}
+
 class SoupSocket              is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
 }
