@@ -6,6 +6,8 @@ use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use GLib::Raw::Object;
 use GLib::Raw::Subs;
+use GIO::Raw::Definitions;
+use GIO::Raw::Structs;
 
 use GLib::Roles::Pointers;
 
@@ -259,33 +261,38 @@ class SoupCookie is repr<CStruct> is export does GLib::Roles::Pointers {
   }
 }
 
-class SoupSession             is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupSession              is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject     $.parent;
 }
 
-class SoupRequestHTTP         is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupRequestHTTP          is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupRequest $.parent;
   has Pointer     $!priv;
 }
 
-class SoupRequestData         is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupRequestData          is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupRequest $.parent;
   has Pointer     $!priv;
 }
 
-class SoupRequestFile         is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupRequestFile          is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupRequest $.parent;
   has Pointer     $!priv;
 }
 
-class SoupWebsocketConnection is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupWebsocketConnection  is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
   has Pointer $!priv;
 }
 
-class SoupCache               is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupCache                is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
   has Pointer $!priv;
+}
+
+class SoupMultipartInputStream is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GFilterInputStream $.parent;
+  has Pointer            $!priv;
 }
 
 class SoupSocket              is repr<CStruct> is export does GLib::Roles::Pointers {
