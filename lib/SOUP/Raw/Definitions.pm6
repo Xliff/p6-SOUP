@@ -299,12 +299,30 @@ class SoupSocket              is repr<CStruct> is export does GLib::Roles::Point
   HAS GObject $.parent;
 }
 
+class SoupServer              is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+}
+
 # Taken from implementation, No public members!
 class SoupMultipart           is repr<CStruct> is export does GLib::Roles::Pointers {
   has Str       $!mime_type;
   has Str       $!boundary;
   has GPtrArray $!headers;
   has GPtrArray $!bodies;
+}
+
+# Taken from implementation, No public members!
+class SoupClientContext       is repr<CStruct> is export does GLib::Roles::Pointers {
+  has SoupServer     $!server;
+  has SoupSocket     $!sock;
+  has GSocket        $!gsock;
+  has SoupMessage    $!msg;
+  has SoupAuthDomain $!auth_domain;
+  has Str            $!auth_user;
+  has GSocketAddress $!remote_addr;
+  has Str            $!remote_ip;
+  has GSocketAddress $!local_addr;
+  has int64          $!ref_count;
 }
 
 our %SOUP-URI-SCHEME  is export;
