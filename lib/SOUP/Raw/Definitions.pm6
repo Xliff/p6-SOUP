@@ -3,6 +3,7 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Structs;
 use GLib::Raw::Object;
 use GLib::Raw::Subs;
 
@@ -289,6 +290,14 @@ class SoupCache               is repr<CStruct> is export does GLib::Roles::Point
 
 class SoupSocket              is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
+}
+
+# Taken from implementation, No public members!
+class SoupMultipart           is repr<CStruct> is export does GLib::Roles::Pointers {
+  has Str       $!mime_type;
+  has Str       $!boundary;
+  has GPtrArray $!headers;
+  has GPtrArray $!bodies;
 }
 
 our %SOUP-URI-SCHEME  is export;
