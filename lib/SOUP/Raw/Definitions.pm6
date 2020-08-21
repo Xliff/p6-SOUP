@@ -41,6 +41,12 @@ constant SOUP_AUTH_HOST                          is export = 'host';
 constant SOUP_AUTH_IS_FOR_PROXY                  is export = 'is-for-proxy';
 constant SOUP_AUTH_IS_AUTHENTICATED              is export = 'is-authenticated';
 
+constant SOUP_SERVER_TLS_CERTIFICATE             is export = 'tls-certificate';
+constant SOUP_SERVER_RAW_PATHS                   is export = 'raw-paths';
+constant SOUP_SERVER_SERVER_HEADER               is export = 'server-header';
+constant SOUP_SERVER_HTTP_ALIASES                is export = 'http-aliases';
+constant SOUP_SERVER_HTTPS_ALIASES               is export = 'https-aliases';
+
 constant SOUP_SOCKET_LOCAL_ADDRESS               is export = 'local-address';
 constant SOUP_SOCKET_REMOTE_ADDRESS              is export = 'remote-address';
 constant SOUP_SOCKET_FLAG_NONBLOCKING            is export = 'non-blocking';
