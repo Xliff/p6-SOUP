@@ -391,7 +391,7 @@ class SOUP::Server {
 
   method listen (
     GSocketAddress() $address,
-    Int() $options,
+    Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   ) {
     my SoupServerListenOptions $o = $options;
@@ -401,7 +401,7 @@ class SOUP::Server {
 
   method listen_all (
     Int() $port,
-    Int() $options,
+    Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   ) {
     my guint $p = $port;
@@ -412,7 +412,7 @@ class SOUP::Server {
 
   method listen_fd (
     Int() $fd,
-    Int() $options,
+    Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   ) {
     my gint $f = $fd;
@@ -423,7 +423,7 @@ class SOUP::Server {
 
   method listen_local (
     Int() $port,
-    Int() $options,
+    Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   ) {
     my guint $p = $port;
@@ -434,7 +434,7 @@ class SOUP::Server {
 
   method listen_socket (
     GSocket() $socket,
-    Int() $options,
+    Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   ) {
     my SoupServerListenOptions $o = $options;
