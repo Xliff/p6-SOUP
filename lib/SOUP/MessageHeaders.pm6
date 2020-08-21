@@ -28,7 +28,7 @@ class SOUP::MessageHeaders {
     $headers ?? self.bless( :$headers ) !! Nil;
   }
 
-  method append (Str $name, Str $value) {
+  method append (Str() $name, Str() $value) {
     soup_message_headers_append($!smh, $name, $value);
   }
 
@@ -103,6 +103,15 @@ class SOUP::MessageHeaders {
 
   method get_headers_type is also<get-headers-type> {
     SoupMessageHeadersType( soup_message_headers_get_headers_type($!smh) );
+  }
+
+  method get_iter
+    is also<
+      get-iter
+      iter
+    >
+  {
+    SOUP::MessageHeaders::Iter.new(self);
   }
 
   method get_list (Str() $name) is also<get-list> {
