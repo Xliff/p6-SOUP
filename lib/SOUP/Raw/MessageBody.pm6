@@ -148,7 +148,7 @@ sub soup_buffer_new_with_owner (
   Pointer $data,
   gsize $length,
   gpointer $owner,
-  GDestroyNotify $owner_dnotify
+  &owner_dnotify (Pointer)
 )
   returns SoupBuffer
   is native(soup)

@@ -95,45 +95,54 @@ class SOUP::Buffer {
     GLib::Roles::TypedBuffer $data,
     Int() $length,
     gpointer $owner,
-    GDestroyNotify $owner_dnotify
+    &owner_dnotify = Callable
   ) {
-    samewith($data, $data.elems, $owner, $owner_dnotify);
+    samewith($data, $data.elems, $owner, &owner_dnotify);
+  }
+  multi method new_with_owner (
+    Str $b,
+    gpointer $owner,
+    &owner_dnotify = Callable
+  ) {
+    my $buf = $b.encode;
+
+    samewith( $buf, $buf.chars, $owner, &owner_dnotify );
   }
   multi method new_with_owner (
     Blob $b,
     gpointer $owner,
-    GDestroyNotify $owner_dnotify
+    &owner_dnotify = Callable
   ) {
-    samewith( CArray[uint8].new($b), $b.elems, $owner, $owner_dnotify );
+    samewith( CArray[uint8].new($b), $b.elems, $owner, &owner_dnotify );
   }
   multi method new_with_owner (
     @data,
     gpointer $owner,
-    GDestroyNotify $owner_dnotify
+    &owner_dnotify = Callable
   ) {
     @data .= map({
       my $e = .Int if $_ !~~ Int && .^lookup('Int');
       die '@data must only consist of uint8-compatible values!'
         if $e ~~ Int && $e ~~ 0 .. 256;
     });
-    samewith( CArray[uint8].new(@data), @data.elems, $owner, $owner_dnotify );
+    samewith( CArray[uint8].new(@data), @data.elems, $owner, &owner_dnotify );
   }
   multi method new_with_owner (
     CArray[uint8] $data,
     Int() $length,
     gpointer $owner,
-    GDestroyNotify $owner_dnotify
+    &owner_dnotify = Callable
   ) {
-    samewith( cast(Pointer, $data), $length, $owner, $owner_dnotify )
+    samewith( cast(Pointer, $data), $length, $owner, &owner_dnotify )
   }
   multi method new_with_owner (
     Pointer $data,
     Int() $length,
     gpointer $owner,
-    GDestroyNotify $owner_dnotify
+    &owner_dnotify = Callable
   ) {
     my gsize $l = $length;
-    my $buffer = soup_buffer_new_with_owner($data, $l, $owner, $owner_dnotify);
+    my $buffer = soup_buffer_new_with_owner($data, $l, $owner, &owner_dnotify);
 
     $buffer ?? self.bless( :$buffer ) !! Nil;
   }

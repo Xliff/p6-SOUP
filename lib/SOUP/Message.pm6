@@ -670,8 +670,10 @@ class SOUP::Message {
     Str() $content_type,
     Int() $req_use,
     Str() $req_body,
-    Int() $req_length
-  ) is also<set-request> {
+    Int() $req_length = -1
+  )
+    is also<set-request>
+  {
     my SoupMemoryUse $ru = $req_use;
     my gsize $rl = $req_length;
 
@@ -682,8 +684,10 @@ class SOUP::Message {
     Str() $content_type,
     Int() $resp_use,
     Str() $resp_body,
-    Int() $resp_length
-  ) is also<set-response> {
+    Int() $resp_length = -1
+  )
+    is also<set-response>
+  {
     my SoupMemoryUse $ru = $resp_use;
     my gsize $rl = $resp_length;
 
