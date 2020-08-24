@@ -11,7 +11,7 @@ use GIO::Raw::Structs;
 
 use GLib::Roles::Pointers;
 
-unit package SOUP::Raw::Structs;
+unit package SOUP::Raw::Definitions;
 
 constant soup is export = 'soup-2.4',v1;
 
