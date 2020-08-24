@@ -7,11 +7,12 @@ use GLib::MappedFile;
 use GLib::Markup;
 use GIO::TlsCertificate;
 use SOUP::Buffer;
+use SOUP::Message;
 use SOUP::Server;
 
 sub get-directory-listing ($path) {
   my $display-path = $path.substr( $path.index('/') + 1 );
-  my @entries = gather for $path.IO.dir -> {
+  my @entries = gather for $path.IO.dir {
     next if .absolute eq <. .. ./>.any;
     take GLib::Markup.escape-text(.absolute);
   }
@@ -19,13 +20,13 @@ sub get-directory-listing ($path) {
   qq:to/LISTING/;
   <html>
     <head>
-      <title>Index of { $display-path }</title>
+      <title>Index of { $display-path || '/' }</title>
     </head>
     <body>
-      <h1>Index of { $display-path }</h1>
-      { @entries.map(
-          qq{    <a href="{ $_ }">{ $_ }</a><br>}
-        ).join("\n") }
+      <h1>Index of { $display-path || '/' }</h1>
+      { @entries.map({
+          qq[    <a href="{ $_ }">{ $_ }</a><br>]
+        }).join("\n") }
     </body>
   </html>
   LISTING
@@ -123,18 +124,33 @@ sub do-put ($server, $msg, $path) {
   )
 }
 
-sub server-callback($server, $msg, $path, $query, $context, $data) {
+sub server-callback($server, $m, $path, $query, $context, $data) {
+  CATCH {
+    default {
+      .message.say;
+      for .backtrace {
+        next if .file.starts-with('SETTING::');
+        next unless .subname;
+        $*ERR.say: " in block { .subname } at { .file } line { .line }";
+      }
+    }
+  }
+
+  my $msg = SOUP::Message.new($m);
   my $iter = $msg.request-headers.iter;
-  my @headers = gather while $iter.next {
-    take "{ .[0] }: { .[1] }";
+
+  my @headers = gather {
+    if $iter {
+      while my $p = $iter.next {
+        take "{ $p.[0] }: { $p.[1] }";
+      }
+    }
   }
 
   say qq:to/HEADER/;
-    { $msg.method } { $path } HTTP/1.{ $msg.http-version }
-    { @headers.join("\n") }
-    HEADER
-
-  say $msg.request-body.data if $msg.request-body.length;
+   { $msg.method } { $path } HTTP/1.{ $msg.http-version.Int }
+   { @headers.join("\n") }
+   HEADER
 
   given $msg.method {
     when    %SOUP-METHOD<GET HEAD>.any { do-get($server, $msg, $path) }
@@ -142,13 +158,16 @@ sub server-callback($server, $msg, $path, $query, $context, $data) {
 
     default { $msg.set-status(SOUP_STATUS_NOT_IMPLEMENTED) }
   }
+  $*ERR.say: "Sending: { $msg.request-body.data }";
+  say $msg.request-body.data if $msg.request-body.length;
+
   say "  -> { $msg.status-code } { $msg.reason-phrase }\n";
 }
 
 sub MAIN (
-  :c(:$cert-file),    #= Use FILE as the TLS certificate file
-  :k(:$key-file),     #= Use FILE as the TLS private key file
-  :p(:$port)          #= Port to listen on
+  :p(:$port) is required, #= Port to listen on
+  :c(:$cert-file),        #= Use FILE as the TLS certificate file
+  :k(:$key-file),         #= Use FILE as the TLS private key file
 ) {
   signal(SIGINT).tap: { exit 0 };
 
