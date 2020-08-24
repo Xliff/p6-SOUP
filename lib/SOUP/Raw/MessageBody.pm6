@@ -164,3 +164,9 @@ sub soup_message_body_wrote_chunk (SoupMessageBody $body, SoupBuffer $chunk)
   is native(soup)
   is export
 { * }
+
+sub soup_message_body_get_type ()
+  returns GType
+  is native(soup)
+  is export
+{ * }

@@ -9,7 +9,7 @@ use SOUP::Raw::MessageBody;
 use GLib::Roles::TypedBuffer;
 
 class SOUP::MessageBody {
-  has SoupMessageBody $!smb;
+  has SoupMessageBody $!smb handles <data length>;
 
   submethod BUILD ( :body(:$!smb) )
   { }
@@ -116,6 +116,12 @@ class SOUP::MessageBody {
 
   method got_chunk (SoupBuffer() $chunk) is also<got-chunk> {
     soup_message_body_got_chunk($!smb, $chunk);
+  }
+
+  method get_type is also<get-type> {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &soup_message_body_get_type, $n, $t );
   }
 
   method set_accumulate (Int() $accumulate) is also<set-accumulate> {
