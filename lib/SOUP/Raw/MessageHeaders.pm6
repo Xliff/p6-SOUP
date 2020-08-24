@@ -170,8 +170,8 @@ sub soup_message_headers_iter_init (
 
 sub soup_message_headers_iter_next (
   SoupMessageHeadersIter $iter,
-  Str $name,
-  Str $value
+  CArray[Str] $name,
+  CArray[Str] $value
 )
   returns uint32
   is native(soup)

@@ -8,6 +8,9 @@ use SOUP::Raw::MessageHeaders;
 
 # BOXED
 
+# Predeclare
+class SOUP::MessageHeaders::Iter { ... }
+
 class SOUP::MessageHeaders {
   has SoupMessageHeaders $!smh;
 
@@ -16,6 +19,7 @@ class SOUP::MessageHeaders {
   }
 
   method SOUP::Raw::Definitions::SoupMessageHeaders
+    is also<SoupMessageHeaders>
   { $!smh }
 
   multi method new (SoupMessageHeaders $headers) {
@@ -235,8 +239,16 @@ class SOUP::MessageHeaders {
 
 }
 
-class SOUP::MessageHeader::Iter {
+class SOUP::MessageHeaders::Iter {
   has SoupMessageHeadersIter $!smhi;
+
+  submethod BUILD (:$iter) {
+    $!smhi = $iter;
+  }
+
+  method SOUP::Raw::Definitions::MessageHeadersIter
+    is also<SoupMessageHeadersIter>
+  { $!smhi }
 
   multi method new (SoupMessageHeadersIter $iter) {
     $iter ?? self.bless( :$iter ) !! Nil;
@@ -248,11 +260,8 @@ class SOUP::MessageHeader::Iter {
     $iter ?? self.bless( :$iter ) !! Nil;
   }
 
-  method SOUP::Raw::Definitions::MessageHeaderIter
-  { $!smhi }
-
   method init (
-    SOUP::MessageHeader::Iter:U:
+    SOUP::MessageHeaders::Iter:U:
     SoupMessageHeadersIter $iter,
     SoupMessageHeaders $hdrs
   ) {
@@ -267,9 +276,9 @@ class SOUP::MessageHeader::Iter {
   multi method next ($name is rw, $value is rw, :$all = False) {
     my $n = CArray[Str].new;
     my $v = CArray[Str].new;
-    ($n, $v)».[0] = Str xx 2;
+    ($n[0], $v[0]) = Str xx 2;
 
-    my $rv = so soup_message_headers_iter_next($!smhi, $name, $value);
+    my $rv = so soup_message_headers_iter_next($!smhi, $n, $v);
 
     ($name, $value) = ppr($n, $v);
     $all.not ?? $rv !! ($rv, $name, $value);
