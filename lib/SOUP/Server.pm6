@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use NativeCall;
 
 use GLib::Raw::ExtendedTypes;
@@ -27,12 +29,16 @@ class SOUP::Server {
   }
 
   method setSoupServer (SoupServerAncestry $_) {
-    $!ss = {
+    $!ss = do {
       when SoupServer { $_                   }
       default         { cast(SoupServer, $_) }
     }
     self.roleInit-Object;
   }
+
+  method SOUP::Raw::Definitions::SoupServer
+   is also<SoupServer>
+  { $!ss }
 
   multi method new (SoupServerAncestry $server) {
     $server ?? self.bless( :$server ) !! Nil;
@@ -48,7 +54,11 @@ class SOUP::Server {
   }
 
   # Type: gpointer (GMainContext)
-  method async-context (:$raw = False) is rw is DEPRECATED {
+  method async-context (:$raw = False)
+   is rw
+   is DEPRECATED
+   is also<async_context>
+  {
     my $gv = GLib::Value.new( G_TYPE_POINTER );
     Proxy.new(
       FETCH => sub ($) {
@@ -64,14 +74,14 @@ class SOUP::Server {
 
         GLib::MainContext.new($o);
       },
-      STORE => -> $,  $val is copy {
+      STORE => -> $, $val is copy {
         warn 'async-context is a construct-only attribute'
       }
     );
   }
 
   # Type: GStrv
-  method http-aliases is rw  {
+  method http-aliases is rw is also<http_aliases> {
     my $gv = GLib::Value.new( $G_TYPE_STRV );
     Proxy.new(
       FETCH => sub ($) {
@@ -93,7 +103,7 @@ class SOUP::Server {
   }
 
   # Type: GStrv
-  method https-aliases is rw  {
+  method https-aliases is rw is also<https_aliases> {
     my $gv = GLib::Value.new( $G_TYPE_STRV );
     Proxy.new(
       FETCH => sub ($) {
@@ -154,7 +164,7 @@ class SOUP::Server {
   }
 
   # Type: gboolean
-  method raw-paths is rw  {
+  method raw-paths is rw is also<raw_paths> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -170,7 +180,7 @@ class SOUP::Server {
   }
 
   # Type: gchar
-  method server-header is rw  {
+  method server-header is rw is also<server_header> {
     my $gv = GLib::Value.new( G_TYPE_STRING );
     Proxy.new(
       FETCH => sub ($) {
@@ -180,13 +190,15 @@ class SOUP::Server {
         $gv.string;
       },
       STORE => -> $, Str() $val is copy {
-        warn 'server-header is a construct-only attribute'
+        #warn 'server-header is a construct-only attribute';
+        $gv.string = $val;
+        self.prop_set('server-header', $gv);
       }
     );
   }
 
   # Type: gchar
-  method ssl-cert-file is rw is DEPRECATED {
+  method ssl-cert-file is rw is DEPRECATED is also<ssl_cert_file> {
     my $gv = GLib::Value.new( G_TYPE_STRING );
     Proxy.new(
       FETCH => sub ($) {
@@ -202,7 +214,7 @@ class SOUP::Server {
   }
 
   # Type: gchar
-  method ssl-key-file is rw is DEPRECATED {
+  method ssl-key-file is rw is DEPRECATED is also<ssl_key_file> {
     my $gv = GLib::Value.new( G_TYPE_STRING );
     Proxy.new(
       FETCH => sub ($) {
@@ -218,7 +230,7 @@ class SOUP::Server {
   }
 
   # Type: GTlsCertificate
-  method tls-certificate (:$raw = False) is rw  {
+  method tls-certificate (:$raw = False) is rw is also<tls_certificate> {
     my $gv = GLib::Value.new( GIO::TlsCertificate.get-type );
     Proxy.new(
       FETCH => sub ($) {
@@ -242,25 +254,25 @@ class SOUP::Server {
 
   # Is originally:
   # SoupServer, SoupMessage, SoupClientContext, gpointer --> void
-  method request-aborted {
+  method request-aborted is also<request_aborted> {
     self.connect-message-client($!ss, 'request-aborted');
   }
 
   # Is originally:
   # SoupServer, SoupMessage, SoupClientContext, gpointer --> void
-  method request-finished {
+  method request-finished is also<request_finished> {
     self.connect-message-client($!ss, 'request-finished');
   }
 
   # Is originally:
   # SoupServer, SoupMessage, SoupClientContext, gpointer --> void
-  method request-read {
+  method request-read is also<request_read> {
     self.connect-message-client($!ss, 'request-read');
   }
 
   # Is originally:
   # SoupServer, SoupMessage, SoupClientContext, gpointer --> void
-  method request-started {
+  method request-started is also<request_started> {
     self.connect-message-client($!ss, 'request-started');
   }
 
@@ -269,7 +281,9 @@ class SOUP::Server {
     GSocketAddress() $local_addr,
     GSocketAddress() $remote_addr  = GSocketAddress,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<accept-iostream>
+  {
     clear_error;
     my $rv = so soup_server_accept_iostream(
       $!ss,
@@ -282,11 +296,24 @@ class SOUP::Server {
     $rv;
   }
 
-  method add_auth_domain (SoupAuthDomain() $auth_domain) {
+  method add_auth_domain (SoupAuthDomain() $auth_domain)
+    is also<add-auth-domain>
+  {
     soup_server_add_auth_domain($!ss, $auth_domain);
   }
 
-  method add_early_handler (
+  proto method add_early_handler (|)
+    is also<add-early-handler>
+  { * }
+
+  multi method add_early_handler (
+    &callback,
+    gpointer $user_data     = gpointer,
+    GDestroyNotify $destroy = GDestroyNotify
+  ) {
+    samewith(Str, &callback, $user_data, $destroy);
+  }
+  multi method add_early_handler (
     Str() $path,
     &callback,
     gpointer $user_data     = gpointer,
@@ -295,7 +322,18 @@ class SOUP::Server {
     soup_server_add_early_handler($!ss, $path, &callback, $user_data, $destroy);
   }
 
-  method add_handler (
+  proto method add_handler (|)
+    is also<add-handler>
+  { * }
+
+  multi method add_handler (
+    &callback,
+    gpointer $user_data     = gpointer,
+    GDestroyNotify $destroy = GDestroyNotify
+  ) {
+    samewith(Str, &callback, $user_data, $destroy);
+  }
+  multi method add_handler (
     Str() $path,
     &callback,
     gpointer $user_data     = gpointer,
@@ -304,11 +342,25 @@ class SOUP::Server {
     soup_server_add_handler($!ss, $path, &callback, $user_data, $destroy);
   }
 
-  method add_websocket_extension (GType $extension_type) {
-    soup_server_add_websocket_extension($!ss, $extension_type);
+  method add_websocket_extension (Int() $extension_type)
+    is also<add-websocket-extension>
+  {
+    my GType $e = $extension_type;
+
+    soup_server_add_websocket_extension($!ss, $e);
   }
 
-  method add_websocket_handler (
+  proto method add_websocket_handler (|)
+    is also<add-websocket-handler>
+  { * }
+
+  multi method add_websocket_handler (
+    &callback,
+    gpointer $user_data     = gpointer,
+  ) {
+    samewith(Str, Str, Str, &callback, $user_data);
+  }
+  multi method add_websocket_handler (
     Str() $path,
     Str() $origin,
     Str() $protocols,
@@ -331,7 +383,10 @@ class SOUP::Server {
     soup_server_disconnect($!ss);
   }
 
-  method get_async_context (:$raw = False) is DEPRECATED {
+  method get_async_context (:$raw = False)
+    is DEPRECATED
+    is also<get-async-context>
+  {
     my $mc = soup_server_get_async_context($!ss);
 
     $mc ??
@@ -341,7 +396,8 @@ class SOUP::Server {
   }
 
   method get_listener (:$raw = False)
-   is DEPRECATED<get_listeners>
+    is DEPRECATED<get_listeners>
+    is also<get-listener>
   {
     my $s = soup_server_get_listener($!ss);
 
@@ -351,7 +407,7 @@ class SOUP::Server {
       Nil;
   }
 
-  method get_listeners (:$glist = False, :$raw = False){
+  method get_listeners (:$glist = False, :$raw = False)is also<get-listeners> {
     my $sl = soup_server_get_listeners($!ss);
 
     return Nil unless $sl;
@@ -363,17 +419,17 @@ class SOUP::Server {
     $raw ?? $sl.Array !! $sl.map({ GIO::Socket.new($_) });
   }
 
-  method get_port {
+  method get_port is also<get-port> {
     soup_server_get_port($!ss);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type( self.^name, &soup_server_get_type, $n, $t );
   }
 
-  method get_uris (:$glist = False, :$raw = False) {
+  method get_uris (:$glist = False, :$raw = False) is also<get-uris> {
     my $ul = soup_server_get_uris($!ss);
 
     return Nil unless $ul;
@@ -385,7 +441,7 @@ class SOUP::Server {
     $raw ?? $ul.Array !! $ul.map({ SOUP::URI.new($_) });
   }
 
-  method is_https {
+  method is_https is also<is-https> {
     so soup_server_is_https($!ss);
   }
 
@@ -403,7 +459,9 @@ class SOUP::Server {
     Int() $port,
     Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<listen-all>
+  {
     my guint $p = $port;
     my SoupServerListenOptions $o = $options;
 
@@ -414,7 +472,9 @@ class SOUP::Server {
     Int() $fd,
     Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<listen-fd>
+  {
     my gint $f = $fd;
     my SoupServerListenOptions $o = $options;
 
@@ -425,7 +485,9 @@ class SOUP::Server {
     Int() $port,
     Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<listen-local>
+  {
     my guint $p = $port;
     my SoupServerListenOptions $o = $options;
 
@@ -436,44 +498,51 @@ class SOUP::Server {
     GSocket() $socket,
     Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<listen-socket>
+  {
     my SoupServerListenOptions $o = $options;
 
     soup_server_listen_socket($!ss, $socket, $o, $error);
   }
 
-  method pause_message (SoupMessage() $msg) {
+  method pause_message (SoupMessage() $msg) is also<pause-message> {
     soup_server_pause_message($!ss, $msg);
   }
 
   method quit
-   is DEPRECATED<the 'listen'-based methods>
+  is DEPRECATED<the 'listen'-based methods>
   {
     soup_server_quit($!ss);
   }
 
-  method remove_auth_domain (SoupAuthDomain() $auth_domain) {
+  method remove_auth_domain (SoupAuthDomain() $auth_domain)
+    is also<remove-auth-domain>
+  {
     soup_server_remove_auth_domain($!ss, $auth_domain);
   }
 
-  method remove_handler (Str() $path) {
+  method remove_handler (Str() $path) is also<remove-handler> {
     soup_server_remove_handler($!ss, $path);
   }
 
-  method remove_websocket_extension (Int() $extension_type;) {
+  method remove_websocket_extension (Int() $extension_type)
+    is also<remove-websocket-extension>
+  {
     my GType $e = $extension_type;
 
     soup_server_remove_websocket_extension($!ss, $e);
   }
 
   method run
-   is DEPRECATED<the 'listen'-based methods>
+    is DEPRECATED<the 'listen'-based methods>
   {
     soup_server_run($!ss);
   }
 
   method run_async
-   is DEPRECATED<the 'listen'-based methods>
+    is DEPRECATED<the 'listen'-based methods>
+    is also<run-async>
   {
     soup_server_run_async($!ss);
   }
@@ -482,7 +551,9 @@ class SOUP::Server {
     Str() $ssl_cert_file,
     Str() $ssl_key_file,
     CArray[Pointer[GError]] $error = gerror
-  ) {
+  )
+    is also<set-ssl-cert-file>
+  {
     clear_error;
     my $rv = so soup_server_set_ssl_cert_file(
       $!ss,
@@ -494,7 +565,7 @@ class SOUP::Server {
     $rv;
   }
 
-  method unpause_message (SoupMessage() $msg) {
+  method unpause_message (SoupMessage() $msg) is also<unpause-message> {
     soup_server_unpause_message($!ss, $msg);
   }
 
