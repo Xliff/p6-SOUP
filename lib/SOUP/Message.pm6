@@ -1,5 +1,6 @@
 use v6.c;
 
+use NativeCall;
 use Method::Also;
 
 use SOUP::Raw::Types;
@@ -104,7 +105,7 @@ class SOUP::Message {
         $gv = GLib::Value.new(
           self.prop_get('http-version', $gv)
         );
-        SoupHTTPVersion( $gv.valueFromType(SoupHTTPVersion) )
+        SoupHTTPVersionEnum( $gv.enum )
       },
       STORE => -> $, Int() $val is copy {
         $gv.valueFromType(SoupHTTPVersion) = $val;
@@ -173,7 +174,7 @@ class SOUP::Message {
           self.prop_get('request-body', $gv)
         );
 
-        my $o = $gv.object;
+        my $o = $gv.boxed;
         return Nil unless $o;
 
         $o = cast(SoupMessageBody, $o);
@@ -219,7 +220,7 @@ class SOUP::Message {
           self.prop_get('request-headers', $gv)
         );
 
-        my $o = $gv.object;
+        my $o = $gv.boxed;
         return Nil unless $o;
 
         $o = cast(SoupMessageHeaders, $o);
@@ -691,7 +692,13 @@ class SOUP::Message {
     my SoupMemoryUse $ru = $resp_use;
     my gsize $rl = $resp_length;
 
-    soup_message_set_response($!sm, $content_type, $ru, $resp_body, $rl);
+    soup_message_set_response(
+      $!sm,
+      $content_type,
+      $ru,
+      explicitly-manage($resp_body),
+      $rl
+    );
   }
 
   method set_site_for_cookies (SoupURI() $site_for_cookies)
