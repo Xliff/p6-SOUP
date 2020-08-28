@@ -9,6 +9,7 @@ use SOUP::Raw::Socket;
 
 use GLib::Value;
 use GIO::TlsCertificate;
+use SOUP::Address;
 
 use GLib::Roles::Object;
 use GIO::Roles::Initable;
@@ -21,6 +22,7 @@ class SOUP::Socket {
   also does GIO::Roles::Initable;
 
   has SoupSocket $!sock is implementor;
+  has $!init = False;
 
   submethod BUILD (:$socket) {
     self.setSoupSocket($socket) if $socket;
@@ -46,6 +48,7 @@ class SOUP::Socket {
         cast(SoupSocket, $_);
       }
     }
+
     self!setObject($to-parent);
     self.roleInit-Initable unless $!i;
   }
@@ -54,16 +57,50 @@ class SOUP::Socket {
     is also<SoupSocket>
   { $!sock }
 
-  method new (*@options) {
-    my $sock = soup_socket_new(Str);
-    $sock = $sock ?? self.bless( :$sock ) !! Nil;
+  multi method new (SoupSocketAncestry $socket) {
+    $socket ?? self.bless( :$socket ) !! Nil;
+  }
+  multi method new (*%options) {
+    # cw: This constructor ALL CONSTRUCT-ONLY ATTRIBUTES at construction time.
+    samewith(
+      'async-context'      , [//]( |%options<async-context async_context>,
+                                   GMainContext ),
+      'local-address'      , [//]( |%options<local-address local_address>,
+                                   SoupAddress ),
+      'remote-address'     , [//]( |%options<remote-address remote_address>,
+                                   SoupAddress ),
+      'ssl-fallback'       , [//]( |%options<ssl-fallback ssl_fallback>,
+                                   False ),
+      'ssl-strict'         , [//]( |%options<ssl-strict ssl_strict>,
+                                   False ),
+      'use-thread-context' , [//]( |%options<
+                                      use-thread-context
+                                      use_thread_context
+                                   >,
+                                   False )
+    );
+  }
+  # cw: PLEASE USE THE ABOVE multi. This constructor IS NOT INTENDED TO BE
+  #     CLIENT FACING!
+  multi method new(
+    'async-context',        GMainContext()    $async-context,
+    'local-address',        SoupAddress()     $local-addr,
+    'remote-address',       SoupAddress()     $remote-addr,
+    'ssl-fallback',         Int()             $fallback,
+    'ssl-strict',           Int()             $strict,
+    'use-thread-context',   Int()             $use-thread-context
+  ) {
+    my $socket = soup_socket_new(
+      'async-context'     , $async-context // GMainContext,
+      'local-address'     , $local-addr    // SoupAddress,
+      'remote-address'    , $remote-addr   // SoupAddress,
+      'ssl-fallback'      , $fallback.so.Int,
+      'ssl-strict'        , $strict.so.Int,
+      'use-thread-context', $use-thread-context.so.Int,
+      Str
+    );
 
-    if @options {
-      for @options.rotor(2) {
-      }
-    }
-
-    $sock;
+    $socket = $socket ?? self.bless( :$socket ) !! Nil;
   }
 
   # Type: gpointer
@@ -148,6 +185,8 @@ class SOUP::Socket {
         );
 
         my $o = $gv.object;
+
+        say "O: { $o // 'UNDEF'}";
         return Nil unless $o;
 
         $o = cast(SoupAddress, $o);
@@ -155,8 +194,13 @@ class SOUP::Socket {
 
         SOUP::Address.new($o);
       },
-      STORE => -> $,  $val is copy {
-        warn 'local-address is a construct-only attribute'
+      STORE => sub ($, SoupAddress() $val is copy) {
+        if $!init {
+          warn 'local-address is a construct-only attribute';
+          return;
+        }
+        $gv.pointer = $val;
+        self.prop_set('local-address', $gv);
       }
     );
   }

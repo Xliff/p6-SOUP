@@ -75,7 +75,15 @@ sub soup_socket_listen (SoupSocket $sock)
   is export
 { * }
 
-sub soup_socket_new (Str)
+sub soup_socket_new(
+  Str, GMainContext,
+  Str, SoupAddress,
+  Str, SoupAddress,
+  Str, gboolean,
+  Str, gboolean,
+  Str, gboolean,
+  Str
+)
   returns SoupSocket
   is native(soup)
   is export
