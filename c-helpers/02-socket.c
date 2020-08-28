@@ -44,5 +44,8 @@ void main (int argc, char **argv)
 //	g_assert_cmpstr (soup_address_get_physical (addr), ==, "127.0.0.1");
 //	g_assert_cmpuint (soup_address_get_port (addr), ==, 0);
 
+	printf("%p\n", localhost);
+	printf("%p\n", addr);
+
 	printf( "Addr = %s\n", soup_address_get_physical(addr) );
 }
