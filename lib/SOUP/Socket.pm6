@@ -185,8 +185,6 @@ class SOUP::Socket {
         );
 
         my $o = $gv.object;
-
-        say "O: { $o // 'UNDEF'}";
         return Nil unless $o;
 
         $o = cast(SoupAddress, $o);
