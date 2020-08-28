@@ -53,9 +53,21 @@ class SOUP::Address {
     self.roleInit-SocketConnectable unless $!sc;
   }
 
+  proto method new (|)
+  { * }
+
   multi method new (SoupAddressAncestry $address) {
     $address ?? self.bless( :$address ) !! Nil;
   }
+  # cw: Slightly disturbing. I should NEVER need this multi, but as of 2020-08-28, I do.
+  #     Fixes issues with burgeoining t/02-socket.t
+  multi method new ($address) {
+    die '$address should be an object in the SoupAddressAncestry'
+      unless $address ~~ SoupAddressAncestry;
+
+    $address ?? self.bless( :$address ) !! Nil;
+  }
+
   multi method new (Str() $name, Int() $port = 0) {
     my guint $p = $port;
     my $address = soup_address_new($name, $p);
