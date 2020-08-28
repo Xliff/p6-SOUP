@@ -1,5 +1,6 @@
 use v6.c;
 
+use NativeCall;
 use Method::Also;
 
 use GLib::Compat::Definitions;
@@ -55,7 +56,7 @@ class SOUP::Address {
   multi method new (SoupAddressAncestry $address) {
     $address ?? self.bless( :$address ) !! Nil;
   }
-  multi method new (Str() $name, guint $port) {
+  multi method new (Str() $name, Int() $port = 0) {
     my guint $p = $port;
     my $address = soup_address_new($name, $p);
 
@@ -65,7 +66,7 @@ class SOUP::Address {
   multi method new (Int() $family, Int() $port, :$any is required) {
     SOUP::Address.new_any($family, $port);
   }
-  method new_any (SoupAddressFamily $family, guint $port) is also<new-any> {
+  method new_any (Int() $family, Int() $port) is also<new-any> {
     my SoupAddressFamily $f = $family;
     my guint $p = $port;
     my $address = soup_address_new_any($f, $p);
@@ -75,14 +76,33 @@ class SOUP::Address {
 
   multi method new (
     sockaddr $sa,
-    Int() $len,
+    Int() $len = nativesizeof($sa),
     :socket(:$sockaddr) is required
   ) {
     SOUP::Address.new_from_sockaddr($sa, $len);
   }
-  method new_from_sockaddr (sockaddr $sa, Int() $len)
+  multi method new (
+    sockaddr_in $sa,
+    Int() $len = nativesizeof($sa),
+    :socket(:sockaddr(:$sockaddr_in)) is required
+  ) {
+    SOUP::Address.new_from_sockaddr($sa, $len);
+  }
+
+  proto method new_from_sockaddr (|)
     is also<new-from-sockaddr>
-  {
+  { * }
+
+  multi method new_from_sockaddr (
+    sockaddr_in $sa,
+    Int() $len = nativesizeof($sa)
+  ) {
+    samewith( cast(sockaddr, $sa), $len );
+  }
+  multi method new_from_sockaddr (
+    sockaddr $sa,
+    Int() $len = nativesizeof($sa)
+  ) {
     my gint $l = $len;
     my $address = soup_address_new_from_sockaddr($sa, $l);
 
@@ -196,7 +216,7 @@ class SOUP::Address {
   method resolve_sync (GCancellable() $cancellable = GCancellable)
     is also<resolve-sync>
   {
-    soup_address_resolve_sync($!sa, $cancellable);
+    SoupStatusEnum( soup_address_resolve_sync($!sa, $cancellable) );
   }
 
 }
