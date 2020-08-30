@@ -25,40 +25,87 @@ subtest 'Unconnected Socket Tests', {
   $in-localhost.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 
   my $localhost = SOUP::Address.new-from-sockaddr($in-localhost);
-  ok $localhost,                          '$localhost SOUP::Address object is defined';
+  ok $localhost,                                          '$localhost SOUP::Address object is defined';
 
   my $res = $localhost.resolve-sync;
-  is $res,               SOUP_STATUS_OK, '$localhost resolves correctly';
+  is $res,                   SOUP_STATUS_OK,              '$localhost resolves correctly';
 
   my $sock = SOUP::Socket.new(local-address => $localhost);
-  ok $sock,                              '$sock SOUP::Socket obect is defined';
+  ok $sock,                                               '$sock SOUP::Socket obect is defined';
 
   {
     my $addr = $sock.local-address;
-    ok $addr,                              '$addr SOUP::Addres object from SOUP::Socket is defined';
-    is $addr.get-physical, '127.0.0.1',    'Socket physical address is 127.0.0.1';
-    is $addr.port,         0,              'Socket port is 0';
+    ok $addr,                                             '$addr SOUP::Addres object from SOUP::Socket is defined';
+    is $addr.get-physical,   '127.0.0.1',                 'Socket physical address is 127.0.0.1';
+    is $addr.port,           0,                           'Socket port is 0';
   }
 
-  # Must fix GLib::Log before the rest of these tests can be written.
-  my $log = GLib::Test::Log.new(G_LOG_LEVEL_WARNING);
-  $log.expect(
-    'socket not connected'
-  );
-
   {
+    my $log = GLib::Test::Log.new(G_LOG_LEVEL_WARNING);
+    $log.expect('socket not connected');
+
     my $r-addr = $sock.remote-address;
-    ok $log.got-expected,                  'Got proper message when retrieving an address from an unconnected socket';
+    ok $log.got-expected,                                 'Got proper message when retrieving an address from an unconnected socket';
     $log.done;
   }
 
-  ok $sock.listen,                         'Socket can be set to listening state';
+  ok $sock.listen,                                        'Socket can be set to listening state';
 
   {
     my $addr = $sock.local-address;
-    ok $addr,                              'Can get local address from connected socket';
-    is $addr.get-physical, '127.0.0.1',    'Socket physical address is 127.0.0.1';
-    ok $addr.port > 0,                     'Socket is listening on a non-zero port';
+    ok  $addr,                                            'Can get local address from connected socket';
+    is  $addr.get-physical,  '127.0.0.1',                 'Socket physical address is 127.0.0.1';
+    ok  $addr.port > 0,                                   'Socket is listening on a non-zero port';
   }
 
+  {
+    my $client = SOUP::Socket.new(remote-address => $sock.local-address);
+    is  $client.connect-sync, SOUP_STATUS_OK,             'Can connect another socket to same address as $sock';
+
+    my $addr = $client.local-address;
+    ok  $addr,                                            'Can get local address from client socket';
+    my $r-addr = $client.remote-address;
+    ok  $r-addr,                                          'Can get local address from client socket';
+    is  $r-addr.get-physical, '127.0.0.1',                'Socket physical address is 127.0.0.1';
+    ok  $r-addr.port > 0,                                 'Socket is listening on a non-zero port';
+    $client.unref;
+  }
+
+  {
+    my $client = SOUP::Socket.new(remote-address => $sock.local-address);
+    my $log = GLib::Test::Log.new(G_LOG_LEVEL_WARNING);
+
+    {
+      my $r-addr = $sock.remote-address;
+      ok  $log.count,                                       'Attempting to get remote address of unconnected socket complains';
+    }
+
+    $log.reset;
+    $sock.disconnect;
+    $log.expect('socket not connected');
+
+    {
+      my $r-addr = $sock.remote-address;
+      ok  $log.got-expected,                              'Attempting to get remote address of disconnected socket complains';
+      nok $r-addr,                                        'Remote address object is not defined';
+      $log.reset;
+    }
+
+    {
+      $log.expect('socket not connected');
+      my $addr = $sock.remote-address;
+      ok  $log.got-expected,                              'Attempting to get local address of disconnected socket complains';
+      nok $addr,                                          'Local address object is not defined';
+      $log.reset;
+    }
+
+    {
+      is $client.connect-sync, SOUP_STATUS_CANT_CONNECT, "Attempting to connect new client results in CAN'T CONNECT error";
+      $log.expect('socket not connected');
+      my $addr = $client.local-address;
+      ok  $log.got-expected,                             'Attempting to get local address of disconnected client complains';
+      nok $addr,                                         'Local address object is not defined';
+      $log.reset;
+    }
+  }
 }
