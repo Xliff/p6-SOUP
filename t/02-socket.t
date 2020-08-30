@@ -6,6 +6,8 @@ use NativeCall;
 use GLib::Compat::Definitions;
 use SOUP::Raw::Types;
 
+use GLib::Test;
+use GLib::Log;
 use GIO::Socket;
 use GIO::SocketAddress;
 use SOUP::Address;
@@ -31,10 +33,32 @@ subtest 'Unconnected Socket Tests', {
   my $sock = SOUP::Socket.new(local-address => $localhost);
   ok $sock,                              '$sock SOUP::Socket obect is defined';
 
-  my $addr = $sock.local-address;
-  ok $addr,                              '$addr SOUP::Addres object from SOUP::Socket is defined';
-  is $addr.get-physical, '127.0.0.1',    'Socket physical address is 127.0.0.1';
-  is $addr.port,         0,              'Socket port is 0';
+  {
+    my $addr = $sock.local-address;
+    ok $addr,                              '$addr SOUP::Addres object from SOUP::Socket is defined';
+    is $addr.get-physical, '127.0.0.1',    'Socket physical address is 127.0.0.1';
+    is $addr.port,         0,              'Socket port is 0';
+  }
 
-  # …
+  # Must fix GLib::Log before the rest of these tests can be written.
+  my $log = GLib::Test::Log.new(G_LOG_LEVEL_WARNING);
+  $log.expect(
+    'socket not connected'
+  );
+
+  {
+    my $r-addr = $sock.remote-address;
+    ok $log.got-expected,                  'Got proper message when retrieving an address from an unconnected socket';
+    $log.done;
+  }
+
+  ok $sock.listen,                         'Socket can be set to listening state';
+
+  {
+    my $addr = $sock.local-address;
+    ok $addr,                              'Can get local address from connected socket';
+    is $addr.get-physical, '127.0.0.1',    'Socket physical address is 127.0.0.1';
+    ok $addr.port > 0,                     'Socket is listening on a non-zero port';
+  }
+
 }
