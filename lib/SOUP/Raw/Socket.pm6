@@ -77,6 +77,8 @@ sub soup_socket_listen (SoupSocket $sock)
 
 sub soup_socket_new(
   Str, GMainContext,
+  Str, GSocket,
+  Str, GIOStream,
   Str, SoupAddress,
   Str, SoupAddress,
   Str, gboolean,

@@ -65,6 +65,8 @@ class SOUP::Socket {
     samewith(
       'async-context'      , [//]( |%options<async-context async_context>,
                                    GMainContext ),
+      'gsocket'            , [//]( |%options<gsocket>,  GSocket   ),
+      'iostream'           , [//]( |%options<iostream>, GIOStream ),
       'local-address'      , [//]( |%options<local-address local_address>,
                                    SoupAddress ),
       'remote-address'     , [//]( |%options<remote-address remote_address>,
@@ -84,6 +86,8 @@ class SOUP::Socket {
   #     CLIENT FACING!
   multi method new(
     'async-context',        GMainContext()    $async-context,
+    'gsocket',              GSocket()         $gsocket,
+    'iostream',             GIOStream()       $iostream,
     'local-address',        SoupAddress()     $local-addr,
     'remote-address',       SoupAddress()     $remote-addr,
     'ssl-fallback',         Int()             $fallback,
@@ -92,6 +96,8 @@ class SOUP::Socket {
   ) {
     my $socket = soup_socket_new(
       'async-context'     , $async-context // GMainContext,
+      'gsocket',          , $gsocket       // GSocket,
+      'iostream',         , $iostream      // GIOStream,
       'local-address'     , $local-addr    // SoupAddress,
       'remote-address'    , $remote-addr   // SoupAddress,
       'ssl-fallback'      , $fallback.so.Int,
@@ -450,7 +456,7 @@ class SOUP::Socket {
   method connect_sync (GCancellable() $cancellable = GCancellable)
     is also<connect-sync>
   {
-    soup_socket_connect_sync($!sock, $cancellable);
+    SoupStatusEnum( soup_socket_connect_sync($!sock, $cancellable) );
   }
 
   method disconnect {
