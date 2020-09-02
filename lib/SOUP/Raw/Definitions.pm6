@@ -99,6 +99,9 @@ class SoupAuthDomainDigest   is repr<CStruct> is export does GLib::Roles::Pointe
   HAS SoupAuthDomain $.parent;
 }
 
+class SoupCookieJar          is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+}
 
 class SoupRequest            is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
