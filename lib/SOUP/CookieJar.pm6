@@ -7,6 +7,7 @@ use SOUP::Raw::CookieJar;
 
 use GLib::Roles::Object;
 use SOUP::Roles::SessionFeature;
+use SOUP::Roles::Signals::CookieJar;
 
 our subset SoupCookieJarAncestry is export of Mu
   where SoupCookieJar | SoupSessionFeature | GObject;
@@ -14,6 +15,7 @@ our subset SoupCookieJarAncestry is export of Mu
 class SOUP::CookieJar {
   also does GLib::Roles::Object;
   also does SOUP::Roles::SessionFeature;
+  also does SOUP::Roles::Signals::CookieJar;
 
   has SoupCookieJar $!scj;
 
@@ -79,6 +81,12 @@ class SOUP::CookieJar {
         warn 'read-only is a construct-only attribute'
       }
     );
+  }
+
+  # Is originally:
+  # SoupCookieJar, SoupCookie, SoupCookie, gpointer --> void
+  method changed {
+    self.connect-changed($!scj);
   }
 
   method add_cookie (SoupCookie() $cookie) is also<add-cookie> {
