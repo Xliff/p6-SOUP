@@ -95,11 +95,11 @@ class SOUP::Socket {
     'use-thread-context',   Int()             $use-thread-context
   ) {
     my $socket = soup_socket_new(
-      'async-context'     , $async-context // GMainContext,
-      'gsocket',          , $gsocket       // GSocket,
-      'iostream',         , $iostream      // GIOStream,
-      'local-address'     , $local-addr    // SoupAddress,
-      'remote-address'    , $remote-addr   // SoupAddress,
+      'async-context'     , $async-context  // GMainContext,
+      'gsocket'           , $gsocket        // GSocket,
+      'iostream'          , $iostream       // GIOStream,
+      'local-address'     , $local-addr     // SoupAddress,
+      'remote-address'    , $remote-addr    // SoupAddress,
       'ssl-fallback'      , $fallback.so.Int,
       'ssl-strict'        , $strict.so.Int,
       'use-thread-context', $use-thread-context.so.Int,
