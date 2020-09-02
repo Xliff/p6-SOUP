@@ -2,6 +2,7 @@ use v6.c;
 
 use NativeCall;
 
+use GLib::Raw::Object;
 use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use GIO::Raw::Definitions;
@@ -110,11 +111,60 @@ sub soup_session_new ()
   is export
 { * }
 
-# sub soup_session_new_with_options (Str $optname1, ...)
-#   returns SoupSession
-#   is native(soup)
-#   is export
-# { * }
+sub soup_session_new_with_options (
+  # accept-language 	gchar*
+  Str, Str,
+  # accept-language-auto 	gboolean
+  Str, gboolean,
+  # add-feature 	SoupSessionFeature*
+  Str, SoupSessionFeature,
+  # add-feature-by-type 	GType* (GObject)
+  Str, GObject,
+  # async-context 	gpointer (GMainContext)
+  Str, GMainContext,
+  # http-aliases 	GStrv
+  Str, CArray[Str],
+  # https-aliases 	GStrv
+  Str, CArray[Str],
+  # idle-timeout 	guint
+  Str, guint,
+  # local-address 	SoupAddress*
+  Str, SoupAddress,
+  # max-conns 	gint
+  Str, gint,
+  # max-conns-per-host 	gint
+  Str, gint,
+  # proxy-resolver 	GProxyResolver*
+  Str, GProxyResolver,
+  # proxy-uri 	SoupURI*
+  Str, SoupURI,
+  # remove-feature-by-type 	GType* (GObject)
+  Str, GObject,
+  # ssl-ca-file 	gchar*
+  Str, Str,
+  # ssl-strict 	gboolean
+  Str, gboolean,
+  # ssl-use-system-ca-file 	gboolean
+  Str, gboolean,
+  # timeout 	guint
+  Str, guint,
+  # tls-database 	GTlsDatabase*
+  Str, GTlsDatabase,
+  # tls-interaction 	GTlsInteraction*
+  Str, GTlsInteraction,
+  # use-ntlm 	gboolean
+  Str, gboolean,
+  # use-thread-context 	gboolean
+  Str, gboolean,
+  # user-agent 	gchar*
+  Str, Str,
+  # End
+  Str
+)
+  returns SoupSession
+  is native(soup)
+  is export
+{ * }
 
 sub soup_session_pause_message (SoupSession $session, SoupMessage $msg)
   is native(soup)
@@ -140,7 +190,7 @@ sub soup_session_prepare_for_uri (SoupSession $session, SoupURI $uri)
 sub soup_session_queue_message (
   SoupSession $session,
   SoupMessage $msg,
-  &callback (SoupSession, SoupMessage, gpointer), 
+  &callback (SoupSession, SoupMessage, gpointer),
   gpointer $user_data
 )
   is native(soup)

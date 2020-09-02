@@ -54,33 +54,125 @@ class SOUP::Session {
    is also<SoupSession>
   { $!ss }
 
-  method new (*@options) {
+  multi method new (SoupSessionAncestry $session) {
+    $session ?? self.bless( :$session ) !! Nil;
+  }
+  multi method new {
     my $session = soup_session_new();
 
-    my $s = $session ?? self.bless( :$session ) !! Nil;
+    $session ?? self.bless( :$session ) !! Nil;
+  }
 
-    if @options.elems {
-      # cw: Another place for a typed exception!
-      die 'Invalid input! Option list must have an even number of elements!'
-        if @options.elems %% 2;
+  proto method new_with_options (|)
+    is also<new-with-options>
+  { * }
 
-      # cw: Gracefully recover from nad input
-      for @options.rotor(2) {
-        unless ( my $m = .^lookup( .[0] ) ) {
-          say "Option '{ .[0] }'[ unavailable on object { .^name }";
-          next;
-        }
-        $s."{ .[0] }"() = .[1];
+  multi method new_with_options (@options) {
+    samewith(|@options);
+  }
+  multi method new_with_options (*@options) {
+    my %options;
+    for @options.rotor(2) {
+      %options{ .[0] } = .[1];
+    }
+    SOUP::Session.new_with_options(|%options);
+  }
+  multi method new_with_options (%options) {
+    samewith(|%options);
+  }
+  multi method new_with_options (*%options) {
+    my %real-opts = %options.clone;
+
+    # cw: Add more error checking options here!
+    for <http-aliases http_aliases https-aliases https_aliases> {
+      if %real-opts{$_} ~~ Positional {
+        %real-opts{$_} = resolve-gstrv( %real-opts{$_} );
+      } elsif %real-opts{$_} !~~ CArray[Str] {
+        die "{$_} option must be a Str-Array compatible value!";
       }
     }
 
-    return $s unless @options.elems;
+    # Defaults obtained from soup-session.c
+    SOUP::Session.new(
+      'accept-language',         %real-opts<accept-language>        // %real-opts<accept_language>         // Str,
+      'accept-language-auto',    %real-opts<accept-language-auto>   // %real-opts<accept_language_auto>    // False,
+      'add-feature',             %real-opts<add-feature>            // %real-opts<add_feature>             // SoupSessionFeature,
+      'add-feature-by-type',     %real-opts<add-feature-by-type>    // %real-opts<add_feature_by_type>     // GObject;
+      'async-context',           %real-opts<async-context>          // %real-opts<async_context>           // GMainContext,
+      'http-aliases',            %real-opts<http-aliases>           // %real-opts<http_aliases>            // CArray[Str],
+      'https-aliases',           %real-opts<https-aliases>          // %real-opts<https_aliases>           // CArray[Str],
+      'idle-timeout',            %real-opts<idle-timeout>           // %real-opts<idle_timeout>            // 60,
+      'local-address',           %real-opts<local-address>          // %real-opts><local_address>          // SoupAddress,
+      'max-conns',               %real-opts<max-conns>              // %real-opts<max_conns>               // 1,
+      'max-conns-per-host',      %real-opts<max-conns-per-host>     // %real-opts<max_conns_per_host>      // 1,
+      'proxy-resolver',          %real-opts<proxy-resolver>         // %real-opts<proxy_resolver>          // GProxyResolver,
+      'proxy-uri',               %real-opts<proxy-uri>              // %real-opts<proxy_uri>               // SoupURI,
+      'remove-feature-by-type',  %real-opts<remove-feature-by-type> // %real-opts<remove_features_by_type> // GObject,
+      'ssl-ca-file',             %real-opts<ssl-ca-file>            // %real-opts<ssl_ca_file>             // Str,
+      'ssl-strict',              %real-opts<ssl-strict>             // %real-opts<ssl_strict>              // True,
+      'ssl-use-system-ca-file',  %real-opts<ssl-use-system-ca-file> // %real-opts<ssl_use_system_ca_file>  // True,
+      'timeout',                 %real-opts<timeout>                                                       // 0,
+      'tls-database',            %real-opts<tls-database>           // %real-opts<tls_database>            // GTlsDatabase,
+      'tls-interaction',         %real-opts<tls-interaction>        // %real-opts<tls_interaction>         // GTlsInteraction,
+      'use-ntlm',                %real-opts<use-ntlm>               // %real-opts<use_ntlm>                // False,
+      'use-thread-context',      %real-opts<use-thread-context>     // %real-opts<use_thread_context>      // False,
+      'user-agent',              %real-opts<user-agent>             // %real-opts<user_agent>              // Str
+    );
+  }
+  multi method new_with_options (
+    'accept-language',         Str() $accept-language,
+    'accept-language-auto',    Int() $accept-language-auto,
+    'add-feature',             SoupSessionFeature() $add-feature,
+    'add-feature-by-type',     GObject() $add-feature-by-type;
+    'async-context',           GMainContext() $async-context,
+    'http-aliases',            $http-aliases,
+    'https-aliases',           $https-aliases,
+    'idle-timeout',            Int() $idle-timeout,
+    'local-address',           SoupAddress() $local-address,
+    'max-conns',               Int() $max-conns,
+    'max-conns-per-host',      Int() $max-conns-per-host,
+    'proxy-resolver',          GProxyResolver() $proxy-resolver,
+    'proxy-uri',               SoupURI() $proxy-uri,
+    'remove-feature-by-type',  GObject() $remove-feature-by-type,
+    'ssl-ca-file',             Str() $ssl-ca-file,
+    'ssl-strict',              Int() $ssl-strict,
+    'ssl-use-system-ca-file',  Int() $ssl-use-system-ca-file,
+    'timeout',                 Int() $timeout,
+    'tls-database',            GTlsDatabase() $tls-database,
+    'tls-interaction',         GTlsInteraction() $tls-interaction,
+    'use-ntlm',                Int() $use-ntlm,
+    'use-thread-context',      Int() $use-thread-context,
+    'user-agent',              Str() $user-agent
+  ) {
+    my $session = soup_session_new_with_options(
+      'accept-language',        $accept-language,
+      'accept-language-auto',   $accept-language-auto,
+      'add-feature',            $add-feature,
+      'add-feature-by-type',    $add-feature-by-type,
+      'async-context',          $async-context,
+      'http-aliases',           $http-aliases,
+      'https-aliases',          $https-aliases,
+      'idle-timeout',           $idle-timeout,
+      'local-address',          $local-address,
+      'max-conns',              $max-conns,
+      'max-conns-per-host',     $max-conns-per-host,
+      'proxy-resolver',         $proxy-resolver,
+      'proxy-uri',              $proxy-uri,
+      'remove-feature-by-type', $remove-feature-by-type,
+      'ssl-ca-file',            $ssl-ca-file,
+      'ssl-strict',             $ssl-strict,
+      'ssl-use-system-ca-file', $ssl-use-system-ca-file,
+      'timeout',                $timeout,
+      'tls-database',           $tls-database,
+      'tls-interaction',        $tls-interaction,
+      'use-ntlm',               $use-ntlm,
+      'use-thread-context',     $use-thread-context,
+      'user-agent',             $user-agent
+    );
+
+    $session ?? self.bless( :$session ) !! Nil;
   }
 
-  # cw: Not necessary. See above.
-  # method new_with_options (Str $optname1, ...) {
-  #   soup_session_new_with_options($!ss, $optname1);
-  # }
 
   # Type: gchar
   method accept-language is rw is also<accept_language> {
