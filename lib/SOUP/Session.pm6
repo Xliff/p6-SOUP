@@ -83,6 +83,10 @@ class SOUP::Session {
   multi method new_with_options (*%options) {
     my %real-opts = %options.clone;
 
+    # Handle use of constants as key.
+    %real-opts{ ::("$_") } = %real-opts{$_}:delete
+      for %real-opts.keys.grep( *.starts-with('SOUP_SESSION_') );
+
     # cw: Add more error checking options here!
     for <http-aliases http_aliases https-aliases https_aliases> {
       if %real-opts{$_} ~~ Positional {
