@@ -131,3 +131,31 @@ sub soup_cookie_jar_set_cookie_with_first_party (
   is native(soup)
   is export
 { * }
+
+### /usr/include/libsoup-2.4/libsoup/soup-cookie-jar-db.h
+
+sub soup_cookie_jar_db_get_type ()
+  returns GType
+  is native(soup)
+  is export
+{ * }
+
+sub soup_cookie_jar_db_new (Str $filename, gboolean $read_only)
+  returns SoupCookieJar
+  is native(soup)
+  is export
+{ * }
+
+### /usr/include/libsoup-2.4/libsoup/soup-cookie-jar-text.h
+
+sub soup_cookie_jar_text_get_type ()
+  returns GType
+  is native(soup)
+  is export
+{ * }
+
+sub soup_cookie_jar_text_new (Str $filename, gboolean $read_only)
+  returns SoupCookieJar
+  is native(soup)
+  is export
+{ * }

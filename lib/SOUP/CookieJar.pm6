@@ -1,5 +1,6 @@
 use v6.c;
 
+use NativeCall;
 use Method::Also;
 
 use SOUP::Raw::Types;
@@ -220,6 +221,128 @@ class SOUP::CookieJar {
       $first_party,
       $cookie
     );
+  }
+
+}
+
+role SOUP::CookieJar::Child::Common {
+
+  # Type: gchar
+  method filename is rw  {
+    my $gv = GLib::Value.new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('filename', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        warn 'filename is a construct-only attribute'
+      }
+    );
+  }
+
+}
+
+our subset SoupCookieJarDBAncestry is export of Mu
+  where SoupCookieJarDB | SoupCookieJarAncestry;
+
+class SOUP::CookieJar::DB is SOUP::CookieJar {
+  also does SOUP::CookieJar::Child::Common;
+
+  has SoupCookieJarDB $!sct;
+
+  submethod BUILD (:$cookie-jar-db) {
+    self.setSoupCookieJarDB($cookie-jar-db) if $cookie-jar-db;
+  }
+
+  method setSoupCookieJarDB (SoupCookieJarDBAncestry $_) {
+    my $to-parent;
+
+    $!sct = do {
+      when SoupCookieJarDB {
+        $to-parent = cast(SoupCookieJar, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(SoupCookieJarDB, $_);
+      }
+    }
+    self.setSoupCookieJar($to-parent);
+  }
+
+  method SOUP::Raw::Definitions::SoupCookieJarDB
+    is also<SoupCookieJarDB>
+  { $!sct }
+
+  multi method new (SoupCookieJarDBAncestry $cookie-jar-db) {
+    $cookie-jar-db ?? self.bless( :$cookie-jar-db ) !! Nil;
+  }
+  multi method new (Str() $filename, Int() $read_only) {
+    my gboolean $r = $read_only.so.Int;
+    my $cookie-jar-db = soup_cookie_jar_db_new($filename, $r);
+
+    $cookie-jar-db ?? self.bless( :$cookie-jar-db ) !! Nil;
+  }
+
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &soup_cookie_jar_db_get_type, $n, $t );
+  }
+
+}
+
+our subset SoupCookieJarTextAncestry is export of Mu
+  where SoupCookieJarText | SoupCookieJarAncestry;
+
+class SOUP::CookieJar::Text is SOUP::CookieJar {
+  also does SOUP::CookieJar::Child::Common;
+
+  has SoupCookieJarText $!sct;
+
+  submethod BUILD (:$cookie-jar-text) {
+    self.setSoupCookieJarText($cookie-jar-text) if $cookie-jar-text;
+  }
+
+  method setSoupCookieJarText (SoupCookieJarTextAncestry $_) {
+    my $to-parent;
+
+    $!sct = do {
+      when SoupCookieJarDB {
+        $to-parent = cast(SoupCookieJar, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(SoupCookieJarDB, $_);
+      }
+    }
+    self.setSoupCookieJar($to-parent);
+  }
+
+  method SOUP::Raw::Definitions::SoupCookieJarText
+    is also<SoupCookieJarText>
+  { $!sct }
+
+  multi method new (SoupCookieJarTextAncestry $cookie-jar-text) {
+    $cookie-jar-text ?? self.bless( :$cookie-jar-text ) !! Nil;
+  }
+  multi method new (Str() $filename, Int() $read_only) {
+    my gboolean $r = $read_only.so.Int;
+    my $cookie-jar-text = soup_cookie_jar_text_new($filename, $r);
+
+    $cookie-jar-text ?? self.bless( :$cookie-jar-text ) !! Nil;
+  }
+
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &soup_cookie_jar_text_get_type, $n, $t );
   }
 
 }

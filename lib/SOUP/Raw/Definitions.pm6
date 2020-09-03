@@ -334,6 +334,14 @@ class SoupClientContext       is repr<CStruct> is export does GLib::Roles::Point
   has int64          $!ref_count;
 }
 
+class SoupCookieJarDB         is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupCookieJar $.parent;
+}
+
+class SoupCookieJarText       is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS SoupCookieJar $.parent;
+}
+
 our %SOUP-URI-SCHEME  is export;
 our %SOUP-METHOD      is export;
 our @SOUP-METHODS     is export = <
