@@ -48,7 +48,7 @@ class SOUP::ContentDecoder {
     is also<SoupContentDecoder>
   { $!scd }
 
-  multi method new (SoupContentDecoderAncestry $content-decoder) {
+  method new (SoupContentDecoderAncestry $content-decoder) {
     $content-decoder ?? self.bless( :$content-decoder ) !! Nil;
   }
 
