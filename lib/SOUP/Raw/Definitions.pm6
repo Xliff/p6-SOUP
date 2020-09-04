@@ -357,6 +357,10 @@ class SoupContentSniffer      is repr<CStruct> is export does GLib::Roles::Point
   has Pointer $!private;
 }
 
+class SoupLogger              is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+}
+
 our %SOUP-URI-SCHEME  is export;
 our %SOUP-METHOD      is export;
 our @SOUP-METHODS     is export = <
