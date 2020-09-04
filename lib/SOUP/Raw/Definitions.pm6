@@ -343,8 +343,13 @@ class SoupCookieJarText       is repr<CStruct> is export does GLib::Roles::Point
 }
 
 class SoupAuthManager         is repr<CStruct> is export does GLib::Roles::Pointers {
-  HAS SoupCookieJar $.parent;
-  has Pointer       $!private;
+  HAS GObject $.parent;
+  has Pointer $!private;
+}
+
+class SoupContentDecoder      is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+  has Pointer $!private;
 }
 
 our %SOUP-URI-SCHEME  is export;
