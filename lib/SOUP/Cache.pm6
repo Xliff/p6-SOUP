@@ -54,8 +54,8 @@ class SOUP::Cache {
     is also<SoupCache>
   { $!sc }
 
-  multi method new (SoupCacheAncestry $auth-manager) {
-    $auth-manager ?? self.bless( :$auth-manager ) !! Nil;
+  multi method new (SoupCacheAncestry $cache) {
+    $cache ?? self.bless( :$cache ) !! Nil;
   }
   multi method new (Str() $cache_dir, Int() $cache_type) {
     my SoupCacheType $c = $cache_type;
