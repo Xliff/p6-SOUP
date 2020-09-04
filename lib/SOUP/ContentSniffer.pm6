@@ -14,7 +14,7 @@ class SOUP::ContentSniffer {
   also does GLib::Roles::Object;
   also does SOUP::Roles::SessionFeature;
 
-  has SoupContentSniffer $!scd;
+  has SoupContentSniffer $!scs;
 
   submethod BUILD (:$content-sniffer) {
     self.setSoupContentSniffer($content-sniffer) if $content-sniffer;
@@ -23,7 +23,7 @@ class SOUP::ContentSniffer {
   method setSoupContentSniffer (SoupContentSnifferAncestry $_) {
     my $to-parent;
 
-    $!scd = do {
+    $!scs = do {
       when SoupContentSniffer {
         $to-parent = cast(GObject, $_);
         $_;
@@ -46,12 +46,12 @@ class SOUP::ContentSniffer {
 
   method SOUP::Raw::Definitions::SoupContentSniffer
     is also<SoupContentSniffer>
-  { $!scd }
+  { $!scs }
 
   multi method new (SoupContentSnifferAncestry $content-sniffer) {
     $content-sniffer ?? self.bless( :$content-sniffer ) !! Nil;
   }
-  method new {
+  multi method new {
     my $content-sniffer = soup_content_sniffer_new();
 
     $content-sniffer ?? self.bless( :$content-sniffer ) !! Nil;
