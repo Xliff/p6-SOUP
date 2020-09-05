@@ -4,9 +4,8 @@ use Method::Also;
 
 use SOUP::Raw::Types;
 
-use GIO::ProxyResolver;
-
 use GLib::Roles::Object;
+use GIO::Roles::ProxyResolver;
 use SOUP::Roles::SessionFeature;
 
 our subset SoupProxyResolverDefaultAncestry is export of Mu
@@ -57,7 +56,7 @@ class SOUP::ProxyResolverDefault {
 
   # Type: GProxyResolver
   method gproxy-resolver is rw  {
-    my $gv = GLib::Value.new( GIO::ProxyResolver.get-type );
+    my $gv = GLib::Value.new( GIO::ProxyResolver.get-proxyresolver-type );
     Proxy.new(
       FETCH => sub ($) {
         warn 'gproxy-resolver does not allow reading' if $DEBUG;
@@ -72,7 +71,7 @@ class SOUP::ProxyResolverDefault {
 
   method get_type {
     state ($n, $t);
-    
+
     unstable_get_type(
       self.^name,
       &soup_proxy_resolver_default_get_type,
