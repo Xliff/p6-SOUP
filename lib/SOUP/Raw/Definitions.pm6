@@ -304,16 +304,16 @@ class SoupMultipartInputStream is repr<CStruct> is export does GLib::Roles::Poin
   has Pointer            $!priv;
 }
 
-class SoupSocket              is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupSocket               is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
 }
 
-class SoupServer              is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupServer               is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
 }
 
 # Taken from implementation, No public members!
-class SoupMultipart           is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupMultipart            is repr<CStruct> is export does GLib::Roles::Pointers {
   has Str       $!mime_type;
   has Str       $!boundary;
   has GPtrArray $!headers;
@@ -321,7 +321,7 @@ class SoupMultipart           is repr<CStruct> is export does GLib::Roles::Point
 }
 
 # Taken from implementation, No public members!
-class SoupClientContext       is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupClientContext        is repr<CStruct> is export does GLib::Roles::Pointers {
   has SoupServer     $!server;
   has SoupSocket     $!sock;
   has GSocket        $!gsock;
@@ -334,37 +334,41 @@ class SoupClientContext       is repr<CStruct> is export does GLib::Roles::Point
   has int64          $!ref_count;
 }
 
-class SoupCookieJarDB         is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupCookieJarDB          is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupCookieJar $.parent;
 }
 
-class SoupCookieJarText       is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupCookieJarText        is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS SoupCookieJar $.parent;
 }
 
-class SoupAuthManager         is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupAuthManager          is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
   has Pointer $!private;
 }
 
-class SoupContentDecoder      is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupContentDecoder       is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
   has Pointer $!private;
 }
 
-class SoupContentSniffer      is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupContentSniffer       is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
   has Pointer $!private;
 }
 
-class SoupLogger              is repr<CStruct> is export does GLib::Roles::Pointers {
+class SoupLogger               is repr<CStruct> is export does GLib::Roles::Pointers {
+  HAS GObject $.parent;
+}
+
+class SoupProxyResolverDefault is repr<CStruct> is export does GLib::Roles::Pointers {
   HAS GObject $.parent;
 }
 
 our %SOUP-URI-SCHEME  is export;
 our %SOUP-METHOD      is export;
 our @SOUP-METHODS     is export = <
-  options  get       head  post put  delete trace connect
+  options  get       head  post put  delete trace  connect
   propfind proppatch mkcol copy move lock   unlock
 >;
 our @SOUP-URI-SCHEMES is export = <http https ftp file data resource ws wss>;
