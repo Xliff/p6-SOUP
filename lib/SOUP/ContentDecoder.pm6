@@ -52,6 +52,12 @@ class SOUP::ContentDecoder {
     $content-decoder ?? self.bless( :$content-decoder ) !! Nil;
   }
 
+  method get_type is also<get-type> {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &soup_content_decoder_get_type, $n, $t );
+  }
+
 }
 
 ### /usr/include/libsoup-2.4/libsoup/soup-content-decoder.h
