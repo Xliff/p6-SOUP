@@ -5,7 +5,12 @@ use Method::Also;
 
 use SOUP::Raw::Types;
 use SOUP::Raw::Test;
+use GIO::Raw::TlsBackend;
 
+use GLib::Env;
+use GLib::Cond;
+use GLib::Mutex;
+use GLib::Utils;
 use SOUP::Buffer;
 use SOUP::Server;
 use SOUP::Session;
@@ -13,6 +18,9 @@ use SOUP::Session;
 use GLib::Roles::StaticClass;
 
 class SOUP::Test {
+  has $.tls-backend;
+  has $.tls-available;
+
   also does GLib::Roles::StaticClass;
 
   method apache_cleanup is also<apache-cleanup> {
@@ -50,9 +58,22 @@ class SOUP::Test {
       Nil;
   }
 
-  # method init (gint $argc, Str $argv, GOptionEntry $entries) {
-  #   test_init($argc, $argv, $entries);
-  # }
+  method init {
+    GLib::Env.set(True,
+      G_SETTINGS_BACKEND     => 'memory',
+      GIO_USE_PROXY_RESOLVER => 'dummy',
+      GIO_USE_VFS            => 'local'
+    );
+
+    # cw: Currently unused.
+    # g_test_init (&argc, &argv, NULL);
+    # g_test_set_nonfatal_assertions ();
+    # g_test_bug_base ("https://bugzilla.gnome.org/");
+
+    GLib::Utils.set-prgname($*PROGRAM.basename);
+    $!tls-backend   = g_tls_backend_get_default();
+    $!tls-available = g_tls_backend_supports_tls($!tls-backend);
+  }
 
   method load_resource (
     Str() $name,
@@ -132,27 +153,126 @@ class SOUP::Test::Request is SOUP::Request {
 }
 
 class SOUP::Test::Server is SOUP::Server {
+  has $!server;
+  has $!server-start-mutex;
+  has $!server-start-cond;
 
-  method get_uri (Str() $scheme, Str() $host) is also<get-uri> {
-    soup_test_server_get_uri(self.SoupServer, $scheme, $host);
+  my $server-start-mutex = GLib::Mutex.new;
+  my $server-start-cond  = GLib::Cond.new;
+
+  sub server-listen ($server) {
+    $server.listen_local;
+    if $ERROR {
+      $*ERR.say: "Unable to create server: { $ERROR.message }";
+      exit 1;
+    }
   }
 
-  method new (Int() $options, :$raw = False) {
-    my SoupTestServerOptions $o = $options;
-    my $ss = soup_test_server_new($options);
+  sub run-server-thread ($server) {
+    my $options = $server.get-data('options');
 
-    $ss ??
-      ( $raw ?? $ss !! SOUP::Server.new($ss) )
-      !!
-      Nil;
+    my $context = GLib::MainContext.new;
+    $context.push_thread_default;
+    my $loop = GLib::MainLoop.new($context);
+    $server.set-data('MainLoop', $loop);
+
+    $server.&server-listen
+      if ($options +& SOUP_TEST_SERVER_NO_DEFAULT_LISTENER).not;
+
+    $server-start-mutex.lock;
+    $server-start-cond.signal;
+    $server-start-mutex.unlock;
+    $loop.run;
+
+    # cw: All this should automatically be done at GC....
+    #     ...unless order is important.
+    $loop.unref;
+    $server.disconnect;
+    $context.pop_thread_default;
+    $context.unref;
+  }
+
+  submethod BUILD (:$server) {
+    $!server = $server;
+  }
+
+  method new (Int() $options = SOUP_TEST_SERVER_DEFAULT, :$raw = False) {
+    # my SoupTestServerOptions $o = $options;
+    # my $ss = soup_test_server_new($options);
+    #
+    # $ss ??
+    #   ( $raw ?? $ss !! SOUP::Server.new($ss) )
+    #   !!
+    #   Nil;
+
+    # Ported from test-utils.c
+    my $cert = GTlsCertificate;
+    if SOUP::Test.tls-available {
+      my $ssl-cert-file = $*CWD.add('test-cert.pem').absolute;
+      my $ssl-key-file  = $*CWD.add('test-cert.key').absolute;
+
+      $cert = GIO::TlsCertificate.new-from-files(
+        $ssl-cert-file,
+        $ssl-key-file
+      );
+      if $ERROR {
+        $*ERR.say: "Unable to create server: { $ERROR.message }";
+        exit 1;
+      }
+    }
+
+    my $server = SOUP::Server.new( tls-certificate => $cert );
+    $server.set-data('options', $options);
+    if $options +& SOUP_TEST_SERVER_IN_THREAD {
+      $!server-start-mutex.lock();
+
+      my $thread = GLib::Thread.new(
+        'server_thread',
+        sub { run-server-thread($server) },
+      );
+
+      $!server-start-cond.wait($!server-start-mutex);
+      $!server-start-mutex.unlock;
+      $server.set-data('thread', $thread);
+    } elsif ($options +& SOUP_TEST_SERVER_NO_DEFAULT_LISTENER).not {
+      $server.&server-listen;
+    }
+
+    $server ?? self.bless( :$server ) !! Nil;
   }
 
   method new_with_options (|c) {
     die 'Cannot call .new_with_options on a SOUP::Test::Server object';
   }
 
+  method find_server_uri (Str() $scheme, Str() $host = Str) {
+    for $!server.get-uris {
+      next if $scheme && $scheme ne .scheme;
+      next if $host   && $host   ne .scheme;
+      return .copy;
+    }
+    False;
+  }
+
+  method add_listener (Str() $scheme, Str() $host) {
+    my $options = 0;
+
+    $options +|= SOUP_SERVER_LISTEN_HTTPS     if $scheme eq 'https';
+    $options +|= SOUP_SERVER_LISTEN_IPV4_ONLY if $host   eq '127.0.0.1';
+    $options +|= SOUP_SERVER_LISTEN_IPV6_ONLY if $host   eq '::1';
+
+    $!server.listen_local(0, $options);
+    return $ERROR if $ERROR;
+
+    self.find_server_uri($scheme, $host);
+  }
+
+  method get_uri (Str() $scheme, Str() $host) is also<get-uri> {
+    # soup_test_server_get_uri(self.SoupServer, $scheme, $host);
+  }
+
   method quit_unref is also<quit-unref> {
-    soup_test_server_quit_unref(self.SoupServer);
+    # soup_test_server_quit_unref(self.SoupServer);
   }
 
 }
