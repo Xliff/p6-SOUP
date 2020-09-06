@@ -13,6 +13,7 @@ use GIO::SocketAddress;
 use SOUP::Address;
 use SOUP::Socket;
 use SOUP::Server;
+use SOUP::Test;
 use SOUP::URI;
 
 # Port of https://github.com/GNOME/libsoup/blob/master/tests/socket-test.c
@@ -108,4 +109,35 @@ subtest 'Unconnected Socket Tests', {
       $log.reset;
     }
   }
+}
+
+subtest 'File descriptor client tests', {
+  my $server = SOUP::Test::Server.new;
+  my $uri = $server.get-uri;
+  my $gsock = GIO::Socket.new(G_SOCKET_FAMILY_IPV4, G_SOCKET_TYPE_STREAM);
+  nok $ERROR,                                            'No error detected when creating socket';
+
+  my $gaddr = GIO::InetSocketAddress.new-from-string('127.0.0.1', $uri.port);
+  $gsock.connect($gaddr);
+  nok $ERROR,                                            'No error detected when connecting socket';
+  ok $gsock.is-connected,                                'Socket is commected';
+
+  my $local-gaddr = $gsock.local-address;
+  nok $ERROR,                                            'No error detected when retrieving socket\'s local address';
+
+  my $sock = SOUP::Socket.new( fd => $gsock.fd );
+  nok $ERROR,                                            'No error detected when creating a SoupSocket';
+  ok  $sock,                                             'Created SoupSocket is defined';
+  is  $sock.fd,           $gsock.fd,                     'SoupSocket and Socket have the same file descriptor';
+  nok $sock.is-server,                                   'SoupSocket is not a server';
+  ok  $sock.is-connected,                                'SoupSocket is connected';
+
+  my ($local, $remote) = ($sock.local-address, $sock.remote-address);
+  is  $local.physical,    '127.0.0.1',                   'SoupSocket local address is 127.0.0.1';
+  is  $remote.physical,   '127.0.0.1',                   'SoupSocket remote address is 127.0.0.1';
+  is  $local.port,        $local-gaddr.port,             'SoupSocket port is the same as regular socket\'s';
+  is  $remote.port,       $uri.port,                     'SoupSocket remote port is the same as server\'s';
+
+  .unref for $local, $remote, $gaddr, $local-gaddr, $gsock;
+  $server.quit-unref;
 }
