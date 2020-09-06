@@ -63,46 +63,52 @@ class SOUP::Socket {
   multi method new (*%options) {
     # cw: This constructor ALL CONSTRUCT-ONLY ATTRIBUTES at construction time.
     samewith(
-      'async-context'      , [//]( |%options<async-context async_context>,
-                                   GMainContext ),
-      'gsocket'            , [//]( |%options<gsocket>,  GSocket   ),
-      'iostream'           , [//]( |%options<iostream>, GIOStream ),
-      'local-address'      , [//]( |%options<local-address local_address>,
-                                   SoupAddress ),
-      'remote-address'     , [//]( |%options<remote-address remote_address>,
-                                   SoupAddress ),
-      'ssl-fallback'       , [//]( |%options<ssl-fallback ssl_fallback>,
-                                   False ),
-      'ssl-strict'         , [//]( |%options<ssl-strict ssl_strict>,
-                                   False ),
-      'use-thread-context' , [//]( |%options<
-                                      use-thread-context
-                                      use_thread_context
-                                   >,
-                                   False )
+      'async-context'      , %options<async-context>        // %options<async_context>        // GMainContext,
+      'fd'                 , %options<fd>                                                     // -1,
+      'gsocket'            , %options<gsocket>                                                // GSocket,
+      'ipv6-only'          , %options<ipv6-only>            // %options<ipv6_only>            // False,
+      'iostream'           , %options<iostream>                                               // GIOStream,
+      'local-address'      , %options<local-address>        // %options<local_address>        // SoupAddress,
+      'non-blocking'       , %options<non-blocking>         // %options<non_blocking>         // True,
+      'remote-address'     , %options<remote-address>       // %options<remote_address>       // SoupAddress,
+      'ssl-creds'          , %options<ssl-creds>            // %options<ssl_creds>            // gpointer,
+      'ssl-fallback'       , %options<ssl-fallback>         // %options<ssl_fallback>         // False,
+      'ssl-strict'         , %options<ssl-strict>           // %options<ssl_strict>           // False,
+      'timeout'            , %options<timeout>                                                // 0,
+      'use-thread-context' , %options<use-thread-context>   // %options<use_thread_context>   // False
     );
   }
   # cw: PLEASE USE THE ABOVE multi. This constructor IS NOT INTENDED TO BE
   #     CLIENT FACING!
   multi method new(
-    'async-context',        GMainContext()    $async-context,
-    'gsocket',              GSocket()         $gsocket,
-    'iostream',             GIOStream()       $iostream,
-    'local-address',        SoupAddress()     $local-addr,
-    'remote-address',       SoupAddress()     $remote-addr,
-    'ssl-fallback',         Int()             $fallback,
-    'ssl-strict',           Int()             $strict,
-    'use-thread-context',   Int()             $use-thread-context
+    'async-context',        GMainContext()       $async-context,
+    'fd',                   Int()                $fd,
+    'gsocket',              GSocket()            $gsocket,
+    'ipv6-only',            Int()                $ipv6-only,
+    'iostream',             GIOStream()          $iostream,
+    'local-address',        SoupAddress()        $local-addr,
+    'non-blocking',         Int()                $non-blocking,
+    'remote-address',       SoupAddress()        $remote-addr,
+    'ssl-creds',            gpointer             $ssl-creds,
+    'ssl-fallback',         Int()                $fallback,
+    'ssl-strict',           Int()                $strict,
+    'timeout',              Int()                $timeout,
+    'use-thread-context',   Int()                $use-thread-context
   ) {
     my $socket = soup_socket_new(
-      'async-context'     , $async-context  // GMainContext,
-      'gsocket'           , $gsocket        // GSocket,
-      'iostream'          , $iostream       // GIOStream,
-      'local-address'     , $local-addr     // SoupAddress,
-      'remote-address'    , $remote-addr    // SoupAddress,
-      'ssl-fallback'      , $fallback.so.Int,
-      'ssl-strict'        , $strict.so.Int,
-      'use-thread-context', $use-thread-context.so.Int,
+      'async-context'      , $async-context              // GMainContext,
+      'fd'                 , $fd                         // -1,
+      'gsocket'            , $gsocket                    // GSocket,
+      'ipv6-only'          , $ipv6-only                  // False,
+      'iostream'           , $iostream                   // GIOStream,
+      'local-address'      , $local-addr                 // SoupAddress,
+      'non-blocking'       , $non-blocking               // True,
+      'remote-address'     , $remote-addr                // SoupAddress,
+      'ssl-creds'          , $ssl-creds                  // Pointer,
+      'ssl-fallback'       , $fallback.so.Int,
+      'ssl-strict'         , $strict.so.Int,
+      'timeout'            , $timeout,
+      'use-thread-context' , $use-thread-context.so.Int,
       Str
     );
 

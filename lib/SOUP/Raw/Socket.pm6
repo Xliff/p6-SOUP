@@ -77,13 +77,18 @@ sub soup_socket_listen (SoupSocket $sock)
 
 sub soup_socket_new(
   Str, GMainContext,
+  Str, gint,
   Str, GSocket,
+  Str, guint,
   Str, GIOStream,
   Str, SoupAddress,
+  Str, guint,
   Str, SoupAddress,
-  Str, gboolean,
-  Str, gboolean,
-  Str, gboolean,
+  Str, gpointer,
+  Str, guint,
+  Str, guint,
+  Str, guint,
+  Str, guint,
   Str
 )
   returns SoupSocket
