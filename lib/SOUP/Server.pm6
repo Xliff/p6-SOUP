@@ -482,7 +482,7 @@ class SOUP::Server {
   }
 
   method listen_local (
-    Int() $port,
+    Int() $port                    = 0,
     Int() $options                 = 0,
     CArray[Pointer[GError]] $error = gerror
   )
