@@ -10,6 +10,7 @@ use GIO::Raw::TlsBackend;
 use GLib::Env;
 use GLib::Cond;
 use GLib::Mutex;
+use GLib::Source;
 use GLib::Utils;
 use SOUP::Buffer;
 use SOUP::Server;
@@ -269,10 +270,70 @@ class SOUP::Test::Server is SOUP::Server {
 
   method get_uri (Str() $scheme, Str() $host) is also<get-uri> {
     # soup_test_server_get_uri(self.SoupServer, $scheme, $host);
+
+    my $uri;
+    return $uri if $uri = self.find_server_uri($scheme, $host);
+
+    if $!server.get-data('MainLoop') -> $loop {
+      my ($context, $m, $c) = ($loop.context, GLib::Mutex.new, GLib::Cond.new);
+
+      $m.lock;
+      my $s = self;
+      SOUP::Source.add_completion($context, -> $ --> gboolean {
+        $uri = $s.add_listener($scheme, $host);
+        $m.lock;
+        $c.signal;
+        $m.unlock;
+        0;
+      });
+
+      $c.wait($m) while $uri.not;
+      $m.unlock;
+      $m.clear;
+      $c.clear;
+    } else {
+      $uri = self.add_listener($scheme, $host);
+    }
+
+    $uri;
+  }
+
+  method disconnect_and_wait (GLib::MainContext $context = GLib::MainContext) {
+    my $done = False;
+
+    my $source = GLib::Source::Idle.new;
+    $source.set_priority(G_PRIORITY_LOW);
+    $source.set_callback(-> $ --> gboolean { $done = True; 0 });
+    $source.attach($context // GMainContext);
+    $source.unref;
+    $!server.disconnect;
+
+    $context.iteration while $done.not;
   }
 
   method quit_unref is also<quit-unref> {
     # soup_test_server_quit_unref(self.SoupServer);
+
+    if $!server.get-data('thread') -> $thread {
+      my $loop    = $!server.get-data('MainLoop');
+      my $context = $loop.context;
+
+      $context.ref;
+      my $s = self;
+      SOUP::Source.add_completion($context, -> $ --> gboolean {
+        $s.disconnect_and_wait($context);
+        $loop.quit;
+        0;
+      });
+      $context.unref;
+      $thread.join;
+    } else {
+      self.disconnect_and_wait;
+    }
+
+    my $s-rc = $!server.ref_count;
+    $!server.unref;
+    $s-rc;
   }
 
 }
