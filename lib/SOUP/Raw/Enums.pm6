@@ -391,21 +391,3 @@ our enum SoupTestServerOptionsEnum is export (
   SOUP_TEST_SERVER_IN_THREAD           => (1 +< 0),
   SOUP_TEST_SERVER_NO_DEFAULT_LISTENER => (1 +< 1),
 );
-
-constant SoupTestRequestFlags is export := guint32;
-our enum SoupTestRequestFlagsEnums (
-  SOUP_TEST_REQUEST_NONE                     => 0,
-  SOUP_TEST_REQUEST_CANCEL_MESSAGE           => 1,
-  SOUP_TEST_REQUEST_CANCEL_CANCELLABLE       => (1 +< 1),
-  SOUP_TEST_REQUEST_CANCEL_SOON              => (1 +< 2),
-  SOUP_TEST_REQUEST_CANCEL_IMMEDIATE         => (1 +< 3),
-  SOUP_TEST_REQUEST_CANCEL_PREEMPTIVE        => (1 +< 4),
-  SOUP_TEST_REQUEST_CANCEL_AFTER_SEND_FINISH => (1 +< 5),
-);
-
-constant SoupTestServerOptions is export := guint32;
-enum SoupTestServerOptionsEnum (
-  SOUP_TEST_SERVER_DEFAULT             => 0,
-  SOUP_TEST_SERVER_IN_THREAD           => 1,
-  SOUP_TEST_SERVER_NO_DEFAULT_LISTENER => (1 +< 1)
-);
