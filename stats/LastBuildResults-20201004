@@ -1,0 +1,2083 @@
+Dependency Generation
+=====================
+real 0.74
+user 1.14
+sys 0.04
+ === GIO::DBus::Raw::Types ===
+Stage start      :   0.000
+Stage parse      :   1.478
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.012
+Stage moar       :   0.000
+ === GIO::FilterInputStream ===
+Stage start      :   0.000
+Stage parse      :   1.701
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.010
+Stage moar       :   0.000
+ === GIO::InputStream ===
+Stage start      :   0.000
+Stage parse      :   1.715
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Raw::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.411
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Enums ===
+Stage start      :   0.000
+Stage parse      :   1.299
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Exports ===
+Stage start      :   0.000
+Stage parse      :   1.173
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIO::Raw::Quarks ===
+Stage start      :   0.000
+Stage parse      :   1.450
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Structs ===
+Stage start      :   0.000
+Stage parse      :   1.414
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Subs ===
+Stage start      :   0.000
+Stage parse      :   1.466
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::TlsBackend ===
+Stage start      :   0.000
+Stage parse      :   1.592
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Roles::GFile ===
+Stage start      :   0.000
+Stage parse      :   2.242
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.004
+Stage moar       :   0.000
+ === GIO::Roles::Initable ===
+Stage start      :   0.000
+Stage parse      :   1.533
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Roles::PollableInputStream ===
+Stage start      :   0.000
+Stage parse      :   1.570
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Roles::ProxyResolver ===
+Stage start      :   0.000
+Stage parse      :   1.539
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Roles::SocketConnectable ===
+Stage start      :   0.000
+Stage parse      :   1.677
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Socket ===
+Stage start      :   0.000
+Stage parse      :   1.862
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GIO::SocketAddress ===
+Stage start      :   0.000
+Stage parse      :   1.732
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Stream ===
+Stage start      :   0.000
+Stage parse      :   1.772
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::TlsCertificate ===
+Stage start      :   0.000
+Stage parse      :   1.813
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Bytes ===
+Stage start      :   0.000
+Stage parse      :   1.448
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Compat::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.279
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Cond ===
+Stage start      :   0.000
+Stage parse      :   1.427
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Env ===
+Stage start      :   0.000
+Stage parse      :   1.462
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::GList ===
+Stage start      :   0.000
+Stage parse      :   1.444
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::MainContext ===
+Stage start      :   0.000
+Stage parse      :   1.431
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Mutex ===
+Stage start      :   0.000
+Stage parse      :   1.433
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.288
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Enums ===
+Stage start      :   0.000
+Stage parse      :   1.326
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.006
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Raw::Exports ===
+Stage start      :   0.000
+Stage parse      :   1.191
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::ExtendedTypes ===
+Stage start      :   0.000
+Stage parse      :   1.363
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Object ===
+Stage start      :   0.000
+Stage parse      :   1.364
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Struct_Subs ===
+Stage start      :   0.000
+Stage parse      :   1.300
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Structs ===
+Stage start      :   0.000
+Stage parse      :   1.406
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Subs ===
+Stage start      :   0.000
+Stage parse      :   1.353
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::ListData ===
+Stage start      :   0.000
+Stage parse      :   1.398
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::Object ===
+Stage start      :   0.000
+Stage parse      :   1.537
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Roles::Pointers ===
+Stage start      :   0.000
+Stage parse      :   1.261
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::Signals::Generic ===
+Stage start      :   0.000
+Stage parse      :   1.434
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::StaticClass ===
+Stage start      :   0.000
+Stage parse      :   1.406
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::TypedBuffer ===
+Stage start      :   0.000
+Stage parse      :   1.443
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Source ===
+Stage start      :   0.000
+Stage parse      :   1.485
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Utils ===
+Stage start      :   0.000
+Stage parse      :   1.454
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Value ===
+Stage start      :   0.000
+Stage parse      :   1.503
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Method::Also ===
+Stage start      :   0.000
+Stage parse      :   1.199
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === NativeCall ===
+Stage start      :   0.000
+Stage parse      :   1.240
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Definitions ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.025
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.110
+    Stage mbc        :   0.006
+Stage parse      :   3.455
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::Enums ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.806
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.028
+    Stage mast       :   0.264
+    Stage mbc        :   0.029
+Stage parse      :   4.394
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === SOUP::Raw::Address ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Address.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.570
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.008
+    Stage mast       :   0.078
+    Stage mbc        :   0.028
+Stage parse      :   4.001
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Auth ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Auth.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.752
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.091
+    Stage mbc        :   0.029
+Stage parse      :   4.181
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::AuthDomain ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/AuthDomain.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.071
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.066
+    Stage mbc        :   0.016
+Stage parse      :   3.441
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Cache ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Cache.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.870
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.054
+    Stage mbc        :   0.050
+Stage parse      :   3.264
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Cookie ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Cookie.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.346
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.126
+    Stage mbc        :   0.054
+Stage parse      :   4.844
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::CookieJar ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/CookieJar.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.686
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.084
+    Stage mbc        :   0.032
+Stage parse      :   4.121
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Date ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Date.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.662
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.074
+    Stage mbc        :   0.033
+Stage parse      :   4.098
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Logger ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Logger.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.821
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.054
+    Stage mbc        :   0.011
+Stage parse      :   3.180
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Message ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Message.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.327
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.144
+    Stage mbc        :   0.086
+Stage parse      :   5.931
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::MessageBody ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MessageBody.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.725
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.089
+    Stage mbc        :   0.065
+Stage parse      :   4.212
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::MessageHeaders ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MessageHeaders.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.200
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.142
+    Stage mbc        :   0.047
+Stage parse      :   4.744
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::Misc ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Misc.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.832
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.051
+    Stage mbc        :   0.013
+Stage parse      :   3.203
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Multipart ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Multipart.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.944
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.063
+    Stage mbc        :   0.010
+Stage parse      :   3.334
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::MultipartInputStream ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MultipartInputStream.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.007
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.065
+    Stage mbc        :   0.010
+Stage parse      :   3.384
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Request ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Request.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.133
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.057
+    Stage mbc        :   0.020
+Stage parse      :   3.506
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Server ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Server.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.866
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.144
+    Stage mbc        :   0.070
+Stage parse      :   5.484
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::Session ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Session.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.440
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.033
+    Stage mast       :   0.146
+    Stage mbc        :   0.051
+Stage parse      :   4.999
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::SessionFeature ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/SessionFeature.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.679
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.003
+    Stage mast       :   0.043
+    Stage mbc        :   0.007
+Stage parse      :   3.023
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Socket ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Socket.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.628
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.082
+    Stage mbc        :   0.028
+Stage parse      :   4.087
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Test ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Test.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.769
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.117
+    Stage mbc        :   0.030
+Stage parse      :   4.235
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Exports ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Exports.pm6
+    Stage start      :   0.000
+    Stage parse      :   0.108
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.003
+    Stage mbc        :   0.002
+Stage parse      :   1.300
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Raw::Types ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.952
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.041
+    Stage mbc        :   0.003
+Stage parse      :   3.375
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.007
+Stage mast       :   0.014
+Stage mbc        :   0.009
+Stage moar       :   0.000
+ === SOUP::Raw::URI ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/URI.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.937
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.121
+    Stage mbc        :   0.037
+Stage parse      :   4.425
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === SOUP::Raw::WebsocketConnection ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/WebsocketConnection.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.820
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.090
+    Stage mbc        :   0.038
+Stage parse      :   4.307
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Roles::SessionFeature ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/SessionFeature.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.521
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.034
+    Stage mbc        :   0.010
+Adding alias in SOUP::Roles::SessionFeature for SoupSessionFeature...
+Stage parse      :   2.890
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Roles::Signals::CookieJar ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/CookieJar.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.653
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.050
+    Stage mbc        :   0.009
+Stage parse      :   3.026
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Roles::Signals::Server ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/Server.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.541
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.004
+    Stage mast       :   0.045
+    Stage mbc        :   0.004
+Stage parse      :   2.871
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Roles::Signals::Session ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/Session.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.397
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.064
+    Stage mbc        :   0.024
+Stage parse      :   3.812
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Roles::Signals::WebsocketConnection ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/WebsocketConnection.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.226
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.063
+    Stage mbc        :   0.017
+Stage parse      :   3.651
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Source ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Source.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.886
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.051
+    Stage mbc        :   0.006
+Adding alias in SOUP::Source for io-watch...
+Stage parse      :   3.280
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Roles: ((StaticClass))
+R: GLib::Roles::StaticClass
+ === SOUP::URI ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/URI.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.514
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.077
+    Stage mbc        :   0.007
+Adding alias in SOUP::URI for SoupURI...
+Stage parse      :   2.938
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::URI for new-with-base...
+Adding alias in SOUP::URI for copy-host...
+Adding alias in SOUP::URI for get-fragment...
+Adding alias in SOUP::URI for get-host...
+Adding alias in SOUP::URI for get-password...
+Adding alias in SOUP::URI for get-path...
+Adding alias in SOUP::URI for get-port...
+Adding alias in SOUP::URI for get-query...
+Adding alias in SOUP::URI for get-scheme...
+Adding alias in SOUP::URI for get-type...
+Adding alias in SOUP::URI for get-user...
+Adding alias in SOUP::URI for host-equal...
+Adding alias in SOUP::URI for host-hash...
+Adding alias in SOUP::URI for is-valid...
+Adding alias in SOUP::URI for set-fragment...
+Adding alias in SOUP::URI for set-host...
+Adding alias in SOUP::URI for set-password...
+Adding alias in SOUP::URI for set-path...
+Adding alias in SOUP::URI for set-port...
+Adding alias in SOUP::URI for set-query...
+Adding alias in SOUP::URI for set-query-from-fields...
+Adding alias in SOUP::URI for set-query-from-form...
+Adding alias in SOUP::URI for set-scheme...
+Adding alias in SOUP::URI for set-user...
+Adding alias in SOUP::URI for to-string...
+Adding alias in SOUP::URI for uses-default-port...
+Roles: ()
+ === SOUP::WebsocketConnection ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/WebsocketConnection.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.632
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.072
+    Stage mbc        :   0.010
+Stage parse      :   4.150
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Address ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Address.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.640
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.082
+    Stage mbc        :   0.017
+Adding alias in SOUP::Address for SoupAddress...
+Stage parse      :   4.167
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Address for new-any...
+Adding alias in SOUP::Address for new-from-sockaddr...
+Adding alias in SOUP::Address for equal-by-ip...
+Adding alias in SOUP::Address for equal-by-name...
+Adding alias in SOUP::Address for get-gsockaddr...
+Adding alias in SOUP::Address for get-name...
+Adding alias in SOUP::Address for name...
+Adding alias in SOUP::Address for get-physical...
+Adding alias in SOUP::Address for physical...
+Adding alias in SOUP::Address for get-port...
+Adding alias in SOUP::Address for port...
+Adding alias in SOUP::Address for get-sockaddr...
+Adding alias in SOUP::Address for sockaddr...
+Adding alias in SOUP::Address for get-type...
+Adding alias in SOUP::Address for hash-by-ip...
+Adding alias in SOUP::Address for hash-by-name...
+Adding alias in SOUP::Address for is-resolved...
+Adding alias in SOUP::Address for resolve-async...
+Adding alias in SOUP::Address for resolve-sync...
+Roles: ((Object) (SocketConnectable))
+R: GLib::Roles::Object
+R: GIO::Roles::SocketConnectable
+ === SOUP::Auth ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Auth.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.335
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.070
+    Stage mbc        :   0.010
+Adding alias in SOUP::Auth for basic-get-type...
+Stage parse      :   3.801
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Auth for can-authenticate...
+Adding alias in SOUP::Auth for digest-get-type...
+Adding alias in SOUP::Auth for free-protection-space...
+Adding alias in SOUP::Auth for get-authorization...
+Adding alias in SOUP::Auth for get-host...
+Adding alias in SOUP::Auth for get-info...
+Adding alias in SOUP::Auth for info...
+Adding alias in SOUP::Auth for get-protection-space...
+Adding alias in SOUP::Auth for get-realm...
+Adding alias in SOUP::Auth for get-saved-password...
+Adding alias in SOUP::Auth for get-saved-users...
+Adding alias in SOUP::Auth for get-scheme-name...
+Adding alias in SOUP::Auth for scheme_name...
+Adding alias in SOUP::Auth for scheme-name...
+Adding alias in SOUP::Auth for has-saved-password...
+Adding alias in SOUP::Auth for is-authenticated...
+Adding alias in SOUP::Auth for get-is-for-proxy...
+Adding alias in SOUP::Auth for is-ready...
+Adding alias in SOUP::Auth for negotiate-get-type...
+Adding alias in SOUP::Auth for negotiate-supported...
+Adding alias in SOUP::Auth for ntlm-get-type...
+Adding alias in SOUP::Auth for save-password...
+Roles: ((Object))
+R: GLib::Roles::Object
+ === SOUP::AuthDomain ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.250
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.071
+    Stage mbc        :   0.008
+Adding alias in SOUP::AuthDomain for SoupAuthDomain...
+Stage parse      :   3.756
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::AuthDomain for add_path...
+Adding alias in SOUP::AuthDomain for filter_data...
+Adding alias in SOUP::AuthDomain for generic_auth_callback...
+Adding alias in SOUP::AuthDomain for generic_auth_data...
+Adding alias in SOUP::AuthDomain for remove_path...
+Adding alias in SOUP::AuthDomain for add-path-to...
+Adding alias in SOUP::AuthDomain for check-password...
+Adding alias in SOUP::AuthDomain for get-realm...
+Adding alias in SOUP::AuthDomain for get-type...
+Adding alias in SOUP::AuthDomain for remove-path-from...
+Adding alias in SOUP::AuthDomain for set-filter...
+Adding alias in SOUP::AuthDomain for set-generic-auth-callback...
+Adding alias in SOUP::AuthDomain for try-generic-auth-callback...
+Roles: ((Object))
+R: GLib::Roles::Object
+ === SOUP::AuthDomain::Basic ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain/Basic.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.962
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.067
+    Stage mbc        :   0.013
+Adding alias in SOUP::AuthDomain::Basic for SoupAuthDomainBasic...
+Stage parse      :   3.437
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::AuthDomain::Basic for auth_callback...
+Adding alias in SOUP::AuthDomain::Basic for auth_data...
+Adding alias in SOUP::AuthDomain::Basic for get-type...
+Adding alias in SOUP::AuthDomain::Basic for set-auth-callback...
+Roles: ()
+ === SOUP::AuthDomain::Digest ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain/Digest.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.040
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.070
+    Stage mbc        :   0.015
+Adding alias in SOUP::AuthDomain::digest for SoupAuthDomainDigest...
+Stage parse      :   3.518
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::AuthDomain::digest for auth_callback...
+Adding alias in SOUP::AuthDomain::digest for auth_data...
+Adding alias in SOUP::AuthDomain::digest for get-type...
+Adding alias in SOUP::AuthDomain::digest for set-auth-callback...
+Roles: ()
+ === SOUP::AuthManager ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthManager.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.474
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.064
+    Stage mbc        :   0.015
+Adding alias in SOUP::AuthManager for SoupAuthManager...
+Stage parse      :   3.935
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::AuthManager for clear-cached-credentials...
+Adding alias in SOUP::AuthManager for get-type...
+Adding alias in SOUP::AuthManager for use-auth...
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::Buffer ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Buffer.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.953
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.097
+    Stage mbc        :   0.007
+Adding alias in SOUP::Buffer for SoupBuffer...
+Stage parse      :   3.387
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Buffer for new-subbuffer...
+Adding alias in SOUP::Buffer for new-take...
+Adding alias in SOUP::Buffer for new-with-owner...
+Adding alias in SOUP::Buffer for get-as-bytes...
+Adding alias in SOUP::Buffer for get-data...
+Adding alias in SOUP::Buffer for data...
+Adding alias in SOUP::Buffer for get-owner...
+Adding alias in SOUP::Buffer for get-type...
+Roles: ()
+ === SOUP::Cache ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Cache.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.224
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.053
+    Stage mbc        :   0.006
+Adding alias in SOUP::Cache for SoupCache...
+Stage parse      :   3.667
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Cache for cache_dir...
+Adding alias in SOUP::Cache for cache_type...
+Adding alias in SOUP::Cache for get-max-size...
+Adding alias in SOUP::Cache for get-type...
+Adding alias in SOUP::Cache for set-max-size...
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::ContentDecoder ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/ContentDecoder.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.231
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.040
+    Stage mbc        :   0.009
+Adding alias in SOUP::ContentDecoder for SoupContentDecoder...
+Stage parse      :   3.659
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::ContentDecoder for get-type...
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::ContentSniffer ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/ContentSniffer.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.451
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.009
+    Stage mast       :   0.122
+    Stage mbc        :   0.019
+Adding alias in SOUP::ContentSniffer for SoupContentSniffer...
+Stage parse      :   3.997
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::CookieJar ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/CookieJar.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.463
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.099
+    Stage mbc        :   0.012
+Adding alias in SOUP::CookieJar for SoupCookieJar...
+Stage parse      :   3.987
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::CookieJar for accept_policy...
+Adding alias in SOUP::CookieJar for read_only...
+Adding alias in SOUP::CookieJar for add-cookie...
+Adding alias in SOUP::CookieJar for add-cookie-full...
+Adding alias in SOUP::CookieJar for add-cookie-with-first-party...
+Adding alias in SOUP::CookieJar for all-cookies...
+Adding alias in SOUP::CookieJar for delete-cookie...
+Adding alias in SOUP::CookieJar for get-accept-policy...
+Adding alias in SOUP::CookieJar for get-cookie-list...
+Adding alias in SOUP::CookieJar for get-cookie-list-with-same-site-info...
+Adding alias in SOUP::CookieJar for get-cookies...
+Adding alias in SOUP::CookieJar for get-type...
+Adding alias in SOUP::CookieJar for is-persistent...
+Adding alias in SOUP::CookieJar for set-accept-policy...
+Adding alias in SOUP::CookieJar for set-cookie...
+Adding alias in SOUP::CookieJar for set-cookie-with-first-party...
+Roles: ((Object) (SessionFeature) (CookieJar))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+R: SOUP::Roles::Signals::CookieJar
+Adding alias in SOUP::CookieJar::DB for SoupCookieJarDB...
+Roles: ((Common))
+R: SOUP::CookieJar::Child::Common
+Adding alias in SOUP::CookieJar::Text for SoupCookieJarText...
+ === SOUP::Date ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Date.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.990
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.081
+    Stage mbc        :   0.008
+Adding alias in SOUP::Date for new-from-now...
+Stage parse      :   3.484
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Date for new-from-string...
+Adding alias in SOUP::Date for new-from-time-t...
+Adding alias in SOUP::Date for get-day...
+Adding alias in SOUP::Date for get-hour...
+Adding alias in SOUP::Date for get-minute...
+Adding alias in SOUP::Date for get-month...
+Adding alias in SOUP::Date for get-offset...
+Adding alias in SOUP::Date for get-second...
+Adding alias in SOUP::Date for get-type...
+Adding alias in SOUP::Date for get-utc...
+Adding alias in SOUP::Date for get-year...
+Adding alias in SOUP::Date for is-past...
+Adding alias in SOUP::Date for to-string...
+Adding alias in SOUP::Date for to-time-t...
+Adding alias in SOUP::Date for epoch...
+Adding alias in SOUP::Date for posix...
+Adding alias in SOUP::Date for Int...
+Adding alias in SOUP::Date for to-timeval...
+Roles: ()
+ === SOUP::Logger ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Logger.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.219
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.050
+    Stage mbc        :   0.006
+Adding alias in SOUP::Logger for SoupLogger...
+Stage parse      :   3.644
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Logger for get-type...
+Adding alias in SOUP::Logger for set-printer...
+Adding alias in SOUP::Logger for set-request-filter...
+Adding alias in SOUP::Logger for set-response-filter...
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::MessageBody ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/MessageBody.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.944
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.082
+    Stage mast       :   0.083
+    Stage mbc        :   0.007
+Adding alias in SOUP::MessageBody for SoupMessageBody...
+Stage parse      :   3.442
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::MessageBody for append-buffer...
+Adding alias in SOUP::MessageBody for append-take...
+Adding alias in SOUP::MessageBody for get-accumulate...
+Adding alias in SOUP::MessageBody for get-chunk...
+Adding alias in SOUP::MessageBody for got-chunk...
+Adding alias in SOUP::MessageBody for get-type...
+Adding alias in SOUP::MessageBody for set-accumulate...
+Adding alias in SOUP::MessageBody for wrote-chunk...
+Roles: ()
+ === SOUP::MessageHeaders ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/MessageHeaders.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.709
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.042
+    Stage mast       :   0.086
+    Stage mbc        :   0.006
+Adding alias in SOUP::MessageHeaders for SoupMessageHeaders...
+Stage parse      :   3.152
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::MessageHeaders for clean-connection-headers...
+Adding alias in SOUP::MessageHeaders for free-ranges...
+Adding alias in SOUP::MessageHeaders for get-content-disposition...
+Adding alias in SOUP::MessageHeaders for get-content-length...
+Adding alias in SOUP::MessageHeaders for get-content-range...
+Adding alias in SOUP::MessageHeaders for get-content-type...
+Adding alias in SOUP::MessageHeaders for get-encoding...
+Adding alias in SOUP::MessageHeaders for get-expectations...
+Adding alias in SOUP::MessageHeaders for get-headers-type...
+Adding alias in SOUP::MessageHeaders for get-iter...
+Adding alias in SOUP::MessageHeaders for iter...
+Adding alias in SOUP::MessageHeaders for get-list...
+Adding alias in SOUP::MessageHeaders for get-one...
+Adding alias in SOUP::MessageHeaders for get-ranges...
+Adding alias in SOUP::MessageHeaders for get-type...
+Adding alias in SOUP::MessageHeaders for header-contains...
+Adding alias in SOUP::MessageHeaders for header-equals...
+Adding alias in SOUP::MessageHeaders for set-content-disposition...
+Adding alias in SOUP::MessageHeaders for set-content-length...
+Adding alias in SOUP::MessageHeaders for set-content-range...
+Adding alias in SOUP::MessageHeaders for set-content-type...
+Adding alias in SOUP::MessageHeaders for set-encoding...
+Adding alias in SOUP::MessageHeaders for set-expectations...
+Adding alias in SOUP::MessageHeaders for set-range...
+Adding alias in SOUP::MessageHeaders for set-ranges...
+Roles: ()
+Adding alias in SOUP::MessageHeaders::Iter for SoupMessageHeadersIter...
+ === SOUP::Multipart ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Multipart.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.504
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.044
+    Stage mbc        :   0.009
+Adding alias in SOUP::Multipart for SoupMultipart...
+Stage parse      :   2.905
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Multipart for new-from-message...
+Adding alias in SOUP::Multipart for append-form-file...
+Adding alias in SOUP::Multipart for append-form-string...
+Adding alias in SOUP::Multipart for append-part...
+Adding alias in SOUP::Multipart for get-length...
+Adding alias in SOUP::Multipart for elems...
+Adding alias in SOUP::Multipart for get-part...
+Adding alias in SOUP::Multipart for get-type...
+Adding alias in SOUP::Multipart for to-message...
+Roles: ()
+ === SOUP::ProxyResolverDefault ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/ProxyResolverDefault.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.534
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.047
+    Stage mbc        :   0.010
+Adding alias in SOUP::ProxyResolverDefault for SoupProxyResolverDefault...
+Stage parse      :   3.996
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Roles: ((Object) (SessionFeature))
+R: GLib::Roles::Object
+R: SOUP::Roles::SessionFeature
+ === SOUP::Request ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.643
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.078
+    Stage mbc        :   0.017
+Adding alias in SOUP::Request for SoupRequest...
+Stage parse      :   4.130
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Request for new-initable...
+Adding alias in SOUP::Request for get-content-length...
+Adding alias in SOUP::Request for content_length...
+Adding alias in SOUP::Request for content-length...
+Adding alias in SOUP::Request for get-content-type...
+Adding alias in SOUP::Request for content_type...
+Adding alias in SOUP::Request for content-type...
+Adding alias in SOUP::Request for get-session...
+Adding alias in SOUP::Request for session...
+Adding alias in SOUP::Request for get-type...
+Adding alias in SOUP::Request for get-uri...
+Adding alias in SOUP::Request for uri...
+Adding alias in SOUP::Request for send-async...
+Adding alias in SOUP::Request for send-finish...
+Roles: ((Object) (Initable))
+R: GLib::Roles::Object
+R: GIO::Roles::Initable
+ === SOUP::Request::Data ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/Data.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.647
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.041
+    Stage mbc        :   0.010
+Adding alias in SOUP::Request::Data for SoupRequestData...
+Stage parse      :   3.118
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Request::Data for get-type...
+Roles: ()
+ === SOUP::Request::File ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/File.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.385
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.059
+    Stage mbc        :   0.025
+Adding alias in SOUP::Request::File for SoupRequestFile...
+Stage parse      :   5.108
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Request::File for get-file...
+Adding alias in SOUP::Request::File for file...
+Adding alias in SOUP::Request::File for get-type...
+Roles: ()
+ === SOUP::Socket ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Socket.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.464
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.039
+    Stage mast       :   0.144
+    Stage mbc        :   0.017
+Adding alias in SOUP::Socket for SoupSocket...
+Stage parse      :   5.211
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Socket for new-initable...
+Adding alias in SOUP::Socket for async_context...
+Adding alias in SOUP::Socket for ipv6_only...
+Adding alias in SOUP::Socket for is_server...
+Adding alias in SOUP::Socket for local_address...
+Adding alias in SOUP::Socket for non_blocking...
+Adding alias in SOUP::Socket for remote_address...
+Adding alias in SOUP::Socket for ssl_creds...
+Adding alias in SOUP::Socket for ssl_fallback...
+Adding alias in SOUP::Socket for ssl_strict...
+Adding alias in SOUP::Socket for tls_certificate...
+Adding alias in SOUP::Socket for tls_errors...
+Adding alias in SOUP::Socket for trusted_certificate...
+Adding alias in SOUP::Socket for use_thread_context...
+Adding alias in SOUP::Socket for new_connection...
+Adding alias in SOUP::Socket for connect-async...
+Adding alias in SOUP::Socket for connect-sync...
+Adding alias in SOUP::Socket for get-fd...
+Adding alias in SOUP::Socket for get-local-address...
+Adding alias in SOUP::Socket for get-remote-address...
+Adding alias in SOUP::Socket for get-type...
+Adding alias in SOUP::Socket for is-connected...
+Adding alias in SOUP::Socket for is-ssl...
+Adding alias in SOUP::Socket for read-until...
+Adding alias in SOUP::Socket for start-proxy-ssl...
+Adding alias in SOUP::Socket for start-ssl...
+Roles: ((Object) (Initable))
+R: GLib::Roles::Object
+R: GIO::Roles::Initable
+ === SOUP::ClientContext ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/ClientContext.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.948
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.008
+    Stage mast       :   0.052
+    Stage mbc        :   0.012
+Stage parse      :   4.562
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === SOUP::Cookie ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Cookie.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.021
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.162
+    Stage mbc        :   0.008
+Adding alias in SOUP::Cookie for SoupCookie...
+Stage parse      :   3.533
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.010
+Stage moar       :   0.000
+Adding alias in SOUP::Cookie for http-only...
+Adding alias in SOUP::Cookie for max-age...
+Adding alias in SOUP::Cookie for same-site-policy...
+Adding alias in SOUP::Cookie for applies-to-uri...
+Adding alias in SOUP::Cookie for domain-matches...
+Adding alias in SOUP::Cookie for get-domain...
+Adding alias in SOUP::Cookie for get-expires...
+Adding alias in SOUP::Cookie for get-http-only...
+Adding alias in SOUP::Cookie for get-name...
+Adding alias in SOUP::Cookie for get-path...
+Adding alias in SOUP::Cookie for get-same-site-policy...
+Adding alias in SOUP::Cookie for get-secure...
+Adding alias in SOUP::Cookie for get-type...
+Adding alias in SOUP::Cookie for get-value...
+Adding alias in SOUP::Cookie for set-domain...
+Adding alias in SOUP::Cookie for set-expires...
+Adding alias in SOUP::Cookie for set-http-only...
+Adding alias in SOUP::Cookie for set-max-age...
+Adding alias in SOUP::Cookie for set-name...
+Adding alias in SOUP::Cookie for set-path...
+Adding alias in SOUP::Cookie for set-same-site-policy...
+Adding alias in SOUP::Cookie for set-secure...
+Adding alias in SOUP::Cookie for set-value...
+Adding alias in SOUP::Cookie for to-cookie-header...
+Adding alias in SOUP::Cookie for to-set-cookie-header...
+Roles: ()
+Adding alias in SOUP::Cookies for from-request...
+Adding alias in SOUP::Cookies for from-response...
+Adding alias in SOUP::Cookies for to-cookie-header...
+Adding alias in SOUP::Cookies for to-request...
+Adding alias in SOUP::Cookies for to-response...
+Roles: ((StaticClass))
+R: GLib::Roles::StaticClass
+ === SOUP::Message ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Message.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.649
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.081
+    Stage mast       :   0.130
+    Stage mbc        :   0.012
+Adding alias in SOUP::Message for SoupMessage...
+Stage parse      :   4.284
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Message for new-from-uri...
+Adding alias in SOUP::Message for first_party...
+Adding alias in SOUP::Message for http_version...
+Adding alias in SOUP::Message for reason_phrase...
+Adding alias in SOUP::Message for request_body...
+Adding alias in SOUP::Message for request_body_data...
+Adding alias in SOUP::Message for request_headers...
+Adding alias in SOUP::Message for response_body...
+Adding alias in SOUP::Message for response_body_data...
+Adding alias in SOUP::Message for response_headers...
+Adding alias in SOUP::Message for server_side...
+Adding alias in SOUP::Message for status_code...
+Adding alias in SOUP::Message for tls_certificate...
+Adding alias in SOUP::Message for tls_errors...
+Adding alias in SOUP::Message for content_sniffed...
+Adding alias in SOUP::Message for got_body...
+Adding alias in SOUP::Message for got_chunk...
+Adding alias in SOUP::Message for got_headers...
+Adding alias in SOUP::Message for got_informational...
+Adding alias in SOUP::Message for network_event...
+Adding alias in SOUP::Message for wrote_body...
+Adding alias in SOUP::Message for wrote_body_data...
+Adding alias in SOUP::Message for wrote_chunk...
+Adding alias in SOUP::Message for wrote_headers...
+Adding alias in SOUP::Message for wrote_informational...
+Adding alias in SOUP::Message for add-header-handler...
+Adding alias in SOUP::Message for add-status-code-handler...
+Adding alias in SOUP::Message for emit-content-sniffed...
+Adding alias in SOUP::Message for disable-feature...
+Adding alias in SOUP::Message for emit_finished...
+Adding alias in SOUP::Message for get-address...
+Adding alias in SOUP::Message for get-first-party...
+Adding alias in SOUP::Message for get-flags...
+Adding alias in SOUP::Message for get-http-version...
+Adding alias in SOUP::Message for get-https-status...
+Adding alias in SOUP::Message for get-is-top-level-navigation...
+Adding alias in SOUP::Message for get-priority...
+Adding alias in SOUP::Message for get-site-for-cookies...
+Adding alias in SOUP::Message for get-soup-request...
+Adding alias in SOUP::Message for get-type...
+Adding alias in SOUP::Message for get-uri...
+Adding alias in SOUP::Message for emit-got-body...
+Adding alias in SOUP::Message for emit-got-chunk...
+Adding alias in SOUP::Message for emit-got-headers...
+Adding alias in SOUP::Message for emit-got-informational...
+Adding alias in SOUP::Message for is-keepalive...
+Adding alias in SOUP::Message for emit_restarted...
+Adding alias in SOUP::Message for set-chunk-allocator...
+Adding alias in SOUP::Message for set-first-party...
+Adding alias in SOUP::Message for set-flags...
+Adding alias in SOUP::Message for set-http-version...
+Adding alias in SOUP::Message for set-is-top-level-navigation...
+Adding alias in SOUP::Message for set-priority...
+Adding alias in SOUP::Message for set-redirect...
+Adding alias in SOUP::Message for set-request...
+Adding alias in SOUP::Message for set-response...
+Adding alias in SOUP::Message for set-site-for-cookies...
+Adding alias in SOUP::Message for set-status...
+Adding alias in SOUP::Message for set-status-full...
+Adding alias in SOUP::Message for set-uri...
+Adding alias in SOUP::Message for emit-starting...
+Adding alias in SOUP::Message for emit-wrote-body...
+Adding alias in SOUP::Message for emit-wrote-body-data...
+Adding alias in SOUP::Message for emit-wrote-chunk...
+Adding alias in SOUP::Message for emit-wrote-headers...
+Adding alias in SOUP::Message for emit-wrote-informational...
+Roles: ((Object))
+R: GLib::Roles::Object
+ === SOUP::MultipartInputStream ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/MultipartInputStream.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.701
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.073
+    Stage mbc        :   0.012
+Adding alias in SOUP::MultipartInputStream for SoupMultipartInputStream...
+Stage parse      :   4.225
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::MultipartInputStream for get-headers...
+Adding alias in SOUP::MultipartInputStream for get-type...
+Adding alias in SOUP::MultipartInputStream for next-part...
+Adding alias in SOUP::MultipartInputStream for next-part-async...
+Adding alias in SOUP::MultipartInputStream for next-part-finish...
+Roles: ((PollableInputStream))
+R: GIO::Roles::PollableInputStream
+ === SOUP::Request::HTTP ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/HTTP.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.831
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.052
+    Stage mbc        :   0.017
+Adding alias in SOUP::Request::HTTP for SoupRequestHTTP...
+Stage parse      :   3.375
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Request::HTTP for get-type...
+Adding alias in SOUP::Request::HTTP for get-message...
+Adding alias in SOUP::Request::HTTP for message...
+Roles: ()
+ === SOUP::Server ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Server.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.225
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.125
+    Stage mbc        :   0.019
+Adding alias in SOUP::Server for SoupServer...
+Stage parse      :   4.996
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Server for async_context...
+Adding alias in SOUP::Server for http_aliases...
+Adding alias in SOUP::Server for https_aliases...
+Adding alias in SOUP::Server for raw_paths...
+Adding alias in SOUP::Server for server_header...
+Adding alias in SOUP::Server for ssl_cert_file...
+Adding alias in SOUP::Server for ssl_key_file...
+Adding alias in SOUP::Server for tls_certificate...
+Adding alias in SOUP::Server for request_aborted...
+Adding alias in SOUP::Server for request_finished...
+Adding alias in SOUP::Server for request_read...
+Adding alias in SOUP::Server for request_started...
+Adding alias in SOUP::Server for accept-iostream...
+Adding alias in SOUP::Server for add-auth-domain...
+Adding alias in SOUP::Server for add-early-handler...
+Adding alias in SOUP::Server for add-handler...
+Adding alias in SOUP::Server for add-websocket-extension...
+Adding alias in SOUP::Server for add-websocket-handler...
+Adding alias in SOUP::Server for get-async-context...
+Adding alias in SOUP::Server for get-listener...
+Adding alias in SOUP::Server for get-listeners...
+Adding alias in SOUP::Server for get-port...
+Adding alias in SOUP::Server for get-type...
+Adding alias in SOUP::Server for get-uris...
+Adding alias in SOUP::Server for is-https...
+Adding alias in SOUP::Server for listen-all...
+Adding alias in SOUP::Server for listen-fd...
+Adding alias in SOUP::Server for listen-local...
+Adding alias in SOUP::Server for listen-socket...
+Adding alias in SOUP::Server for pause-message...
+Adding alias in SOUP::Server for remove-auth-domain...
+Adding alias in SOUP::Server for remove-handler...
+Adding alias in SOUP::Server for remove-websocket-extension...
+Adding alias in SOUP::Server for run-async...
+Adding alias in SOUP::Server for set-ssl-cert-file...
+Adding alias in SOUP::Server for unpause-message...
+Roles: ((Object))
+R: GLib::Roles::Object
+ === SOUP::Session ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Session.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.538
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.074
+    Stage mast       :   0.177
+    Stage mbc        :   0.012
+Adding alias in SOUP::Session for SoupSession...
+Stage parse      :   5.380
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Session for new-with-options...
+Adding alias in SOUP::Session for accept_language...
+Adding alias in SOUP::Session for accept_language_auto...
+Adding alias in SOUP::Session for add_feature...
+Adding alias in SOUP::Session for add_feature_by_type...
+Adding alias in SOUP::Session for async_context...
+Adding alias in SOUP::Session for http_aliases...
+Adding alias in SOUP::Session for https_aliases...
+Adding alias in SOUP::Session for idle_timeout...
+Adding alias in SOUP::Session for local_address...
+Adding alias in SOUP::Session for max_conns...
+Adding alias in SOUP::Session for max_conns_per_host...
+Adding alias in SOUP::Session for proxy_resolver...
+Adding alias in SOUP::Session for proxy_uri...
+Adding alias in SOUP::Session for remove_feature_by_type...
+Adding alias in SOUP::Session for ssl_ca_file...
+Adding alias in SOUP::Session for ssl_strict...
+Adding alias in SOUP::Session for ssl_use_system_ca_file...
+Adding alias in SOUP::Session for tls_database...
+Adding alias in SOUP::Session for tls_interaction...
+Adding alias in SOUP::Session for use_ntlm...
+Adding alias in SOUP::Session for use_thread_context...
+Adding alias in SOUP::Session for user_agent...
+Adding alias in SOUP::Session for connection_created...
+Adding alias in SOUP::Session for request_queued...
+Adding alias in SOUP::Session for request_started...
+Adding alias in SOUP::Session for request_unqueued...
+Adding alias in SOUP::Session for do-add-feature...
+Adding alias in SOUP::Session for do-add-feature-by-type...
+Adding alias in SOUP::Session for cancel-message...
+Adding alias in SOUP::Session for get-async-context...
+Adding alias in SOUP::Session for get-feature...
+Adding alias in SOUP::Session for get-feature-for-message...
+Adding alias in SOUP::Session for get-features...
+Adding alias in SOUP::Session for get-type...
+Adding alias in SOUP::Session for has-feature...
+Adding alias in SOUP::Session for pause-message...
+Adding alias in SOUP::Session for prefetch-dns...
+Adding alias in SOUP::Session for prepare-for-uri...
+Adding alias in SOUP::Session for queue-message...
+Adding alias in SOUP::Session for redirect-message...
+Adding alias in SOUP::Session for do-remove-feature...
+Adding alias in SOUP::Session for do-remove-feature-by-type...
+Adding alias in SOUP::Session for request-http...
+Adding alias in SOUP::Session for request-http-uri...
+Adding alias in SOUP::Session for request-uri...
+Adding alias in SOUP::Session for requeue-message...
+Adding alias in SOUP::Session for send-async...
+Adding alias in SOUP::Session for send-finish...
+Adding alias in SOUP::Session for send-message...
+Adding alias in SOUP::Session for soup-request-error-quark...
+Adding alias in SOUP::Session for steal-connection...
+Adding alias in SOUP::Session for unpause-message...
+Adding alias in SOUP::Session for websocket-connect-async...
+Adding alias in SOUP::Session for websocket-connect-finish...
+Adding alias in SOUP::Session for would-redirect...
+Roles: ((Object) (Session))
+R: GLib::Roles::Object
+R: SOUP::Roles::Signals::Session
+ === SOUP::Test ===
+Stage start      :   0.000
+
+    precomp lib/SOUP/Test.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.070
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.127
+    Stage mbc        :   0.025
+Adding alias in SOUP::Test for apache-cleanup...
+Stage parse      :   5.016
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in SOUP::Test for apache-init...
+Adding alias in SOUP::Test for check-apache...
+Adding alias in SOUP::Test for debug-printf...
+Adding alias in SOUP::Test for get-index...
+Adding alias in SOUP::Test for load-resource...
+Adding alias in SOUP::Test for register-resources...
+Roles: ((StaticClass))
+R: GLib::Roles::StaticClass
+Adding alias in SOUP::Test::Request for close-stream...
+Adding alias in SOUP::Test::Request for read-all...
+Roles: ()
+Adding alias in SOUP::Test::Server for get-uri...
+Adding alias in SOUP::Test::Server for quit-unref...
+Adding alias in SOUP::Test::Session for abort-unref...
+
+real 328.70
+user 397.17
+sys 23.83
