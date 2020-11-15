@@ -7,6 +7,8 @@ use NativeCall;
 use SOUP::Raw::Types;
 use SOUP::Raw::Request;
 
+use SOUP::URI;
+
 use GLib::Roles::Object;
 use GIO::Roles::Initable;
 
@@ -51,7 +53,24 @@ class SOUP::Request {
     is also<SoupRequest>
   { $!sr }
 
-  method new (SoupRequestAncestry $request) {
+  my %attributes;
+
+  method attributes {
+    # cw: Due to use of late-binding, %attibutes initialization must be
+    #     delayed until run-time.
+    unless %attributes {
+      %attributes = (
+        session => ::('SOUP::Session').get-type,
+        uri     => SOUP::URI.get-type
+      );
+    }
+
+    state %a = %attributes.Map;
+
+    %a;
+  }
+
+  multi method new (SoupRequestAncestry $request) {
     $request ?? self.bless( :$request ) !! Nil;
   }
 
