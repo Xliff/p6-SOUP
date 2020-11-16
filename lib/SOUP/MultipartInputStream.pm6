@@ -14,8 +14,8 @@ use SOUP::MessageHeaders;
 use GIO::Roles::PollableInputStream;
 
 our subset SoupMultipartInputStreamAncestry is export of Mu
-  where SoupMultipartInputStream | GPollableInputStream |
-        FilterInputStreamAncestry;
+  where SoupMultipartInputStream    | GPollableInputStream |
+        GFilterInputStreamAncestry;
 
 class SOUP::MultipartInputStream is GIO::FilterInputStream {
   also does GIO::Roles::PollableInputStream;
@@ -47,7 +47,7 @@ class SOUP::MultipartInputStream is GIO::FilterInputStream {
         cast(SoupMultipartInputStream, $_);
       }
     }
-    self.setFilterInputStream($to-parent);
+    self.setGFilterInputStream($to-parent);
     self.roleInit-PollableInputStream unless $!pis;
   }
 
