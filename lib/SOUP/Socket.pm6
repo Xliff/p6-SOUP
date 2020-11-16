@@ -8,6 +8,8 @@ use SOUP::Raw::Types;
 use SOUP::Raw::Socket;
 
 use GLib::Value;
+use GIO::Socket;
+use GIO::Stream;
 use GIO::TlsCertificate;
 use SOUP::Address;
 
@@ -50,12 +52,35 @@ class SOUP::Socket {
     }
 
     self!setObject($to-parent);
-    self.roleInit-Initable unless $!i;
+    self.roleInit-Initable;
   }
 
   method SOUP::Raw::Definitions::SoupSocket
     is also<SoupSocket>
   { $!sock }
+
+
+  my %attributes = (
+    async-context      => G_TYPE_POINTER, #= GMainContext
+    fd                 => G_TYPE_INT,
+    gsocket            => [ 'object', GIO::Socket.get-type       ],
+    ipv6-only          => G_TYPE_BOOLEAN,
+    iostream           => [ 'object', GIO::Stream.get-type       ],
+    local-address      => [ 'object', SOUP::Address.get-type     ],
+    non-blocking       => G_TYPE_BOOLEAN,
+    remote-address     => [ 'object', SOUP::Address.get-type     ],
+    ssl-creds          => G_TYPE_POINTER,
+    ssl-fallback       => G_TYPE_BOOLEAN,
+    ssl-strict         => G_TYPE_BOOLEAN,
+    timeout            => G_TYPE_UINT,
+    use-thread-context => G_TYPE_BOOLEAN
+  );
+
+  method attributes {
+    state %a = %attributes.Map;
+
+    %a;
+  }
 
   multi method new (SoupSocketAncestry $socket) {
     $socket ?? self.bless( :$socket ) !! Nil;
@@ -80,7 +105,7 @@ class SOUP::Socket {
   }
   # cw: PLEASE USE THE ABOVE multi. This constructor IS NOT INTENDED TO BE
   #     CLIENT FACING!
-  multi method new(
+  multi method new (
     'async-context',        GMainContext()       $async-context,
     'fd',                   Int()                $fd,
     'gsocket',              GSocket()            $gsocket,
