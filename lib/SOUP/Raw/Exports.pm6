@@ -8,5 +8,6 @@ BEGIN {
   @soup-exports = <
     SOUP::Raw::Definitions
     SOUP::Raw::Enums
+    SOUP::Raw::Subs
   >;
 }
