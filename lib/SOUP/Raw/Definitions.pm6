@@ -13,6 +13,9 @@ use GLib::Roles::Pointers;
 
 unit package SOUP::Raw::Definitions;
 
+# Number of forced compiles.
+constant forced = 73;
+
 constant soup is export = 'soup-2.4',v1;
 
 constant SOUP_AUTH_DOMAIN_REALM                  is export = 'realm';
@@ -181,8 +184,14 @@ class SoupURI is repr<CStruct> is export does GLib::Roles::Pointers {
 }
 
 class SoupMessageBody is repr<CStruct> is export does GLib::Roles::Pointers {
-    has Str     $.data   is rw;
-    has goffset $.length is rw;
+    has CArray[uint8] $!data;
+    has goffset       $.length is rw;
+
+    method data is rw {
+      Proxy.new:
+        FETCH => -> $                   { $!data      },
+        STORE => -> $, CArray[uint8] \d { $!data := d };
+    }
 }
 
 class SoupMessage is repr<CStruct> is export does GLib::Roles::Pointers {
