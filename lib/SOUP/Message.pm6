@@ -27,11 +27,19 @@ class SOUP::Message {
   }
 
   method setSoupMessage (SoupMessageAncestry $_) {
+    my $to-parent;
     $!sm = do {
-      when SoupMessage { $_                    }
-      default          { cast(SoupMessage, $_) }
+      when SoupMessage {
+        $to-parent = cast(GObject, $_);
+        $_
+      }
+
+      default {
+        $to-parent = $_;
+        cast(SoupMessage, $_)
+      }
     }
-    self.roleInit-Object;
+    self!setObject($to-parent);
   }
 
   method SOUP::Raw::Definitions::SoupMessage
@@ -220,13 +228,13 @@ class SOUP::Message {
           self.prop_get('request-headers', $gv)
         );
 
-        my $o = $gv.boxed;
-        return Nil unless $o;
-
-        $o = cast(SoupMessageHeaders, $o);
-        return $o if $raw;
-
-        SOUP::MessageHeaders.new($o);
+        propReturnObject(
+          $gv.boxed,
+          $raw,
+          SoupMessageHeaders,
+          SOUP::MessageHeaders,
+          :ref
+        );
       },
       STORE => -> $, $val is copy {
         warn 'request-headers does not allow writing'
@@ -243,7 +251,7 @@ class SOUP::Message {
           self.prop_get('response-body', $gv)
         );
 
-        my $o = $gv.object;
+        my $o = $gv.boxed;
         return Nil unless $o;
 
         $o = cast(SoupMessageBody, $o);
@@ -289,13 +297,13 @@ class SOUP::Message {
           self.prop_get('response-headers', $gv)
         );
 
-        my $o = $gv.object;
-        return Nil unless $o;
-
-        $o = cast(SoupMessageHeaders, $o);
-        return $o if $raw;
-
-        SOUP::MessageHeaders.new($o);
+        propReturnObject(
+          $gv.boxed,
+          $raw,
+          SoupMessageHeaders,
+          SOUP::MessageHeaders,
+          :ref
+        );
       },
       STORE => -> $, $val is copy {
         warn 'response-headers does not allow writing'
@@ -327,7 +335,7 @@ class SOUP::Message {
         $gv = GLib::Value.new(
           self.prop_get('status-code', $gv)
         );
-        $gv.uint;
+        SoupStatusEnum( $gv.uint );
       },
       STORE => -> $, Int() $val is copy {
         $gv.uint = $val;
@@ -386,13 +394,12 @@ class SOUP::Message {
           self.prop_get('uri', $gv)
         );
 
-        my $o = $gv.object;
-        return Nil unless $o;
-
-        $o = cast(SoupURI, $o);
-        return $o if $raw;
-
-        SOUP::URI.new($o);
+        propReturnObject(
+          $gv.boxed,
+          $raw,
+          SoupURI,
+          SOUP::URI
+        );
       },
       STORE => -> $, SoupURI() $val is copy {
         $gv.object = $val;
