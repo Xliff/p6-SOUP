@@ -9,16 +9,27 @@ use SOUP::Raw::URI;
 
 class SOUP::URI {
   has SoupURI $!su;
+  has $!fixed;
 
-  submethod BUILD ( :uri(:$!su) )
+  submethod BUILD ( :uri(:$!su), :$!fixed )
   { }
+
+  submethod DESTROY {
+    return if $!fixed;
+
+    # Handle destruction of object
+  }
 
   method SOUP::Raw::Definitions::SoupURI
     is also<SoupURI>
   { $!su }
 
-  multi method new (SoupURI $uri) {
-    $uri ?? self.bless( :$uri ) !! Nil;
+  multi method new (SoupURI $uri, :$ref = True, :$fixed = False) {
+    return Nil unless $uri;
+
+    my $o = self.bless( :$uri, :$fixed );
+    $o.ref if $ref;
+    $o
   }
   multi method new (Str $uri-str) {
     my $uri = soup_uri_new($uri-str);
@@ -70,31 +81,66 @@ class SOUP::URI {
     soup_uri_free($!su);
   }
 
-  method get_fragment is also<get-fragment> {
+  method get_fragment
+    is also<
+      get-fragment
+      fragment
+    >
+  {
     soup_uri_get_fragment($!su);
   }
 
-  method get_host is also<get-host> {
+  method get_host
+    is also<
+      get-host
+      host
+    >
+  {
     soup_uri_get_host($!su);
   }
 
-  method get_password is also<get-password> {
+  method get_password
+    is also<
+      get-password
+      password
+    >
+  {
     soup_uri_get_password($!su);
   }
 
-  method get_path is also<get-path> {
+  method get_path
+    is also<
+      get-path
+      path
+    >
+  {
     soup_uri_get_path($!su);
   }
 
-  method get_port is also<get-port> {
+  method get_port
+    is also<
+      get-port
+      port
+    >
+  {
     soup_uri_get_port($!su);
   }
 
-  method get_query is also<get-query> {
+  method get_query
+    is also<
+      get-query
+      query
+    >
+  {
     soup_uri_get_query($!su);
   }
 
-  method get_scheme is also<get-scheme> {
+  method get_scheme
+    is also<
+      get-scheme
+      scheme
+    >
+  {
     soup_uri_get_scheme($!su);
   }
 
@@ -104,12 +150,17 @@ class SOUP::URI {
     unstable_get_type( self.^name, &soup_uri_get_type, $n, $t );
   }
 
-  method get_user is also<get-user> {
+  method get_user
+    is also<
+      get-user
+      user
+    >
+  {
     soup_uri_get_user($!su);
   }
 
   method host_equal (SoupURI() $v2) is also<host-equal> {
-    soup_uri_host_equal($!su, $v2);
+    so soup_uri_host_equal($!su, $v2);
   }
 
   method host_hash is also<host-hash> {
