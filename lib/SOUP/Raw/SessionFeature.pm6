@@ -1,5 +1,7 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
 use SOUP::Raw::Definitions;
 
@@ -7,7 +9,7 @@ use SOUP::Raw::Definitions;
 
 sub soup_session_feature_add_feature (
   SoupSessionFeature $feature,
-  GType $type
+  GType              $type
 )
   returns uint32
   is native(soup)
@@ -16,7 +18,7 @@ sub soup_session_feature_add_feature (
 
 sub soup_session_feature_attach (
   SoupSessionFeature $feature,
-  SoupSession $session
+  SoupSession        $session
 )
   is native(soup)
   is export
@@ -24,7 +26,7 @@ sub soup_session_feature_attach (
 
 sub soup_session_feature_detach (
   SoupSessionFeature $feature,
-  SoupSession $session
+  SoupSession        $session
 )
   is native(soup)
   is export
@@ -38,7 +40,7 @@ sub soup_session_feature_get_type ()
 
 sub soup_session_feature_has_feature (
   SoupSessionFeature $feature,
-  GType $type
+  GType              $type
 )
   returns uint32
   is native(soup)
@@ -47,7 +49,7 @@ sub soup_session_feature_has_feature (
 
 sub soup_session_feature_remove_feature (
   SoupSessionFeature $feature,
-  GType $type
+  GType              $type
 )
   returns uint32
   is native(soup)
