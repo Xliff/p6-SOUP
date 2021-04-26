@@ -12,8 +12,8 @@ unit package SOUP::Raw::MessageHeaders;
 
 sub soup_message_headers_append (
   SoupMessageHeaders $hdrs,
-  Str $name,
-  Str $value
+  Str                $name,
+  Str                $value
 )
   is native(soup)
   is export
@@ -31,8 +31,8 @@ sub soup_message_headers_clear (SoupMessageHeaders $hdrs)
 
 sub soup_message_headers_foreach (
   SoupMessageHeaders $hdrs,
-  &func (Str, Str, gpointer),
-  gpointer $user_data
+                     &func (Str, Str, gpointer),
+  gpointer           $user_data
 )
   is native(soup)
   is export
@@ -45,7 +45,7 @@ sub soup_message_headers_free (SoupMessageHeaders $hdrs)
 
 sub soup_message_headers_free_ranges (
   SoupMessageHeaders $hdrs,
-  SoupRange $ranges
+  SoupRange          $ranges
 )
   is native(soup)
   is export
@@ -59,8 +59,8 @@ sub soup_message_headers_get (SoupMessageHeaders $hdrs, Str $name)
 
 sub soup_message_headers_get_content_disposition (
   SoupMessageHeaders $hdrs,
-  Str $disposition,
-  GHashTable $params
+  Str                $disposition,
+  GHashTable         $params
 )
   returns uint32
   is native(soup)
@@ -75,9 +75,9 @@ sub soup_message_headers_get_content_length (SoupMessageHeaders $hdrs)
 
 sub soup_message_headers_get_content_range (
   SoupMessageHeaders $hdrs,
-  goffset $start,
-  goffset $end,
-  goffset $total_length
+  goffset            $start        is rw,
+  goffset            $end          is rw,
+  goffset            $total_length is rw
 )
   returns uint32
   is native(soup)
@@ -124,10 +124,10 @@ sub soup_message_headers_get_one (SoupMessageHeaders $hdrs, Str $name)
 { * }
 
 sub soup_message_headers_get_ranges (
-  SoupMessageHeaders $hdrs,
-  goffset $total_length,
+  SoupMessageHeaders         $hdrs,
+  goffset                    $total_length,
   CArray[Pointer[SoupRange]] $ranges,
-  gint $length is rw
+  gint                       $length       is rw
 )
   returns uint32
   is native(soup)
@@ -142,8 +142,8 @@ sub soup_message_headers_get_type ()
 
 sub soup_message_headers_header_contains (
   SoupMessageHeaders $hdrs,
-  Str $name,
-  Str $token
+  Str                $name,
+  Str                $token
 )
   returns uint32
   is native(soup)
@@ -152,8 +152,8 @@ sub soup_message_headers_header_contains (
 
 sub soup_message_headers_header_equals (
   SoupMessageHeaders $hdrs,
-  Str $name,
-  Str $value
+  Str                $name,
+  Str                $value
 )
   returns uint32
   is native(soup)
@@ -162,7 +162,7 @@ sub soup_message_headers_header_equals (
 
 sub soup_message_headers_iter_init (
   SoupMessageHeadersIter $iter,
-  SoupMessageHeaders $hdrs
+  SoupMessageHeaders     $hdrs
 )
   is native(soup)
   is export
@@ -170,8 +170,8 @@ sub soup_message_headers_iter_init (
 
 sub soup_message_headers_iter_next (
   SoupMessageHeadersIter $iter,
-  CArray[Str] $name,
-  CArray[Str] $value
+  CArray[Str]            $name,
+  CArray[Str]            $value
 )
   returns uint32
   is native(soup)
@@ -191,8 +191,8 @@ sub soup_message_headers_remove (SoupMessageHeaders $hdrs, Str $name)
 
 sub soup_message_headers_replace (
   SoupMessageHeaders $hdrs,
-  Str $name,
-  Str $value
+  Str                $name,
+  Str                $value
 )
   is native(soup)
   is export
@@ -200,8 +200,8 @@ sub soup_message_headers_replace (
 
 sub soup_message_headers_set_content_disposition (
   SoupMessageHeaders $hdrs,
-  Str $disposition,
-  GHashTable $params
+  Str                $disposition,
+  GHashTable         $params
 )
   is native(soup)
   is export
@@ -209,7 +209,7 @@ sub soup_message_headers_set_content_disposition (
 
 sub soup_message_headers_set_content_length (
   SoupMessageHeaders $hdrs,
-  goffset $content_length
+  goffset            $content_length
 )
   is native(soup)
   is export
@@ -217,9 +217,9 @@ sub soup_message_headers_set_content_length (
 
 sub soup_message_headers_set_content_range (
   SoupMessageHeaders $hdrs,
-  goffset $start,
-  goffset $end,
-  goffset $total_length
+  goffset            $start,
+  goffset            $end,
+  goffset            $total_length
 )
   is native(soup)
   is export
@@ -227,8 +227,8 @@ sub soup_message_headers_set_content_range (
 
 sub soup_message_headers_set_content_type (
   SoupMessageHeaders $hdrs,
-  Str $content_type,
-  GHashTable $params
+  Str                $content_type,
+  GHashTable         $params
 )
   is native(soup)
   is export
@@ -236,7 +236,7 @@ sub soup_message_headers_set_content_type (
 
 sub soup_message_headers_set_encoding (
   SoupMessageHeaders $hdrs,
-  SoupEncoding $encoding
+  SoupEncoding       $encoding
 )
   is native(soup)
   is export
@@ -244,7 +244,7 @@ sub soup_message_headers_set_encoding (
 
 sub soup_message_headers_set_expectations (
   SoupMessageHeaders $hdrs,
-  SoupExpectation $expectations
+  SoupExpectation    $expectations
 )
   is native(soup)
   is export
@@ -252,8 +252,8 @@ sub soup_message_headers_set_expectations (
 
 sub soup_message_headers_set_range (
   SoupMessageHeaders $hdrs,
-  goffset $start,
-  goffset $end
+  goffset            $start,
+  goffset            $end
 )
   is native(soup)
   is export
@@ -261,8 +261,8 @@ sub soup_message_headers_set_range (
 
 sub soup_message_headers_set_ranges (
   SoupMessageHeaders $hdrs,
-  Pointer $ranges,  # Array of SoupRange
-  gint $length
+  Pointer            $ranges,  # Array of SoupRange
+  gint               $length
 )
   is native(soup)
   is export
