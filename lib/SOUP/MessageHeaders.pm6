@@ -66,7 +66,13 @@ class SOUP::MessageHeaders {
     soup_message_headers_get_content_disposition($!smh, $disposition, $params);
   }
 
-  method get_content_length is also<get-content-length> {
+  method get_content_length
+    is also<
+      get-content-length
+      content_length
+      content-length
+    >
+  {
     soup_message_headers_get_content_length($!smh);
   }
 
@@ -74,7 +80,7 @@ class SOUP::MessageHeaders {
       is also<get-content-range>
   { * }
 
-  multi method get_content_range {
+  multi method get_content_range is also<content-range> {
     my $rv = samewith($, $, $, :all);
 
     $rv[0] ?? $rv.skip(1) !! Nil;
@@ -83,9 +89,9 @@ class SOUP::MessageHeaders {
     $start        is rw,
     $end          is rw,
     $total_length is rw,
-    :$all = False
+    :$all         =  False
   ) {
-    my goffset ($s, $e, $l) = ($start, $end, $total_length);
+    my goffset ($s, $e, $l) = 0 xx 3;
 
     my $rv = so soup_message_headers_get_content_range($!smh, $s, $e, $l);
     ($start, $end, $total_length) = ($s, $e, $l);
@@ -97,16 +103,32 @@ class SOUP::MessageHeaders {
     soup_message_headers_get_content_type($!smh, $params);
   }
 
-  method get_encoding is also<get-encoding> {
+  method get_encoding
+    is also<
+      get-encoding
+      encoding
+    >
+  {
     SoupEncoding( soup_message_headers_get_encoding($!smh) );
   }
 
-  method get_expectations is also<get-expectations> {
-    SoupExpectation( soup_message_headers_get_expectations($!smh) );
+  method get_expectations
+    is also<
+      get-expectations
+      expectations
+    >
+  {
+    SoupExpectationEnum( soup_message_headers_get_expectations($!smh) );
   }
 
-  method get_headers_type is also<get-headers-type> {
-    SoupMessageHeadersType( soup_message_headers_get_headers_type($!smh) );
+  method get_headers_type
+    is also<
+      get-headers-type
+      headers_type
+      headers-type
+    >
+  {
+    SoupMessageHeadersTypeEnum( soup_message_headers_get_headers_type($!smh) );
   }
 
   method get_iter
@@ -138,11 +160,11 @@ class SOUP::MessageHeaders {
     $rv[0] ?? $rv[1] !! Nil;
   }
   multi method get_ranges (
-    Int() $total_length,
+    Int()                      $total_length,
     CArray[Pointer[SoupRange]] $ranges,
-    $length is rw,
-    :$all = False,
-    :$raw = False
+                               $length       is rw,
+                               :$all         =  False,
+                               :$raw         =  False
   ) {
     my goffset $tl = $total_length;
     my gint $l = 0;
@@ -263,7 +285,7 @@ class SOUP::MessageHeaders::Iter {
   method init (
     SOUP::MessageHeaders::Iter:U:
     SoupMessageHeadersIter $iter,
-    SoupMessageHeaders $hdrs
+    SoupMessageHeaders     $hdrs
   ) {
     soup_message_headers_iter_init($iter, $hdrs);
   }
