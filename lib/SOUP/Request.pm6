@@ -21,11 +21,11 @@ class SOUP::Request {
 
   has SoupRequest $!sr is implementor;
 
-  submethod BUILD (:$request) {
-    self.setSoupRequest($request) if $request;
+  submethod BUILD (:$request, :$init, :$cancellable) {
+    self.setSoupRequest($request, :$init, :$cancellable) if $request;
   }
 
-  method setSoupRequest (SoupRequestAncestry $_) {
+  method setSoupRequest (SoupRequestAncestry $_, :$init, :$cancellable) {
     my $to-parent;
 
     $!sr = do {
@@ -46,7 +46,7 @@ class SOUP::Request {
       }
     }
     self.roleInit-Object;
-    self.roleInit-Initable unless $!i;
+    self.roleInit-Initable(:$init, :$cancellable);
   }
 
   method SOUP::Raw::Definitions::SoupRequest
