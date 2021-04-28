@@ -26,11 +26,11 @@ class SOUP::Socket {
   has SoupSocket $!sock is implementor;
   has $!init = False;
 
-  submethod BUILD (:$socket) {
-    self.setSoupSocket($socket) if $socket;
+  submethod BUILD (:$socket, :$init, :$cancellable) {
+    self.setSoupSocket($socket, :$init, :$cancellable) if $socket;
   }
 
-  method setSoupSocket (SoupSocketAncestry $_) {
+  method setSoupSocket (SoupSocketAncestry $_, :$init, :$cancellable) {
     my $to-parent;
 
     $!sock = do {
@@ -52,7 +52,7 @@ class SOUP::Socket {
     }
 
     self!setObject($to-parent);
-    self.roleInit-Initable;
+    self.roleInit-Initable(:$init, :$cancellable);
   }
 
   method SOUP::Raw::Definitions::SoupSocket
