@@ -1,0 +1,64 @@
+ === GIO::FilterInputStream === 
+
+GIO::FilterInputStream compile time: 0.53849651
+ === GIO::DBus::Raw::Types === 
+
+GIO::DBus::Raw::Types compile time: 0.61357414
+ === GIO::Raw::Exports === 
+
+GIO::Raw::Exports compile time: 0.54106982
+ === GIO::InputStream === 
+
+GIO::InputStream compile time: 0.601651
+ === GIO::Raw::Definitions === 
+
+GIO::Raw::Definitions compile time: 0.6083917
+ === GIO::Raw::Enums === 
+
+GIO::Raw::Enums compile time: 0.6373696
+ === GIO::Raw::Quarks === 
+
+GIO::Raw::Quarks compile time: 0.63353011
+ === GIO::Raw::Subs === 
+
+GIO::Raw::Subs compile time: 0.6147226
+ === GIO::Raw::Structs === 
+
+GIO::Raw::Structs compile time: 0.63772314
+ === GIO::Raw::TlsBackend === 
+
+GIO::Raw::TlsBackend compile time: 0.62403405
+ === GIO::Roles::GFile === 
+
+GIO::Roles::GFile compile time: 0.62431334
+ === GIO::Roles::PollableInputStream === 
+
+GIO::Roles::PollableInputStream compile time: 0.6239322
+ === GIO::Roles::SocketConnectable === 
+
+GIO::Roles::SocketConnectable compile time: 0.61687757
+ === GIO::Roles::ProxyResolver === 
+
+GIO::Roles::ProxyResolver compile time: 0.64018458
+ === GIO::Roles::Initable === 
+
+GIO::Roles::Initable compile time: 0.67067187
+ === GIO::Socket === 
+
+GIO::Socket compile time: 0.63539558
+ === GLib::Bytes === 
+
+GLib::Bytes compile time: 0.54788275
+ === GIO::Stream === 
+
+GIO::Stream compile time: 0.62690253
+ === GIO::SocketAddress === 
+
+GIO::SocketAddress compile time: 0.65145651
+ === GIO::TlsCertificate === 
+
+GIO::TlsCertificate compile time: 0.59602842
+
+Errors detected!
+
+Total compile time: 0.88683059s
