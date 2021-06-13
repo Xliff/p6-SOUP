@@ -1,0 +1,449 @@
+ === GIO::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   5.666
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.030
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIO::Raw::Exports compile time: 7.09744435
+ === GIO::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   6.697
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GIO::Raw::Definitions compile time: 7.98109926
+ === GIO::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   7.258
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.015
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GIO::Raw::Enums compile time: 8.76462387
+ === GIO::Raw::TlsBackend === 
+Stage start      :   0.000
+Stage parse      :   7.358
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.011
+Stage moar       :   0.000
+
+GIO::Raw::TlsBackend compile time: 9.0788403
+ === GLib::Bytes === 
+Stage start      :   0.000
+Stage parse      :   7.349
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Bytes compile time: 9.00150349
+ === GIO::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   7.496
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GIO::Raw::Subs compile time: 9.21552666
+ === GIO::DBus::Raw::Types === 
+Stage start      :   0.000
+Stage parse      :   7.840
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.007
+Stage mbc        :   0.006
+Stage moar       :   0.000
+
+GIO::DBus::Raw::Types compile time: 9.35603635
+ === GIO::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   7.791
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GIO::Raw::Structs compile time: 9.32122726
+ === GIO::Raw::Quarks === 
+Stage start      :   0.000
+Stage parse      :   8.148
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.011
+Stage mbc        :   0.007
+Stage moar       :   0.000
+
+GIO::Raw::Quarks compile time: 9.45890381
+ === GIO::Roles::Initable === 
+Stage start      :   0.000
+Stage parse      :   8.940
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.014
+Stage moar       :   0.000
+
+GIO::Roles::Initable compile time: 10.63311258
+ === GIO::Roles::PollableInputStream === 
+Stage start      :   0.000
+Stage parse      :   9.129
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.015
+Stage moar       :   0.000
+
+GIO::Roles::PollableInputStream compile time: 10.70555059
+ === GIO::Roles::ProxyResolver === 
+Stage start      :   0.000
+
+    precomp ../p6-GIO/lib/GIO/Roles/ProxyResolver.pm6
+    Stage start      :   0.000
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/ProxyResolver.pm6 (GIO::Roles::ProxyResolver)
+    Cannot modify an immutable Block (-> |c { #`(Block|945...)
+    at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/ProxyResolver.pm6 (GIO::Roles::ProxyResolver):92
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/ProxyResolver.pm6 (GIO::Roles::ProxyResolver)
+Cannot modify an immutable Block (-> |c { #`(Block|945...)
+at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/ProxyResolver.pm6 (GIO::Roles::ProxyResolver):92
+
+at -e:1
+
+GIO::Roles::ProxyResolver compile time: 15.13818163
+ === GIO::Roles::GFile === 
+Stage start      :   0.000
+
+    precomp ../p6-GIO/lib/GIO/Roles/GFile.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/GFile.pm6
+        Stage start      :   0.000
+        Stage parse      :  11.789
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.119
+        Stage mast       :   0.305
+        Stage mbc        :   0.169
+    
+        precomp ../p6-GIO/lib/GIO/Raw/FileAttributeTypes.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Raw/Icon.pm6
+            Stage start      :   0.000
+            Stage parse      :   3.292
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.007
+            Stage mast       :   0.030
+            Stage mbc        :   0.016
+        Stage parse      :   6.397
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.027
+        Stage mast       :   0.028
+        Stage mbc        :   0.005
+    
+        precomp ../p6-GIO/lib/GIO/FileInfo.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Roles/Icon.pm6
+            Stage start      :   0.000
+            Stage parse      :   3.340
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.012
+            Stage mast       :   0.066
+            Stage mbc        :   0.039
+        Stage parse      :   7.214
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.037
+        Stage mast       :   0.108
+        Stage mbc        :   0.033
+    
+        precomp ../p6-GIO/lib/GIO/FileIOStream.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Raw/FileIOStream.pm6
+            Stage start      :   0.000
+            Stage parse      :   2.844
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.006
+            Stage mast       :   0.027
+            Stage mbc        :   0.012
+        
+            precomp ../p6-GIO/lib/GIO/Roles/Seekable.pm6
+            Stage start      :   0.000
+            
+                precomp ../p6-GIO/lib/GIO/Raw/Seekable.pm6
+                Stage start      :   0.000
+                Stage parse      :   2.858
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.007
+                Stage mast       :   0.027
+                Stage mbc        :   0.011
+            Stage parse      :   6.155
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.011
+            Stage mast       :   0.043
+            Stage mbc        :   0.015
+        Stage parse      :  12.434
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.016
+        Stage mast       :   0.059
+        Stage mbc        :   0.007
+    
+        precomp ../p6-GIO/lib/GIO/FileMonitor.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Raw/FileMonitor.pm6
+            Stage start      :   0.000
+            Stage parse      :   2.817
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.005
+            Stage mast       :   0.025
+            Stage mbc        :   0.010
+        Stage parse      :   6.176
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.010
+        Stage mast       :   0.040
+        Stage mbc        :   0.025
+    
+        precomp ../p6-GIO/lib/GIO/FileInputStream.pm6
+        Stage start      :   0.000
+        Stage parse      :   2.987
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.018
+        Stage mast       :   0.034
+        Stage mbc        :   0.015
+    
+        precomp ../p6-GIO/lib/GIO/FileOutputStream.pm6
+        Stage start      :   0.000
+        Stage parse      :   3.034
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.016
+        Stage mast       :   0.036
+        Stage mbc        :   0.030
+    
+        precomp ../p6-GIO/lib/GIO/Roles/AppInfo.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Raw/AppInfo.pm6
+            Stage start      :   0.000
+            Stage parse      :   3.909
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.025
+            Stage mast       :   0.098
+            Stage mbc        :   0.075
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo)
+        Cannot modify an immutable Block (-> |c { #`(Block|949...)
+        at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo):429
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/GFile.pm6 (GIO::Roles::GFile)
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/AppInfo.pm6
+        Stage start      :   0.000
+        Stage parse      :   3.909
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.025
+        Stage mast       :   0.098
+        Stage mbc        :   0.075
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo)
+    Cannot modify an immutable Block (-> |c { #`(Block|949...)
+    at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo):429
+    
+    at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/GFile.pm6 (GIO::Roles::GFile):32
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp ../p6-GIO/lib/GIO/Raw/GFile.pm6
+    Stage start      :   0.000
+    Stage parse      :  11.789
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.119
+    Stage mast       :   0.305
+    Stage mbc        :   0.169
+
+    precomp ../p6-GIO/lib/GIO/Raw/FileAttributeTypes.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/Icon.pm6
+        Stage start      :   0.000
+        Stage parse      :   3.292
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.007
+        Stage mast       :   0.030
+        Stage mbc        :   0.016
+    Stage parse      :   6.397
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.028
+    Stage mbc        :   0.005
+
+    precomp ../p6-GIO/lib/GIO/FileInfo.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Roles/Icon.pm6
+        Stage start      :   0.000
+        Stage parse      :   3.340
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.012
+        Stage mast       :   0.066
+        Stage mbc        :   0.039
+    Stage parse      :   7.214
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.037
+    Stage mast       :   0.108
+    Stage mbc        :   0.033
+
+    precomp ../p6-GIO/lib/GIO/FileIOStream.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/FileIOStream.pm6
+        Stage start      :   0.000
+        Stage parse      :   2.844
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.006
+        Stage mast       :   0.027
+        Stage mbc        :   0.012
+    
+        precomp ../p6-GIO/lib/GIO/Roles/Seekable.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/Raw/Seekable.pm6
+            Stage start      :   0.000
+            Stage parse      :   2.858
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.007
+            Stage mast       :   0.027
+            Stage mbc        :   0.011
+        Stage parse      :   6.155
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.011
+        Stage mast       :   0.043
+        Stage mbc        :   0.015
+    Stage parse      :  12.434
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.059
+    Stage mbc        :   0.007
+
+    precomp ../p6-GIO/lib/GIO/FileMonitor.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/FileMonitor.pm6
+        Stage start      :   0.000
+        Stage parse      :   2.817
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.005
+        Stage mast       :   0.025
+        Stage mbc        :   0.010
+    Stage parse      :   6.176
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.040
+    Stage mbc        :   0.025
+
+    precomp ../p6-GIO/lib/GIO/FileInputStream.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.987
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.034
+    Stage mbc        :   0.015
+
+    precomp ../p6-GIO/lib/GIO/FileOutputStream.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.034
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.036
+    Stage mbc        :   0.030
+
+    precomp ../p6-GIO/lib/GIO/Roles/AppInfo.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/Raw/AppInfo.pm6
+        Stage start      :   0.000
+        Stage parse      :   3.909
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.025
+        Stage mast       :   0.098
+        Stage mbc        :   0.075
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo)
+    Cannot modify an immutable Block (-> |c { #`(Block|949...)
+    at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo):429
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/GFile.pm6 (GIO::Roles::GFile)
+Stage start      :   0.000
+
+    precomp ../p6-GIO/lib/GIO/Raw/AppInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.909
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.098
+    Stage mbc        :   0.075
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo)
+Cannot modify an immutable Block (-> |c { #`(Block|949...)
+at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/AppInfo.pm6 (GIO::Roles::AppInfo):429
+
+at /home/cbwood/Projects/p6-GIO/lib/GIO/Roles/GFile.pm6 (GIO::Roles::GFile):32
+
+at -e:1
+
+GIO::Roles::GFile compile time: 74.56249626
+
+Errors detected!
+
+Total compile time: 74.6863962s
