@@ -1,0 +1,1446 @@
+
+Parallel build started for Raku 2022.04.26.g.280.a.2090.b on MoarVM 2022.04
+ === SOUP::Raw::Exports (1/65) === 
+
+Stage start      :   0.000
+Stage parse      :   2.985
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.022
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::Exports compile time: 4.43342234
+ === SOUP::Raw::Definitions (2/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.308
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.068
+    Stage mast       :   0.099
+    Stage mbc        :   0.010
+Stage parse      :   8.108
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Raw::Definitions compile time: 9.38897818
+ === SOUP::Raw::Enums (3/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.474
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.037
+    Stage mbc        :   0.075
+Stage parse      :   8.227
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::Enums compile time: 9.60692301
+ === SOUP::Raw::Subs (4/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Subs.pm6
+    Stage start      :   0.001
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   4.721
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.032
+    Stage mbc        :   0.003
+Stage parse      :   8.411
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Raw::Subs compile time: 9.9992026
+ === SOUP::Raw::Cache (5/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Cache.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.649
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.022
+    Stage mbc        :   0.015
+Stage parse      :   9.177
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Raw::Cache compile time: 10.48642918
+ === SOUP::Raw::AuthDomain (6/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/AuthDomain.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.908
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.034
+    Stage mbc        :   0.016
+Stage parse      :   9.398
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Raw::AuthDomain compile time: 10.68475494
+ === SOUP::Raw::MultipartInputStream (7/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MultipartInputStream.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.825
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.022
+    Stage mbc        :   0.012
+Stage parse      :   9.381
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::MultipartInputStream compile time: 10.78686259
+ === SOUP::Raw::Address (8/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Address.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.993
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.040
+    Stage mbc        :   0.034
+Stage parse      :   9.720
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::Address compile time: 11.0697638
+ === SOUP::Raw::SessionFeature (9/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/SessionFeature.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.753
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.009
+    Stage mast       :   0.031
+    Stage mbc        :   0.014
+Stage parse      :   9.529
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::SessionFeature compile time: 11.25175398
+ === SOUP::Raw::URI (10/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/URI.pm6
+    Stage start      :   0.001
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   5.896
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.048
+    Stage mbc        :   0.141
+Stage parse      :   9.801
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+SOUP::Raw::URI compile time: 11.30862643
+ === SOUP::Raw::Logger (11/65) === 
+
+Stage start      :   0.002
+
+    precomp lib/SOUP/Raw/Logger.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.010
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.037
+    Stage mbc        :   0.012
+Stage parse      :  10.089
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::Logger compile time: 11.6791014
+ === SOUP::Raw::Request (12/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Request.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.122
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.046
+    Stage mbc        :   0.024
+Stage parse      :  10.121
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::Request compile time: 11.61702451
+ === SOUP::Raw::Cookie (13/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Cookie.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.434
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.062
+    Stage mbc        :   0.177
+Stage parse      :  10.262
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+SOUP::Raw::Cookie compile time: 11.76448563
+ === SOUP::Raw::Multipart (14/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Multipart.pm6
+    Stage start      :   0.001
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.036
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.048
+    Stage mbc        :   0.024
+Stage parse      :   9.924
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::Multipart compile time: 11.9858611
+ === SOUP::Raw::MessageBody (15/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MessageBody.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.074
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.032
+    Stage mast       :   0.047
+    Stage mbc        :   0.608
+Stage parse      :  10.848
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::MessageBody compile time: 12.29165082
+ === SOUP::Roles::Signals::Server (16/65) === 
+
+Stage start      :   0.001
+
+    precomp lib/SOUP/Roles/Signals/Server.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.286
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.049
+    Stage mbc        :   0.011
+Stage parse      :  10.080
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.007
+Stage moar       :   0.000
+
+SOUP::Roles::Signals::Server compile time: 11.9717097
+ === SOUP::Raw::MessageHeaders (17/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/MessageHeaders.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.476
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.034
+    Stage mast       :   0.091
+    Stage mbc        :   0.482
+Stage parse      :  11.091
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.006
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::MessageHeaders compile time: 12.72389658
+ === SOUP::Raw::Date (18/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Date.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.206
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.053
+    Stage mbc        :   0.087
+Stage parse      :  11.483
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::Date compile time: 12.84754406
+ === SOUP::Raw::CookieJar (19/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/CookieJar.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.985
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.052
+    Stage mast       :   0.063
+    Stage mbc        :   0.073
+Stage parse      :  11.416
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::CookieJar compile time: 12.919735
+ === SOUP::Raw::Auth (20/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Auth.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.320
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.032
+    Stage mast       :   0.082
+    Stage mbc        :   0.144
+Stage parse      :  11.651
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::Auth compile time: 13.0343347
+ === SOUP::Raw::Misc (21/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Misc.pm6
+    Stage start      :   0.008
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.285
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.035
+    Stage mbc        :   0.083
+Stage parse      :  11.202
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Raw::Misc compile time: 13.22453043
+ === SOUP::Raw::Socket (22/65) === 
+
+Stage start      :   0.001
+
+    precomp lib/SOUP/Raw/Socket.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.223
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.083
+    Stage mbc        :   0.134
+Stage parse      :  11.388
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Raw::Socket compile time: 13.19569587
+ === SOUP::Raw::Types (23/65) === 
+
+Stage start      :   0.001
+
+    precomp lib/SOUP/Raw/Types.pm6
+    Stage start      :   0.001
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   6.963
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.049
+    Stage mbc        :   0.015
+Stage parse      :  11.650
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.034
+Stage mast       :   0.023
+Stage mbc        :   0.129
+Stage moar       :   0.000
+
+SOUP::Raw::Types compile time: 13.3468736
+ === SOUP::Raw::WebsocketConnection (24/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/WebsocketConnection.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.253
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.071
+    Stage mbc        :   0.181
+Stage parse      :  11.733
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.008
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+SOUP::Raw::WebsocketConnection compile time: 13.31120333
+ === SOUP::Raw::Test (25/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Test.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   7.438
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.087
+    Stage mbc        :   0.489
+Stage parse      :  11.872
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.015
+Stage mbc        :   0.027
+Stage moar       :   0.000
+
+SOUP::Raw::Test compile time: 13.75185459
+ === SOUP::Roles::SessionFeature (26/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/SessionFeature.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :   8.333
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.062
+    Stage mast       :   0.052
+    Stage mbc        :   0.038
+Stage parse      :  12.772
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.007
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+SOUP::Roles::SessionFeature compile time: 14.59247821
+ === SOUP::Roles::Signals::CookieJar (27/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/CookieJar.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :   8.651
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.052
+    Stage mbc        :   0.106
+Stage parse      :  13.228
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.015
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Roles::Signals::CookieJar compile time: 15.1310042
+ === SOUP::Raw::Session (28/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Session.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   8.914
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.066
+    Stage mast       :   0.099
+    Stage mbc        :   0.592
+Stage parse      :  13.998
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.016
+Stage moar       :   0.000
+
+SOUP::Raw::Session compile time: 15.38030515
+ === SOUP::Raw::Message (29/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Message.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   9.682
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.121
+    Stage mast       :   0.173
+    Stage mbc        :   0.329
+Stage parse      :  14.397
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.007
+Stage mbc        :   0.019
+Stage moar       :   0.000
+
+SOUP::Raw::Message compile time: 15.90654694
+ === SOUP::Raw::Server (30/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Raw/Server.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Definitions.pm6
+    Stage parse      :   8.573
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.037
+    Stage mast       :   0.149
+    Stage mbc        :   0.760
+Stage parse      :  13.886
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.011
+Stage mbc        :   0.019
+Stage moar       :   0.000
+
+SOUP::Raw::Server compile time: 15.9041882
+ === SOUP::URI (31/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/URI.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.091
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.166
+    Stage mast       :   0.260
+    Stage mbc        :   0.214
+Stage parse      :   6.780
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.021
+Stage moar       :   0.000
+
+SOUP::URI compile time: 7.26452122
+ === SOUP::Roles::Signals::Session (32/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/Session.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :  10.516
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.093
+    Stage mast       :   0.144
+    Stage mbc        :   0.099
+Stage parse      :  15.226
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.032
+Stage moar       :   0.000
+
+SOUP::Roles::Signals::Session compile time: 17.17794739
+ === SOUP::Roles::Signals::WebsocketConnection (33/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Roles/Signals/WebsocketConnection.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :  10.815
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.085
+    Stage mast       :   0.074
+    Stage mbc        :   0.124
+Stage parse      :  15.352
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.046
+Stage moar       :   0.000
+
+SOUP::Roles::Signals::WebsocketConnection compile time: 17.28063795
+ === SOUP::Source (34/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Source.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :   8.021
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.154
+    Stage mbc        :   0.019
+Stage parse      :  11.364
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+SOUP::Source compile time: 12.98999475
+ === SOUP::Cache (35/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Cache.pm6
+    Stage start      :   0.010
+    Stage parse      :   4.179
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.053
+    Stage mast       :   0.142
+    Stage mbc        :   0.013
+Stage parse      :   8.606
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Cache compile time: 9.83725235
+ === SOUP::Auth (36/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Auth.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.885
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.098
+    Stage mast       :   0.128
+    Stage mbc        :   0.553
+Stage parse      :  11.150
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Auth compile time: 11.7171226
+ === SOUP::AuthDomain (37/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.755
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.100
+    Stage mast       :   0.158
+    Stage mbc        :   0.020
+Stage parse      :  10.878
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.006
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+SOUP::AuthDomain compile time: 11.60000026
+ === SOUP::WebsocketConnection (38/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/WebsocketConnection.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Raw/Types.pm6
+    Stage parse      :   9.294
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.174
+    Stage mast       :   0.232
+    Stage mbc        :   0.048
+Stage parse      :  12.321
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::WebsocketConnection compile time: 12.79125171
+ === SOUP::ContentSniffer (39/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/ContentSniffer.pm6
+    Stage start      :   0.007
+    Stage parse      :   4.414
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.064
+    Stage mast       :   0.059
+    Stage mbc        :   0.151
+Stage parse      :   9.137
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::ContentSniffer compile time: 10.37783219
+ === SOUP::Buffer (40/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Buffer.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.445
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.165
+    Stage mast       :   0.146
+    Stage mbc        :   0.022
+Stage parse      :   9.750
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.034
+Stage moar       :   0.000
+
+SOUP::Buffer compile time: 11.0509082
+ === SOUP::Multipart (41/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Multipart.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.606
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.107
+    Stage mast       :   0.251
+    Stage mbc        :   0.042
+Stage parse      :   8.266
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Multipart compile time: 9.715639
+ === SOUP::Class::Auth (42/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Class/Auth.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.670
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.063
+    Stage mbc        :   0.017
+Stage parse      :   9.736
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+SOUP::Class::Auth compile time: 10.99258086
+ === SOUP::Address (43/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Address.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.144
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.209
+    Stage mast       :   0.304
+    Stage mbc        :   0.046
+Stage parse      :  12.067
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.006
+Stage moar       :   0.000
+
+SOUP::Address compile time: 12.57198925
+ === SOUP::MessageBody (44/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/MessageBody.pm6
+    Stage start      :   0.005
+    Stage parse      :   4.298
+    Stage syntaxcheck:   0.004
+    Stage ast        :   0.000
+    Stage optimize   :   0.132
+    Stage mast       :   0.097
+    Stage mbc        :   0.042
+Stage parse      :   8.683
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.022
+Stage moar       :   0.000
+
+SOUP::MessageBody compile time: 10.0562345
+ === SOUP::Logger (45/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Logger.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.233
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.062
+    Stage mast       :   0.135
+    Stage mbc        :   0.016
+Stage parse      :   8.662
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Logger compile time: 10.18028851
+ === SOUP::AuthManager (46/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthManager.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.244
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.059
+    Stage mast       :   0.056
+    Stage mbc        :   0.045
+Stage parse      :  10.563
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::AuthManager compile time: 11.64499174
+ === SOUP::CookieJar (47/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/CookieJar.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.704
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.151
+    Stage mast       :   0.177
+    Stage mbc        :   0.031
+Stage parse      :   9.333
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::CookieJar compile time: 10.67750861
+ === SOUP::ContentDecoder (48/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/ContentDecoder.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.161
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.045
+    Stage mbc        :   0.023
+Stage parse      :  10.287
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::ContentDecoder compile time: 11.49618534
+ === SOUP::Date (49/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Date.pm6
+    Stage start      :   0.001
+    Stage parse      :   5.477
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.102
+    Stage mbc        :   0.029
+Stage parse      :   9.657
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+SOUP::Date compile time: 10.96542234
+ === SOUP::MessageHeaders (50/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/MessageHeaders.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.185
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.093
+    Stage mast       :   0.225
+    Stage mbc        :   0.068
+Stage parse      :   9.050
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::MessageHeaders compile time: 10.46459315
+ === SOUP::AuthDomain::Basic (51/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain/Basic.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/AuthDomain.pm6
+    Stage parse      :   7.748
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.040
+    Stage mast       :   0.083
+    Stage mbc        :   0.031
+Stage parse      :  11.840
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::AuthDomain::Basic compile time: 12.54403738
+ === SOUP::AuthDomain::Digest (52/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/AuthDomain/Digest.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/AuthDomain.pm6
+    Stage parse      :   7.840
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.043
+    Stage mast       :   0.072
+    Stage mbc        :   0.116
+Stage parse      :  11.768
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::AuthDomain::Digest compile time: 12.66276915
+ === SOUP::Cookie (53/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Cookie.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Date.pm6
+    Stage parse      :   3.842
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.049
+    Stage mast       :   0.070
+    Stage mbc        :   0.008
+Stage parse      :   7.604
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Cookie compile time: 8.78694374
+ === SOUP::ProxyResolverDefault (54/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/ProxyResolverDefault.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.557
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.032
+    Stage mbc        :   0.019
+Stage parse      :   9.726
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.013
+Stage moar       :   0.000
+
+SOUP::ProxyResolverDefault compile time: 11.1216041
+ === SOUP::Request (55/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.800
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.038
+    Stage mast       :   0.134
+    Stage mbc        :   0.024
+Stage parse      :   9.916
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Request compile time: 11.308553
+ === SOUP::Request::Data (56/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/Data.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Request.pm6
+    Stage parse      :   6.203
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.023
+    Stage mbc        :   0.030
+Stage parse      :  10.202
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.008
+Stage moar       :   0.000
+
+SOUP::Request::Data compile time: 11.64021734
+ === SOUP::Message (57/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Message.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.489
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.068
+    Stage mast       :   0.133
+    Stage mbc        :   0.058
+Stage parse      :   8.362
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Message compile time: 9.9720627
+ === SOUP::Socket (58/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Socket.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.392
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.055
+    Stage mast       :   0.099
+    Stage mbc        :   0.018
+Stage parse      :  10.582
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Socket compile time: 11.8137321
+ === SOUP::Request::HTTP (59/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/HTTP.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Message.pm6
+    Stage parse      :   4.597
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.029
+    Stage mbc        :   0.016
+Stage parse      :   8.535
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Request::HTTP compile time: 10.02675482
+ === SOUP::MultipartInputStream (60/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/MultipartInputStream.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Message.pm6
+    Stage parse      :   4.887
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.040
+    Stage mbc        :   0.012
+Stage parse      :   8.868
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::MultipartInputStream compile time: 10.2316339
+ === SOUP::ClientContext (61/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/ClientContext.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Socket.pm6
+    Stage parse      :   5.976
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.023
+    Stage mbc        :   0.013
+Stage parse      :   9.959
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::ClientContext compile time: 11.35694413
+ === SOUP::Server (62/65) === 
+
+Stage start      :   0.006
+
+    precomp lib/SOUP/Server.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Socket.pm6
+    Stage parse      :   4.341
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.056
+    Stage mast       :   0.087
+    Stage mbc        :   0.016
+Stage parse      :   8.477
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Server compile time: 10.07788339
+ === SOUP::Request::File (63/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Request/File.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Request.pm6
+    Stage parse      :   8.067
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.027
+    Stage mbc        :   0.024
+Stage parse      :  12.066
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Request::File compile time: 13.55074278
+ === SOUP::Session (64/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Session.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Request/HTTP.pm6
+    Stage parse      :   4.364
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.070
+    Stage mast       :   0.113
+    Stage mbc        :   0.010
+Stage parse      :   8.323
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Session compile time: 9.72337997
+ === SOUP::Test (65/65) === 
+
+Stage start      :   0.000
+
+    precomp lib/SOUP/Test.pm6
+    Stage start      :   0.000
+    
+        load    lib/SOUP/Server.pm6
+    
+        load    lib/SOUP/Session.pm6
+    Stage parse      :   4.932
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.071
+    Stage mbc        :   0.031
+Stage parse      :   8.699
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+SOUP::Test compile time: 10.34011315
+
+Total compile time: 28.1538112s
