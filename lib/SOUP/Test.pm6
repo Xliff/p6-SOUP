@@ -346,9 +346,8 @@ class SOUP::Test::Session is SOUP::Session {
   multi method new (SoupSessionAncestry $session) {
     $session ?? self.bless( :$session ) !! Nil;
   }
-
   multi method new (@options) {
-    samewith(|@options);
+    samewith( |@options );
   }
   multi method new (*@options) {
     my %options;
@@ -399,29 +398,29 @@ class SOUP::Test::Session is SOUP::Session {
     );
   }
   multi method new (
-    'accept-language',         Str() $accept-language,
-    'accept-language-auto',    Int() $accept-language-auto,
+    'accept-language',         Str()                $accept-language,
+    'accept-language-auto',    Int()                $accept-language-auto,
     'add-feature',             SoupSessionFeature() $add-feature,
-    'add-feature-by-type',     $add-feature-by-type;
-    'async-context',           GMainContext() $async-context,
-    'http-aliases',            $http-aliases,
-    'https-aliases',           $https-aliases,
-    'idle-timeout',            Int() $idle-timeout,
-    'local-address',           SoupAddress() $local-address,
-    'max-conns',               Int() $max-conns,
-    'max-conns-per-host',      Int() $max-conns-per-host,
-    'proxy-resolver',          GProxyResolver() $proxy-resolver,
-    'proxy-uri',               SoupURI() $proxy-uri,
-    'remove-feature-by-type',  $remove-feature-by-type,
-    'ssl-ca-file',             Str() $ssl-ca-file,
-    'ssl-strict',              Int() $ssl-strict,
-    'ssl-use-system-ca-file',  Int() $ssl-use-system-ca-file,
-    'timeout',                 Int() $timeout,
-    'tls-database',            GTlsDatabase() $tls-database,
-    'tls-interaction',         GTlsInteraction() $tls-interaction,
-    'use-ntlm',                Int() $use-ntlm,
-    'use-thread-context',      Int() $use-thread-context,
-    'user-agent',              Str() $user-agent
+    'add-feature-by-type',                          $add-feature-by-type;
+    'async-context',           GMainContext()       $async-context,
+    'http-aliases',                                 $http-aliases,
+    'https-aliases',                                $https-aliases,
+    'idle-timeout',            Int()                $idle-timeout,
+    'local-address',           SoupAddress()        $local-address,
+    'max-conns',               Int()                $max-conns,
+    'max-conns-per-host',      Int()                $max-conns-per-host,
+    'proxy-resolver',          GProxyResolver()     $proxy-resolver,
+    'proxy-uri',               SoupURI()            $proxy-uri,
+    'remove-feature-by-type',                       $remove-feature-by-type,
+    'ssl-ca-file',             Str()                $ssl-ca-file,
+    'ssl-strict',              Int()                $ssl-strict,
+    'ssl-use-system-ca-file',  Int()                $ssl-use-system-ca-file,
+    'timeout',                 Int()                $timeout,
+    'tls-database',            GTlsDatabase()       $tls-database,
+    'tls-interaction',         GTlsInteraction()    $tls-interaction,
+    'use-ntlm',                Int()                $use-ntlm,
+    'use-thread-context',      Int()                $use-thread-context,
+    'user-agent',              Str()                $user-agent
   ) {
     my $session = soup_test_session_new(
       'accept-language',        $accept-language,
