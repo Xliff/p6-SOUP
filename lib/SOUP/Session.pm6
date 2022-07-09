@@ -3,6 +3,7 @@ use v6.c;
 use NativeCall;
 use Method::Also;
 
+use GLib::Raw::Traits;
 use SOUP::Raw::Types;
 use SOUP::Raw::Session;
 use GLib::Raw::ExtendedTypes;
@@ -788,18 +789,18 @@ class SOUP::Session {
   { * }
 
   multi method prefetch_dns (
-    Str() $hostname,
-    &callback,
-    gpointer $user_data = gpointer,
+    Str()          $hostname,
+                   &callback,
+    gpointer       $user_data   = gpointer,
     GCancellable() $cancellable = GCancellable
   ) {
     samewith($hostname, $cancellable, &callback, $user_data);
   }
   multi method prefetch_dns (
-    Str() $hostname,
+    Str()          $hostname,
     GCancellable() $cancellable,
-    &callback,
-    gpointer $user_data = gpointer
+                   &callback,
+    gpointer       $user_data    = gpointer
   ) {
     soup_session_prefetch_dns(
       $!ss,
@@ -819,8 +820,8 @@ class SOUP::Session {
 
   method queue_message (
     SoupMessage() $msg,
-    &callback,
-    gpointer $user_data = gpointer
+                  &callback,
+    gpointer      $user_data = gpointer
   )
     is also<queue-message>
   {
@@ -918,19 +919,16 @@ class SOUP::Session {
   }
 
   method send (
-    SoupMessage() $msg,
-    GCancellable() $cancellable    = GCancellable,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    SoupMessage()            $msg,
+    GCancellable()           $cancellable = GCancellable,
+    CArray[Pointer[GError]]  $error       = gerror,
+                            :$raw = False
   ) {
     clear_error;
     my $is = soup_session_send($!ss, $msg, $cancellable, $error);
     set_error($error);
 
-    $is ??
-      ( $raw ?? $is !! GIO::InputStream.new($is) )
-      !!
-      Nil;
+    propReturnObject($is, $raw, |GIO::InputStream.getTypePair);
   }
 
   proto method send_async (|)
@@ -946,34 +944,34 @@ class SOUP::Session {
     samewith($msg, $cancellable, &callback, $user_data);
   }
   multi method send_async (
-    SoupMessage() $msg,
+    SoupMessage()  $msg,
     GCancellable() $cancellable,
-    &callback,
-    gpointer $user_data = gpointer
+                   &callback,
+    gpointer       $user_data    = gpointer
   ) {
     soup_session_send_async($!ss, $msg, $cancellable, &callback, $user_data);
   }
 
   method send_finish (
-    GAsyncResult() $result,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    GAsyncResult()           $result,
+    CArray[Pointer[GError]]  $error   = gerror,
+                            :$raw     = False
   )
     is also<send-finish>
   {
+    clear_error;
     my $is = soup_session_send_finish($!ss, $result, $error);
+    set_error($error);
 
-    $is ??
-      ( $raw ?? $is !! GIO::InputStream.new($is) )
-      !!
-      Nil;
+    propReturnObject($raw, $is, |GIO::InputStream.getTypePair);
   }
 
   method send_message (SoupMessage() $msg) is also<send-message> {
     soup_session_send_message($!ss, $msg);
   }
 
-  method soup_request_error_quark (SOUP::Session:U: )
+  method soup_request_error_quark
+    is static
     is also<soup-request-error-quark>
   {
     soup_request_error_quark();
@@ -999,22 +997,22 @@ class SOUP::Session {
   { * }
 
   multi method websocket_connect_async (
-    SoupMessage() $msg,
-    Str() $origin,
-    Str() $protocols,
-    &callback,
-    gpointer $user_data         = gpointer,
+    SoupMessage()  $msg,
+    Str()          $origin,
+    Str()          $protocols,
+                   &callback,
+    gpointer       $user_data   = gpointer,
     GCancellable() $cancellable = GCancellable
   ) {
     samewith($msg, $origin, $protocols, $cancellable, &callback, $user_data);
   }
   multi method websocket_connect_async (
-    SoupMessage() $msg,
-    Str() $origin,
-    Str() $protocols,
+    SoupMessage()  $msg,
+    Str()          $origin,
+    Str()          $protocols,
     GCancellable() $cancellable,
-    &callback,
-    gpointer $user_data = gpointer
+                   &callback,
+    gpointer       $user_data    = gpointer
   ) {
     soup_session_websocket_connect_async(
       $!ss,
@@ -1028,9 +1026,9 @@ class SOUP::Session {
   }
 
   method websocket_connect_finish (
-    GAsyncResult() $result,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    GAsyncResult()           $result,
+    CArray[Pointer[GError]]  $error   = gerror,
+                            :$raw     = False
   )
     is also<websocket-connect-finish>
   {
