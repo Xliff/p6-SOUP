@@ -14,7 +14,7 @@ use GLib::Roles::Pointers;
 unit package SOUP::Raw::Definitions;
 
 # Number of forced compiles.
-constant forced = 73;
+constant forced = 117;
 
 constant soup is export = 'soup-2.4',v1;
 
@@ -191,6 +191,17 @@ class SoupMessageBody is repr<CStruct> is export does GLib::Roles::Pointers {
       Proxy.new:
         FETCH => -> $                   { $!data      },
         STORE => -> $, CArray[uint8] \d { $!data := d };
+    }
+
+    method data-str ( :$encoding = 'utf8' ) {
+      Proxy.new:
+        FETCH => -> $           {
+          Buf.new( $!data[^$!length] ).decode($encoding)
+        },
+
+        STORE => -> $, Str() \d {
+          $!data := CArray[uint8].new( d.encode($encoding) );
+        };
     }
 }
 
