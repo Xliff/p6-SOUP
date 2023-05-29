@@ -241,16 +241,16 @@ class SOUP::Session {
 
   # Type: GType
   method add-feature-by-type is rw is also<add_feature_by_type> {
-    my $gv = GLib::Value.new( GLib::Value.typeFromEnum(GTypeEnum) );
+    my $gv = GLib::Value.new( GLib::Value.new-enum(GType) );
     Proxy.new(
       FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('add-feature-by-type', $gv)
         );
-        $gv.valueFromEnum(GTypeEnum);
+        $gv.enum
       },
       STORE => -> $, Int() $val is copy {
-        $gv.valueFromEnum(GTypeEnum) = $val;
+        $gv.valueFromEnum(GType) = $val;
         self.prop_set('add-feature-by-type', $gv);
       }
     );
@@ -460,16 +460,16 @@ class SOUP::Session {
 
   # Type: GType
   method remove-feature-by-type is rw is also<remove_feature_by_type> {
-    my $gv = GLib::Value.new( GLib::Value.typeFromEnum(GTypeEnum) );
+    my $gv = GLib::Value.new( GLib::Value.new-enum(GType) );
     Proxy.new(
       FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('remove-feature-by-type', $gv)
         );
-        $gv.valueFromEnum(GTypeEnum);
+        $gv.enum;
       },
       STORE => -> $, Int() $val is copy {
-        $gv.valueFromEnum(GTypeEnum) = $val;
+        $gv.valueFromEnum(GType) = $val;
         self.prop_set('remove-feature-by-type', $gv);
       }
     );
