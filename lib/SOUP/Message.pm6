@@ -28,6 +28,7 @@ class SOUP::Message {
 
   method setSoupMessage (SoupMessageAncestry $_) {
     my $to-parent;
+
     $!sm = do {
       when SoupMessage {
         $to-parent = cast(GObject, $_);
@@ -63,6 +64,59 @@ class SOUP::Message {
 
     $message ?? self.bless( :$message ) !! Nil;
   }
+
+  # # Struct overrides
+  # method request_body (:$raw = False) is rw is also<request-body> {
+  #   Proxy.new:
+  #     FETCH => -> $ {
+  #       propReturnObject(
+  #         $!request_body,
+  #         :$raw,
+  #         |SOUP::MessageBody.getTypePair
+  #       )
+  #     },
+  #
+  #     STORE => -> $, SoupMessageBody() \b { $!request_body := b };
+  # }
+
+  # method response_body (:$raw = False) is rw is also<response-body> {
+  #   Proxy.new:
+  #     FETCH => -> $ {
+  #       propReturnObject(
+  #         $!request_body,
+  #         :$raw,
+  #         |SOUP::MessageBody.getTypePair
+  #       )
+  #     },
+  #
+  #     STORE => -> $, SoupMessageBody() \b { $!response_body := b };
+  # }
+
+  # method request_headers (:$raw = False) is rw is also<request-headers> {
+  #   Proxy.new:
+  #     FETCH => -> $ {
+  #       propReturnObject(
+  #         $!request_body,
+  #         :$raw,
+  #         |SOUP::MessageHeaders.getTypePair
+  #       )
+  #     },
+  #
+  #     STORE => -> $, SoupMessageHeaders() \h { $!request_headers := h };
+  # }
+  #
+  # method response_headers (:$raw = False) is rw is also<response-headers> {
+  #   Proxy.new:
+  #     FETCH => -> $ {
+  #       propReturnObject(
+  #         $!request_body,
+  #         :$raw,
+  #         |SOUP::MessageHeaders.getTypePair
+  #       )
+  #     },
+  #
+  #     STORE => -> $, SoupMessageHeaders() \h { $!response_headers := h };
+  # }
 
   # Type: SoupURI
   method first-party (:$raw = False) is rw  is also<first_party> {
@@ -544,19 +598,30 @@ class SOUP::Message {
     soup_message_finished($!sm);
   }
 
-  method get_address is also<get-address> {
+  method get_address
+    is also<
+      get-address
+      address
+    >
+  {
     soup_message_get_address($!sm);
   }
 
-  method get_first_party is also<get-first-party> {
+  method get_first_party
+    is also<get-first-party>
+  {
     soup_message_get_first_party($!sm);
   }
 
-  method get_flags is also<get-flags> {
+  method get_flags
+    is also<get-flags>
+  {
     soup_message_get_flags($!sm);
   }
 
-  method get_http_version is also<get-http-version> {
+  method get_http_version
+    is also<get-http-version>
+  {
     soup_message_get_http_version($!sm);
   }
 
@@ -564,27 +629,55 @@ class SOUP::Message {
     GTlsCertificate() $certificate,
     Int() $errors
   )
-    is also<get-https-status>
+    is also<
+      get-https-status
+      http_status
+      http-status
+    >
   {
     my GTlsCertificateFlags $e = $errors;
 
     soup_message_get_https_status($!sm, $certificate, $errors);
   }
 
-  method get_is_top_level_navigation is also<get-is-top-level-navigation> {
+  method get_is_top_level_navigation
+    is also<
+      get-is-top-level-navigation
+      is_top_level_navigation
+      is-top-level-navigation
+    >
+  {
     soup_message_get_is_top_level_navigation($!sm);
   }
 
-  method get_priority is also<get-priority> {
+  method get_priority
+    is also<get-priority>
+  {
     soup_message_get_priority($!sm);
   }
 
-  method get_site_for_cookies is also<get-site-for-cookies> {
+  method get_site_for_cookies
+    is also<
+      get-site-for-cookies
+      site_for_cookies
+      site-for-cookies
+    >
+  {
     soup_message_get_site_for_cookies($!sm);
   }
 
-  method get_soup_request is also<get-soup-request> {
-    soup_message_get_soup_request($!sm);
+  method get_soup_request ( :$raw = False )
+    is also<
+      get-soup-request
+      soup_request
+      soup-request
+    >
+  {
+    propReturnObject(
+      soup_message_get_soup_request($!sm),
+      $raw,
+      |SOUP::Request.getTypePair
+    );
   }
 
   method get_type is also<get-type> {
@@ -593,7 +686,9 @@ class SOUP::Message {
     unstable_get_type( self.^name, &soup_message_get_type, $n, $t );
   }
 
-  method get_uri is also<get-uri> {
+  method get_uri
+    is also<get-uri>
+  {
     soup_message_get_uri($!sm);
   }
 
@@ -683,7 +778,7 @@ class SOUP::Message {
     is also<set-request>
   {
     my SoupMemoryUse $ru = $req_use;
-    my gsize $rl = $req_length;
+    my gsize         $rl = $req_length;
 
     soup_message_set_request($!sm, $content_type, $ru, $req_body, $rl);
   }
@@ -697,7 +792,7 @@ class SOUP::Message {
     is also<set-response>
   {
     my SoupMemoryUse $ru = $resp_use;
-    my gsize $rl = $resp_length;
+    my gsize         $rl = $resp_length;
 
     soup_message_set_response(
       $!sm,
