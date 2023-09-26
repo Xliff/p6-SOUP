@@ -14,7 +14,7 @@ use GLib::Roles::Pointers;
 unit package SOUP::Raw::Definitions;
 
 # Number of forced compiles.
-constant forced = 117;
+constant forced = 241;
 
 constant soup is export = 'soup-2.4',v1;
 
@@ -64,8 +64,14 @@ constant SOUP_SOCKET_TIMEOUT                     is export = 'timeout';
 constant SOUP_SOCKET_TLS_CERTIFICATE             is export = 'tls-certificate';
 constant SOUP_SOCKET_TLS_ERRORS                  is export = 'tls-errors';
 
+class SoupConnection         is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupConnectionManager  is repr<CPointer> is export does GLib::Roles::Pointers { }
 class SoupMessageHeaders     is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupMessageQueueItem   is repr<CPointer> is export does GLib::Roles::Pointers { }
 class SoupSessionFeature     is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupServerConnection   is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupServerMessage      is repr<CPointer> is export does GLib::Roles::Pointers { }
+class SoupServerMessageIO    is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 # ↓↓↓↓ Possibly to Structs ↓↓↓↓
 
