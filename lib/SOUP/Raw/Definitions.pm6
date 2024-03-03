@@ -14,7 +14,7 @@ use GLib::Roles::Pointers;
 unit package SOUP::Raw::Definitions;
 
 # Number of forced compiles.
-constant forced = 241;
+constant forced = 270;
 
 constant soup is export = 'soup-2.4',v1;
 

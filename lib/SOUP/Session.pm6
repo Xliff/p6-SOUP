@@ -58,12 +58,19 @@ class SOUP::Session {
   multi method new (SoupSessionAncestry $session) {
     $session ?? self.bless( :$session ) !! Nil;
   }
-  multi method new {
+  multi method new (*%a) {
     my $session = soup_session_new();
 
-    $session ?? self.bless( :$session ) !! Nil;
+    my $o = $session ?? self.bless( :$session ) !! Nil;
+    $o.setAttributes( |%a ) if $o && +%a;
+    $o;
   }
 
+  # cw: Eventually, there will be a nuke dropped on this method chain, as it
+  #     should be removed. Completely.
+  #
+  #     It's the only way to be sure (that this code never ever sees the light
+  #     of DAY!
   proto method new_with_options (|)
     is also<new-with-options>
   { * }
@@ -125,29 +132,29 @@ class SOUP::Session {
     );
   }
   multi method new_with_options (
-    'accept-language',         Str() $accept-language,
-    'accept-language-auto',    Int() $accept-language-auto,
+    'accept-language',         Str()                $accept-language,
+    'accept-language-auto',    Int()                $accept-language-auto,
     'add-feature',             SoupSessionFeature() $add-feature,
-    'add-feature-by-type',     GObject() $add-feature-by-type;
-    'async-context',           GMainContext() $async-context,
-    'http-aliases',            $http-aliases,
-    'https-aliases',           $https-aliases,
-    'idle-timeout',            Int() $idle-timeout,
-    'local-address',           SoupAddress() $local-address,
-    'max-conns',               Int() $max-conns,
-    'max-conns-per-host',      Int() $max-conns-per-host,
-    'proxy-resolver',          GProxyResolver() $proxy-resolver,
-    'proxy-uri',               SoupURI() $proxy-uri,
-    'remove-feature-by-type',  GObject() $remove-feature-by-type,
-    'ssl-ca-file',             Str() $ssl-ca-file,
-    'ssl-strict',              Int() $ssl-strict,
-    'ssl-use-system-ca-file',  Int() $ssl-use-system-ca-file,
-    'timeout',                 Int() $timeout,
-    'tls-database',            GTlsDatabase() $tls-database,
-    'tls-interaction',         GTlsInteraction() $tls-interaction,
-    'use-ntlm',                Int() $use-ntlm,
-    'use-thread-context',      Int() $use-thread-context,
-    'user-agent',              Str() $user-agent
+    'add-feature-by-type',     GObject()            $add-feature-by-type;
+    'async-context',           GMainContext()       $async-context,
+    'http-aliases',                                 $http-aliases,
+    'https-aliases',                                $https-aliases,
+    'idle-timeout',            Int()                $idle-timeout,
+    'local-address',           SoupAddress()        $local-address,
+    'max-conns',               Int()                $max-conns,
+    'max-conns-per-host',      Int()                $max-conns-per-host,
+    'proxy-resolver',          GProxyResolver()     $proxy-resolver,
+    'proxy-uri',               SoupURI()            $proxy-uri,
+    'remove-feature-by-type',  GObject()            $remove-feature-by-type,
+    'ssl-ca-file',             Str()                $ssl-ca-file,
+    'ssl-strict',              Int()                $ssl-strict,
+    'ssl-use-system-ca-file',  Int()                $ssl-use-system-ca-file,
+    'timeout',                 Int()                $timeout,
+    'tls-database',            GTlsDatabase()       $tls-database,
+    'tls-interaction',         GTlsInteraction()    $tls-interaction,
+    'use-ntlm',                Int()                $use-ntlm,
+    'use-thread-context',      Int()                $use-thread-context,
+    'user-agent',              Str()                $user-agent
   ) {
     my $session = soup_session_new_with_options(
       'accept-language',        $accept-language,
@@ -847,9 +854,9 @@ class SOUP::Session {
   }
 
   method request (
-    Str() $uri_string,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    Str()                    $uri_string,
+    CArray[Pointer[GError]]  $error       = gerror,
+                            :$raw         = False
   ) {
     clear_error;
     my $r = soup_session_request($!ss, $uri_string, $error);
@@ -862,10 +869,10 @@ class SOUP::Session {
   }
 
   method request_http (
-    Str() $method,
-    Str() $uri_string,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    Str()                    $method,
+    Str()                    $uri_string,
+    CArray[Pointer[GError]]  $error       = gerror,
+                            :$raw         = False
   )
     is also<request-http>
   {
@@ -880,10 +887,10 @@ class SOUP::Session {
   }
 
   method request_http_uri (
-    Str() $method,
-    SoupURI() $uri,
-    CArray[Pointer[GError]] $error = gerror,
-    :$raw = False
+    Str()                    $method,
+    SoupURI()                $uri,
+    CArray[Pointer[GError]]  $error   = gerror,
+                            :$raw     = False
   )
     is also<request-http-uri>
   {
@@ -898,9 +905,9 @@ class SOUP::Session {
   }
 
   method request_uri (
-    SoupURI() $uri,
-    CArray[Pointer[GError]] $error,
-    :$raw = False
+    SoupURI()                $uri,
+    CArray[Pointer[GError]]  $error,
+                            :$raw    = False
   )
     is also<request-uri>
   {
@@ -922,7 +929,7 @@ class SOUP::Session {
     SoupMessage()            $msg,
     GCancellable()           $cancellable = GCancellable,
     CArray[Pointer[GError]]  $error       = gerror,
-                            :$raw = False
+                            :$raw         = False
   ) {
     clear_error;
     my $is = soup_session_send($!ss, $msg, $cancellable, $error);
@@ -936,12 +943,26 @@ class SOUP::Session {
   { * }
 
   multi method send_async (
-    SoupMessage() $msg,
-    &callback,
-    gpointer $user_data         = gpointer,
+    SoupMessage()  $msg,
+                   &callback,
+    gpointer       $user_data   = gpointer,
     GCancellable() $cancellable = GCancellable
   ) {
     samewith($msg, $cancellable, &callback, $user_data);
+  }
+  multi method send_async (
+    GCancellable()  $cancellable,
+                    &callback,
+    gpointer        $user_data                = gpointer,
+                   :$promise      is required = False,
+                   :$promise-in               = 0
+  ) {
+    makePromise(
+      self,
+      &?ROUTINE.name,
+      in              => $promise-in,
+      args            => [ $cancellable, &callback, $user_data ]
+    );
   }
   multi method send_async (
     SoupMessage()  $msg,
@@ -1005,6 +1026,31 @@ class SOUP::Session {
     GCancellable() $cancellable = GCancellable
   ) {
     samewith($msg, $origin, $protocols, $cancellable, &callback, $user_data);
+  }
+  multi method websocket_connect_async (
+    SoupMessage()   $msg,
+    Str()           $origin,
+    Str()           $protocols,
+    GCancellable()  $cancellable,
+                    &callback,
+    gpointer        $user_data                = gpointer,
+                   :$promise      is required = False,
+                   :$promise-in               = 0
+  ) {
+    makePromise(
+      self,
+      &?ROUTINE.name,
+
+      in   => $promise-in,
+      args => [
+        $msg,
+        $origin,
+        $protocols,
+        $cancellable,
+        &callback,
+        $user_data
+      ]
+    );
   }
   multi method websocket_connect_async (
     SoupMessage()  $msg,

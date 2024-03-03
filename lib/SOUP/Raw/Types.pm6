@@ -6,6 +6,7 @@ use SOUP::Raw::Exports;
 
 unit package SOUP::Raw::Types;
 
+need GLib::Raw::Debug;
 need GLib::Raw::Definitions;
 need GLib::Raw::Enums;
 need GLib::Raw::Exceptions;

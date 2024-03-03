@@ -1,3 +1,5 @@
-prefix=SOUP::
+prefix=SOUP
 modules=SOUP::Raw::Types
 backups=backup,bitbucket
+include-directory=/usr/src/libsoup/libsoup
+lib=soup

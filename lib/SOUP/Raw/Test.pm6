@@ -6,6 +6,7 @@ use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use GLib::Raw::Object;
 use GIO::Raw::Definitions;
+use GIO::Raw::Structs;
 use SOUP::Raw::Definitions;
 use SOUP::Raw::Enums;
 

@@ -5,6 +5,7 @@ use NativeCall;
 use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use GIO::Raw::Definitions;
+use GIO::Raw::Structs;
 use SOUP::Raw::Definitions;
 
 unit package SOUP::Raw::Request;

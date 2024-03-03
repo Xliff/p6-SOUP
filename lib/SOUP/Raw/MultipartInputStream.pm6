@@ -5,6 +5,7 @@ use NativeCall;
 use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use GIO::Raw::Definitions;
+use GIO::Raw::Structs;
 use SOUP::Raw::Definitions;
 
 ### /usr/include/libsoup-2.4/libsoup/soup-multipart-input-stream.h
